@@ -1,0 +1,12 @@
+<section class="crop-info">
+
+  <h2><%= crop.name %></h2>
+
+  <p><%= crop.variant %></p>
+
+  <%= render "/notes/form" %>
+
+  <% crop.notes.each do |note| %>
+    <%= render "/notes/note_info", note: note %>
+  <% end %>
+</section>

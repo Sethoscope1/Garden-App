@@ -1,0 +1,5 @@
+  <h1><%= note.title %></h1>
+  <p><%= note.text %></p>
+
+  <%= button_to "Delete!", note_url(note), method: :destroy %>
+  <%= button_to "Edit!", edit_note_url(note), method: :get %>

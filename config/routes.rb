@@ -14,7 +14,7 @@ GardenApp::Application.routes.draw do
     resources :notes, only: [:index]
   end
 
-  resources :notes, only: [:create]
+  resources :notes, only: [:create, :new, :show, :edit, :destroy]
 
   root to: "users#index"
 

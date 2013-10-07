@@ -4,8 +4,8 @@ class User < ActiveRecord::Base
   validates :name, presence: true
 
   has_many :gardens
-  has_many :crops
   has_many :notes
+  has_many :crops, through: :gardens
 
   after_initialize :ensure_session_token
 

@@ -1,16 +1,29 @@
-<!-- New Note Form -->
+<section class="note-form">
 
-<form action="note_url" method="POST">
+  <h3>New Note...</h3>
 
-  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token%>" id="some_name">
+  <form action="/notes" method="POST">
 
-  <label>Title
-    <input type="text" name="note[title]">
-  </label>
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token%>" id="some_name">
 
-  <label>
-    <input type="text" name="note[body]">
-  </label>
+    <label>Title
+      <input type="text" name="note[title]">
+    </label>
 
-  <p><input type="submit" value="Make a Note"></p>
-</form>
+    <br>
+
+    <label>Note
+      <textarea name="note[text]" placeholder="Notes..."></textarea>
+    </label>
+
+    <br>
+
+    <label>Upload Picture//
+    </label>
+
+    <br>
+
+    <p><input type="submit" value="Make a Note"></p>
+  </form>
+
+</section>

@@ -1,0 +1,16 @@
+<section class="garden-view">
+
+  <h3><%= garden.name %></h3><br>
+  <p>Created by: <%= garden.user.name %></p>
+  <p>Location: <%= garden.location %></p>
+
+  <br>
+
+  <ul>
+    <% garden.crops.each do |crop| %>
+      <li><p><%= crop.name %><span class="sub"> <%= crop.variant %></span></p></li><br>
+    <% end %>
+  </ul>
+
+  <%= button_to "Plant a New Crop!", new_garden_crop_url(garden), method: :get %>
+</section>

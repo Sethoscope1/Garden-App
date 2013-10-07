@@ -48,12 +48,18 @@ ul:after {
   clear: both;
 }
 
-input {
+label {
+  font-style: sans-serif;
+}
+
+input, textarea {
   border: none;
   padding: 2px;
 /*  background: #dfe;*/
   background: #ecf0f1;
   border-radius: 3px;
+
+  font-style: sans-serif;
 }
 
 .sub {
@@ -62,6 +68,17 @@ input {
 }
 
 .garden-view {
+
+  background-color: #c9f8dd;
+  border: 2px;
+  margin-right: 10px;
+}
+
+section {
   float: left;
   padding: 10px;
+}
+
+.note-form {
+  border: 1px dotted #2ecc71;
 }
