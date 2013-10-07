@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>GardenApp</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+	<%= flash[:errors] if flash[:errors] %>
+
+	<% if !current_user.nil? %>
+    <header>
+      <ul>
+        <li>Current User: <%= current_user.name %></li>
+        <li><%= button_to "Logout", session_url, method: :delete %></li>
+      </ul>
+      <hr>
+    </header>
+  <% else %>
+    <header>
+      <ul>
+        <%= button_to "Sign In", new_session_url, method: :get %>
+        <%= button_to "Join", new_user_url, method: :get %>
+      </ul>
+    </header>
+	<% end %>
+
+
+
+	<%= yield %>
+
+</body>
+</html>

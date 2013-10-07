@@ -1,0 +1,29 @@
+
+<h2>Profile</h2>
+
+  <p>Name: <%= current_user.name %></p>
+  <p>Password: <%= current_user.password %></p>
+
+
+<h2>Your Gardens</h2>
+
+  <ul>
+      <% current_user.gardens.each do |garden| %>
+        <section class="garden-view">
+
+          <h3><%= garden.name %></h3><br>
+
+          <p>Location: <%= garden.location %></p><br>
+
+          <ul>
+            <% garden.crops.each do |crop| %>
+              <li><p><%= crop.name %><span class="sub"> <%= crop.variant %></span></p></li><br>
+            <% end %>
+          </ul>
+
+          <%= button_to "Plant a New Crop!", new_garden_crop_url(garden), method: :get %>
+        </section>
+    <% end %>
+  </ul>
+
+<%= button_to "Plant a New Garden!", new_garden_url, method: :get %>

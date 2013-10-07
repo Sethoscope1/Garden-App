@@ -1,0 +1,16 @@
+<!-- New Note Form -->
+
+<form action="note_url" method="POST">
+
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token%>" id="some_name">
+
+  <label>Title
+    <input type="text" name="note[title]">
+  </label>
+
+  <label>
+    <input type="text" name="note[body]">
+  </label>
+
+  <p><input type="submit" value="Make a Note"></p>
+</form>

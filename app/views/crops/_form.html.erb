@@ -1,0 +1,24 @@
+<form action="/crops" method="POST">
+
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token%>">
+
+  <input type="hidden" name="crop[garden_id]" value="<%= params[:garden_id] %>">
+
+  <label>Name
+    <input type="text" name="crop[name]">
+  </label>
+
+  <label>Variant or Description
+    <input type="text" name="crop[variant]">
+  </label>
+
+  <label>Plant Date
+    <input type="date" name="crop[plant_date]">
+  </label>
+
+  <label>Harvest Date
+    <input type="date" name="crop[harvest_date]">
+  </label>
+
+  <p><input type="submit" value="Plant!"></p>
+</form>
