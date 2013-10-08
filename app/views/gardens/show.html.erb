@@ -1,7 +1,11 @@
-<%= render "garden_info", garden: @garden %>
+<section class="page-view">
 
-<% @garden.crops.each do |crop| %>
+  <%= render "garden_info", garden: @garden %>
 
-  <%= render "/crops/crop_info", crop: crop %>
+  <% @garden.crops.each do |crop| %>
 
-<% end %>
+    <%= render "/crops/crop_info", crop: crop %>
+
+  <% end %>
+
+</section>

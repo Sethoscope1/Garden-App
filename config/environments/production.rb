@@ -64,4 +64,16 @@ GardenApp::Application.configure do
   # Log the query plan for queries taking more than this (works
   # with SQLite, MySQL, and PostgreSQL)
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
+  config.paperclip_defaults = {
+    :storage => :s3,
+    :s3_credentials => {
+      :bucket => "garden_app_prod",
+      :access_key_id => "AKIAJJ32TMJNSQQACKJA",
+      :secret_access_key => "mXnvdTCXYCfrilwcxarTwbjXKgIK1gXqsY6SoH1/",
+      :s3_host_name => 's3.amazonaws.com' # or whatever your region host name is
+    }
+  }
+
+  https://s3.amazonaws.com/garden_app_devt/pink+ponderosa.jpeg
+
 end

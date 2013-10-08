@@ -34,4 +34,16 @@ GardenApp::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
+
+
+  config.paperclip_defaults = {
+    :storage => :s3,
+    :s3_credentials => {
+      :bucket => "garden_app_devt",
+      :access_key_id => "AKIAJJ32TMJNSQQACKJA",
+      :secret_access_key => "mXnvdTCXYCfrilwcxarTwbjXKgIK1gXqsY6SoH1/",
+      :s3_host_name => 's3.amazonaws.com' # or whatever your region host name is
+    }
+  }
+
 end

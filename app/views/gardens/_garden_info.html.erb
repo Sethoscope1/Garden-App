@@ -1,4 +1,4 @@
-<section class="garden-view">
+<section class="garden-info">
 
   <h3><%= garden.name %></h3><br>
   <p>Created by: <%= garden.user.name %></p>
@@ -12,5 +12,6 @@
     <% end %>
   </ul>
 
-  <%= button_to "Plant a New Crop!", new_garden_crop_url(garden), method: :get %>
+  <%= button_to "Add a Crop!", new_garden_crop_url(garden), method: :get %>
+  <%= button_to "Visit Garden!", garden_url(garden), method: :get %>
 </section>

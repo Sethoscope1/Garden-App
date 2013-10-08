@@ -11,16 +11,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131008144951) do
+ActiveRecord::Schema.define(:version => 20131008212007) do
 
   create_table "crops", :force => true do |t|
     t.string   "name"
     t.string   "variant"
     t.date     "plant_date"
     t.date     "harvest_date"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
     t.integer  "garden_id"
+    t.date     "to_plant_date"
+    t.date     "to_harvest_date"
   end
 
   add_index "crops", ["name"], :name => "index_crops_on_name"
@@ -44,9 +46,13 @@ ActiveRecord::Schema.define(:version => 20131008144951) do
     t.integer  "user_id"
     t.integer  "crop_id"
     t.text     "text"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",              :null => false
+    t.datetime "updated_at",              :null => false
     t.string   "title"
+    t.string   "note_photo_file_name"
+    t.string   "note_photo_content_type"
+    t.integer  "note_photo_file_size"
+    t.datetime "note_photo_updated_at"
   end
 
   add_index "notes", ["crop_id"], :name => "index_notes_on_crop_id"
