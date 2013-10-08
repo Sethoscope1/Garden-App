@@ -8,9 +8,17 @@
 #
 #
 User.create(name: "seth", password: "password")
+User.create(name: "james")
+User.create(name: "cat")
+User.create(name: "Totoro")
 
 Garden.create(name: "My Garden", user_id: 1, location: "Park Slope")
-Garden.create(name: "Community Garden", user_id: 1, location: "the Bronx")
+Garden.create(name: "Community Garden", user_id: 2, location: "the Bronx")
+
+GardenMembership.create(user_id: 1, garden_id: 2)
+GardenMembership.create(user_id: 2, garden_id: 1)
+GardenMembership.create(user_id: 3, garden_id: 1)
+GardenMembership.create(user_id: 4, garden_id: 1)
 
 Crop.create(name: "Tomato", variant: "Pink Ponderosa", garden_id: 1)
 Crop.create(name: "Tomato", variant: "Pink Ponderosa", garden_id: 2)

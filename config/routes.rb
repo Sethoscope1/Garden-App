@@ -10,7 +10,7 @@ GardenApp::Application.routes.draw do
     resources :crops, only: [:show, :new]
   end
 
-  resources :crops, only: [:create] do
+  resources :crops, only: [:create, :update, :show] do
     resources :notes, only: [:index]
   end
 

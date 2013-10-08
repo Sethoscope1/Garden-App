@@ -71,7 +71,7 @@ input, textarea {
 
   background-color: #c9f8dd;
   border: 2px;
-  margin-right: 10px;
+  margin: 10px;
 }
 
 section {
@@ -81,4 +81,11 @@ section {
 
 .note-form {
   border: 1px dotted #2ecc71;
+  border-radius: 7px;
+  background: white;
+}
+
+.crop-info {
+  background: #ecf0f1;
+  margin: 10px;
 }

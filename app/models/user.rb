@@ -6,6 +6,8 @@ class User < ActiveRecord::Base
   has_many :gardens
   has_many :notes
   has_many :crops, through: :gardens
+  has_many :garden_memberships
+  has_many :member_gardens, through: :garden_memberships, source: :garden
 
   after_initialize :ensure_session_token
 

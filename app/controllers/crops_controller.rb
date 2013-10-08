@@ -15,7 +15,18 @@ class CropsController < ApplicationController
     end
   end
 
-  def destroy
+  def edit
 
+  end
+
+  def update
+    @crop = Crop.find(params[:id])
+    @crop.update_attributes(params[:crop])
+    if @crop.save
+      flash[:errors] = "updated?"
+      redirect_to garden_url(@crop.garden_id)
+    else
+      flash[:errors] = "couldn't edit crop"
+    end
   end
 end

@@ -20,7 +20,7 @@ class NotesController < ApplicationController
   end
 
   def edit
-    @note = Note.find(params[:id])
+    @note = Note.find(params[:id]) || Note.new
     render :new
   end
 

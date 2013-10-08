@@ -2,18 +2,18 @@
 
   <h3>New Note...</h3>
 
-  <form action="/notes" method="POST">
+  <form action="/notes/" method="POST">
 
     <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token%>" id="some_name">
 
     <label>Title
-      <input type="text" name="note[title]">
+      <input type="text" name="note[title]" value="<%= @note.title if @note %>">
     </label>
 
     <br>
 
     <label>Note
-      <textarea name="note[text]" placeholder="Notes..."></textarea>
+      <textarea name="note[text]" text="<%= @note.title if @note %>"></textarea>
     </label>
 
     <br>

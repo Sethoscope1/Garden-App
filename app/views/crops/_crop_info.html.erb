@@ -4,6 +4,26 @@
 
   <p><%= crop.variant %></p>
 
+  <p class="planted"><%= crop.plant_date ? "PLANTED: #{crop.plant_date}" : "" %></p>
+  <p class="harvested"><%= crop.harvest_date ? "HARVESTED: #{crop.harvest_date}" : "" %></p>
+  <p></p>
+
+  <form action="<%= crop_url(crop) %>" method="post">
+    <input type="hidden" name="_method" value="PUT">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    <input type="date" name="crop[plant_date]">
+    <input type="submit" value="Planted!">
+  </form>
+
+  <br>
+
+  <form action="<%= crop_url(crop) %>" method="post">
+    <input type="hidden" name="_method" value="PUT">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    <input type="date" name="crop[harvest_date]">
+    <input type="submit" value="Harvested!">
+  </form>
+
   <%= render "/notes/form" %>
 
   <% crop.notes.each do |note| %>
