@@ -30,6 +30,53 @@ i {
   color: #2ecc71 ;
 }
 
+.ribbon1 {
+  height: 20px;
+  width: 5px;
+
+  margin: 3px;
+  border-left: 7px solid #3D4CF2;
+  border-right: 7px solid #3D4CF2;
+  border-bottom: 8px solid transparent;
+}
+
+.ribbon2 {
+  height: 20px;
+  width: 5px;
+
+  margin: 3px;
+  border-left: 7px solid #F23DA7;
+  border-right: 7px solid #F23DA7;
+  border-bottom: 8px solid transparent;
+}
+
+.ribbon3 {
+  height: 20px;
+  width: 5px;
+
+  margin: 3px;
+  border-left: 7px solid #F23D4D;
+  border-right: 7px solid #F23D4D;
+  border-bottom: 8px solid transparent;
+}
+
+.ribbon4 {
+  height: 20px;
+  width: 5px;
+
+  margin: 3px;
+  border-left: 7px solid #3DF2B9;
+  border-right: 7px solid #3DF2B9;
+  border-bottom: 8px solid transparent;
+}
+
+.ribbons {
+  float: right;
+  margin: 0;
+  border: 0;
+  padding: 0;
+}
+
 #growy {
   font-size: 30px;
   color: black;

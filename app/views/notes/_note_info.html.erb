@@ -1,5 +1,12 @@
 <section class="note-info">
 
+  <div class="ribbons">
+    <div class="ribbon1"></div>
+    <div class="ribbon2"></div>
+    <div class="ribbon3"></div>
+    <div class="ribbon4"></div>
+  </div>
+
   <h2><%= note.title %></h2>
 
   <%= button_to "View!", note_url(note), method: :get %>
@@ -16,6 +23,7 @@
       <%= format_date(note.due_date) %>
 
     <% end %>
+
 
 
   </span>
