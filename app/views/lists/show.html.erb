@@ -1,0 +1,19 @@
+<h3 class="list-header"><%= @list.name %></h3>
+
+<br>
+
+<% @list.crops.each do |crop| %>
+
+  <li><%= crop.name %></li>
+
+  <br>
+
+<% end %>
+
+<% @list.notes.each do |note| %>
+
+
+  <%= link_to note.title, note_url(note) %>
+
+
+<% end %>

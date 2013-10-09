@@ -1,6 +1,27 @@
-  <h1><%= note.title %></h1>
-  <p><%= note.text %></p>
+<section class="note-info">
 
-  <%= button_to "Delete!", note_url(note), method: :destroy %>
-  <%= button_to "Edit!", edit_note_url(note), method: :get %>
-  <%= button_to "Show!", note_url(note), method: :get %>
+  <h2><%= note.title %></h2>
+
+  <%= button_to "View!", note_url(note), method: :get %>
+
+  <span class="icons">
+
+    <% if note.comments.length > 0 %>
+      <i class="icon-comment"></i>
+      <%= note.comments.length %>
+    <% end %>
+
+    <% if note.due_date %>
+      <i class="icon-calendar"></i>
+      <%= format_date(note.due_date) %>
+
+    <% end %>
+
+
+  </span>
+
+  <br>
+
+</section>
+
+<br>

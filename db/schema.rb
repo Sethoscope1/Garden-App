@@ -11,7 +11,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131008212007) do
+ActiveRecord::Schema.define(:version => 20131009183419) do
+
+  create_table "comments", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "note_id"
+    t.string   "text"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "comments", ["note_id"], :name => "index_comments_on_note_id"
+  add_index "comments", ["user_id"], :name => "index_comments_on_user_id"
 
   create_table "crops", :force => true do |t|
     t.string   "name"
@@ -23,6 +34,7 @@ ActiveRecord::Schema.define(:version => 20131008212007) do
     t.integer  "garden_id"
     t.date     "to_plant_date"
     t.date     "to_harvest_date"
+    t.integer  "list_id"
   end
 
   add_index "crops", ["name"], :name => "index_crops_on_name"
@@ -42,6 +54,17 @@ ActiveRecord::Schema.define(:version => 20131008212007) do
     t.integer  "user_id"
   end
 
+  create_table "lists", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "garden_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.string   "name"
+  end
+
+  add_index "lists", ["garden_id"], :name => "index_lists_on_garden_id"
+  add_index "lists", ["user_id"], :name => "index_lists_on_creator_id"
+
   create_table "notes", :force => true do |t|
     t.integer  "user_id"
     t.integer  "crop_id"
@@ -53,6 +76,9 @@ ActiveRecord::Schema.define(:version => 20131008212007) do
     t.string   "note_photo_content_type"
     t.integer  "note_photo_file_size"
     t.datetime "note_photo_updated_at"
+    t.integer  "list_id"
+    t.date     "due_date"
+    t.boolean  "completion"
   end
 
   add_index "notes", ["crop_id"], :name => "index_notes_on_crop_id"

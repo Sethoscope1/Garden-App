@@ -5,9 +5,9 @@
   <ul>
 
     <p><%= crop.variant %></p>
-    <li class="planted sub"><%= crop.plant_date ? "PLANTED: #{crop.plant_date}" : (crop.to_plant_date ? "TO PLANT: #{crop.to_plant_date}" : "") %></li>
+    <li class="planted sub"><%= crop.plant_date ? "PLANTED: #{format_date(crop.plant_date)}" : (crop.to_plant_date ? "TO PLANT: #{crop.to_plant_date}" : "") %></li>
     <br>
-    <li class="harvested sub"><%= crop.harvest_date ? "HARVESTED: #{crop.harvest_date}" : (crop.to_harvest_date ? "TO HARVEST: #{crop.to_harvest_date}" : "") %></li>
+    <li class="harvested sub"><%= crop.harvest_date ? "HARVESTED: #{format_date(crop.harvest_date)}" : (crop.to_harvest_date ? "TO HARVEST: #{crop.to_harvest_date}" : "") %></li>
 
   </ul>
 
@@ -33,21 +33,12 @@
 
   <% end %>
 
-  <form action="/notes/" method="POST" enctype="multipart/form-data">
-
-  <input type="hidden" name="note[crop_id]" value="<%= crop.id %>">
-
-  <%= render "/notes/form" %>
-
-  <% @note = Note.new %>
-  <%= form_for @note, url: { action: "create" } do |f| %>
-  <%= f.file_field :note_photo %>
-  <%= f.submit %>
-<% end %>
-
+  <%= button_to "View!", crop_url(crop), method: :get %>
 
 
   <% crop.notes.each do |note| %>
     <%= render "/notes/note_info", note: note %>
   <% end %>
 </section>
+
+<br>

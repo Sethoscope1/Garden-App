@@ -1,16 +1,25 @@
 
+<section class="profile">
+
 <h2>Profile</h2>
 
   <p>Name: <%= current_user.name %></p>
 
-  <h2>Your Gardens</h2>
+  <h2>My Gardens</h2>
 
   <ul>
     <% current_user.gardens.each do |garden| %>
 
-      <%= render "gardens/garden_info", garden: garden %>
+
+      <%= link_to garden.name, garden_url(garden), method: :get %>
+
+      <br>
+
+      <!-- <%= render "gardens/garden_info", garden: garden %> -->
 
     <% end %>
   </ul>
+
+</section>
 
 <%= button_to "Plant a New Garden!", new_garden_url, method: :get %>

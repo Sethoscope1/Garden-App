@@ -2,10 +2,11 @@
 
   <h3>New Note...</h3>
 
-  <!-- removed top of form here to _crop_info -->
+  <form action="/notes/" method="POST" enctype="multipart/form-data">
 
     <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token%>" id="some_name">
 
+    <input type="hidden" name="note[list_id]" value="<%= params[:list_id]%>">
     <label>Title
       <input type="text" name="note[title]" value="<%= @note.title if @note %>">
     </label>

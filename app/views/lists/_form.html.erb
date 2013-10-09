@@ -1,0 +1,14 @@
+<form action="/lists" method="POST">
+
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token%>">
+
+  <input type="hidden" name="list[garden_id]" value="<%= params[:garden_id] %>">
+
+  <input type="hidden" name="list[user_id]" value="<%= current_user.id %>">
+
+  <label>Name
+    <input type="text" name="list[name]">
+  </label>
+
+  <p><input type="submit" value="Do it!"></p>
+</form>

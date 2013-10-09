@@ -2,10 +2,45 @@
 
   <%= render "garden_info", garden: @garden %>
 
-  <% @garden.crops.each do |crop| %>
+    <%= button_to "Add a List!", new_garden_list_url(@garden), method: :get, class: "button" %>
 
-    <%= render "/crops/crop_info", crop: crop %>
+  <% @garden.lists.each do |list| %>
+
+  <section class="list-view">
+
+      <h2 class="list-header"><%= list.name %></h2>
+
+      <% list.crops.each do |crop| %>
+
+        <%= render "/crops/crop_info", crop: crop %>
+
+      <% end %>
+
+      <% list.notes.each do |note| %>
+
+        <%= render "/notes/note_info", note: note %>
+
+      <% end %>
+
+      <form action="<%= new_note_url %>" method="get">
+        <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+
+        <input type="hidden" name="list_id" value="<%= list.id %>">
+
+        <p><input type="submit" value="Add a Note!"></p>
+      </form>
+
+      <form action="<%= new_crop_url %>" method="get">
+        <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+
+        <input type="hidden" name="list_id" value="<%= list.id %>">
+
+        <p><input type="submit" value="Add a Crop!"></p>
+      </form>
+  </section>
 
   <% end %>
+
+
 
 </section>

@@ -12,7 +12,7 @@
  *= require_tree .
  */
 
-h1, h2, h3, h4, h5, h6, p, ul, li {
+h1, h2, h3, h4, h5, h6, p, ul, li, section, header, div, span, body {
   margin: 0;
   padding: 0;
   border: 0;
@@ -22,9 +22,59 @@ h1, h2, h3, h4, h5, h6, p, ul, li {
   vertical-align: baseline;
 }
 
+div {
+  display: inline;
+}
+
+i {
+  color: #2ecc71 ;
+}
+
+#growy {
+  font-size: 30px;
+  color: black;
+  padding: 10px;
+  padding-left: 20px;
+  font-family: 'Kite One', sans-serif;
+}
+
+.icons {
+  display: block;
+}
+
+.button_to {
+  color: blue;
+  display: inline;
+}
+
+/*.pageform {
+  float: left;
+  margin: auto;
+  width: 50%;
+}*/
+
+a {
+  text-decoration: none;
+  font-family: sans-serif;
+}
+
+.list-header {
+  padding: 20px;
+}
+
 header.top {
   background-color: #27ae60;
   color: white;
+}
+
+ul {
+  list-style: none;
+}
+
+ul:after {
+  content: "";
+  display: table;
+  clear: both;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -39,58 +89,80 @@ p {
   font-size: 10pt;
 }
 
-ul {
-  list-style: none;
-}
-
-li {
-  float: left;
-}
-
-ul:after {
-  content: "";
-  display: table;
-  clear: both;
-}
-
-label {
-  font-style: sans-serif;
-}
-
-input, textarea {
-  border: none;
-  padding: 2px;
-/*  background: #dfe;*/
-  background: #ecf0f1;
-  border-radius: 3px;
-
-  font-style: sans-serif;
-}
-
-.page {
-  overflow-y: hidden;
-  overflow-x: 200%%;
-}
-
-.garden-info {
-  padding: 10px;
-  margin: 10px;
-  background-color: #abebc6;
-}
 
 .sub {
   color: #acb1b6;
   font-size: 70%;
 }
 
-.page-view {
-  display: inline-block;
+section {
+  margin: 5px 10px;
+  float: left;
 }
 
-section {
-  float: left;
+.garden-info {
   padding: 10px;
+  background-color: #abebc6;
 }
+
+.crop-info {
+  background: #ecf0f1;
+
+}
+
+.list-view {
+  background: #ecf0f1;
+  margin: 10px;
+  border-radius: 8px;
+  float: left;
+}
+
+li {
+  float: left;
+}
+
+label {
+  font-style: sans-serif;
+}
+
+
+.crop-info, .note-info {
+  padding: 10px;
+  width: 200px;
+  background-color: white;
+  border-radius: 8px;
+}
+
+
+/*
+
+
+
+
+
+input, textarea {
+  border: none;
+  padding: 2px;
+  background: #dfe;
+  background: #ecf0f1;
+  border-radius: 3px;
+
+  font-style: sans-serif;
+}
+
+
+
+/*.page-view {
+  display: inline-block;
+}*/
+
+/*.profile {
+  display: block;
+  width: 400px;
+}
+
+
+
 
 .note-form {
   border: 1px dotted #2ecc71;
@@ -98,11 +170,10 @@ section {
   background: white;
 }
 
-.crop-info {
-  background: #ecf0f1;
-  margin: 10px;
-}
+
+
+
 
 body {
   background: ;
-}
+}*/

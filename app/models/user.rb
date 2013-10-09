@@ -9,6 +9,7 @@ class User < ActiveRecord::Base
   has_many :crops, through: :gardens
   has_many :garden_memberships
   has_many :member_gardens, through: :garden_memberships, source: :garden
+  has_many :lists
 
   after_initialize :ensure_session_token
 

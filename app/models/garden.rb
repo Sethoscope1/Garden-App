@@ -4,6 +4,7 @@ class Garden < ActiveRecord::Base
   validates :name, :user_id, presence: true
 
   belongs_to :user
+  has_many :lists, dependent: :destroy
   has_many :crops, dependent: :destroy
   has_many :notes, through: :crops, source: :note
   has_many :garden_memberships, dependent: :destroy

@@ -14,9 +14,28 @@ class NotesController < ApplicationController
     end
   end
 
+  def update
+    @note = Note.find(params[:id])
+    if @note.update_attributes(params[:note])
+      redirect_to note_url(@note)
+      flash[:errors] = "Huhwut"
+    else
+      flash[:errors] = "is this thing on?"
+    end
+  end
+
+
+
+  def destroy
+    @note = Note.find(:id)
+    garden = @note.garden_id
+
+    @note.destroy
+    redirect_to garden_url(garden)
+  end
+
   def show
     @note = Note.find(params[:id])
-    render :show
   end
 
   def edit

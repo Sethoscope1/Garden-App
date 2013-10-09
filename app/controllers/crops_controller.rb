@@ -2,7 +2,6 @@ class CropsController < ApplicationController
 
   def new
     @crop = Crop.new
-    # @garden = Garden.find(params[:id])
   end
 
   def create
@@ -16,7 +15,7 @@ class CropsController < ApplicationController
   end
 
   def edit
-
+    # do me
   end
 
   def update

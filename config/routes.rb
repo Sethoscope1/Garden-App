@@ -7,14 +7,23 @@ GardenApp::Application.routes.draw do
   end
 
   resources :gardens do
-    resources :crops, only: [:show, :new]
+    resources :lists, only: [:new, :index] do
+      resources :crops, only: [:new, :index]
+      resources :notes, only: [:new, :index] do
+        resources :comments, only: [:new, :index]
+      end
+    end
   end
 
-  resources :crops, only: [:create, :update, :show] do
+  resources :crops, only: [:create, :update, :show, :new] do
     resources :notes, only: [:index]
   end
 
-  resources :notes, only: [:create, :new, :show, :edit, :destroy]
+  resources :lists, only: [:create, :show]
+
+  resources :notes, only: [:create, :new, :show, :edit, :update, :destroy]
+
+  resources :comments, only: [:create, :destroy, :edit]
 
   root to: "users#index"
 
