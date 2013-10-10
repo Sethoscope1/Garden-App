@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131009183419) do
+ActiveRecord::Schema.define(:version => 20131010193904) do
 
   create_table "comments", :force => true do |t|
     t.integer  "user_id"
@@ -79,6 +79,11 @@ ActiveRecord::Schema.define(:version => 20131009183419) do
     t.integer  "list_id"
     t.date     "due_date"
     t.boolean  "completion"
+    t.boolean  "flag1"
+    t.boolean  "flag2"
+    t.boolean  "flag3"
+    t.boolean  "flag4"
+    t.boolean  "flag5"
   end
 
   add_index "notes", ["crop_id"], :name => "index_notes_on_crop_id"

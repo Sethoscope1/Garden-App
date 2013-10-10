@@ -9,23 +9,23 @@
 
   <h2><%= note.title %></h2>
 
-  <%= button_to "View!", note_url(note), method: :get %>
-
-  <span class="icons">
-
-    <% if note.comments.length > 0 %>
-      <i class="icon-comment"></i>
-      <%= note.comments.length %>
-    <% end %>
-
-    <% if note.due_date %>
-      <i class="icon-calendar"></i>
-      <%= format_date(note.due_date) %>
-
-    <% end %>
 
 
+  <span class="icons left">
+      <% if note.comments.length > 0 %>
+        <i class="icon-comment"></i>
+        <%= note.comments.length %>
+      <% end %>
 
+      <% if note.due_date %>
+        <i class="icon-calendar"></i>
+        <%= format_date(note.due_date) %>
+
+      <% end %>
+  </span>
+
+  <span class="right">
+    <%= button_to "View!", note_url(note), method: :get %>
   </span>
 
   <br>

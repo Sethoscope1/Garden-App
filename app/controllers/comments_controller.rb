@@ -10,13 +10,14 @@ class CommentsController < ApplicationController
       redirect_to note_url(@comment.note_id)
     else
       flash[:errors] = "what the what?"
+      redirect_to note_url(@comment.note_id)
     end
   end
 
   def edit
     @comment = Comment.find(params[:id])
 
-    render "comments/form"
+    render :new
   end
 
   def destroy

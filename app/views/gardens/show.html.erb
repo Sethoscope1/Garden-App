@@ -22,21 +22,25 @@
 
       <% end %>
 
-      <form action="<%= new_note_url %>" method="get">
-        <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+      <div class="right">
+        <form action="<%= new_note_url %>" method="get">
+          <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
 
-        <input type="hidden" name="list_id" value="<%= list.id %>">
+          <input type="hidden" name="list_id" value="<%= list.id %>">
 
-        <p><input type="submit" value="Add a Note!"></p>
-      </form>
+          <p><input type="submit" value="Add a Note!"></p>
+        </form>
+      </div>
 
-      <form action="<%= new_crop_url %>" method="get">
-        <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+      <div class="right">
+        <form action="<%= new_crop_url %>" method="get">
+          <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
 
-        <input type="hidden" name="list_id" value="<%= list.id %>">
+          <input type="hidden" name="list_id" value="<%= list.id %>">
 
-        <p><input type="submit" value="Add a Crop!"></p>
-      </form>
+          <p><input type="submit" value="Add a Crop!"></p>
+        </form>
+      </div>
   </section>
 
   <% end %>

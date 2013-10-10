@@ -1,57 +1,83 @@
+<section "note-page">
+<section class="note-view">
 
-<h1><%= @note.title %></h1>
-<p><%= @note.text %></p>
+  <div class="note-header group">
+    <h1><%= @note.title %></h1><h2>In <em><%= @note.list.garden.name %></em></h2>
 
-<%= button_to "Delete!", note_url(@note), method: :delete %>
-<%= button_to "Edit!", edit_note_url(@note), method: :get %>
-<%= button_to "Return to Garden!", garden_url(@note.list.garden_id), method: :get %>
+    <% if @note.text && current_user.id != @note.user_id %>
+      <h2 class="note-text"><%= @note.text %></h2>
+    <% end %>
 
-<hr>
+    <% if current_user.id == @note.user_id %>
 
-<%= render "/comments/form", note: @note %>
+      <form action="<%= note_url(@note) %>" method="POST" enctype="multipart/form-data">
 
-<% @note.comments.each do |comment| %>
+        <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token%>" id="some_name">
 
-  <p><%= comment.text %></p>
+        <input type="hidden" name="_method" value="PUT">
 
-  <% if current_user.id == comment.user_id %>
+        <input type="text" name="note[text]" value="<%= @note.text if @note %>" placeholder="Description">
 
-  <%= button_to "Delete", comment_url(comment), method: :delete %>
-  <%= button_to "Edit", edit_comment_url(comment), method: :get %>
+        <br>
+        <p class="right"><input type="submit" value="<%= @note.text ? "Update Description" : "Add Description" %>"</p>
+      </form>
+
+    <% end %>
+
+    <div class="group">
+      <div class="left info">
+        <% if @note.comments.length > 0 %>
+          <i class="icon-comment"></i>
+          <p class="sub icon"><%= @note.comments.length %></p>
+        <% end %>
+
+        <% if @note.due_date %>
+          <i class="icon-calendar"></i>
+          <p class="sub icon"><%= format_date(@note.due_date) %></p>
+        <% end %>
+      </div>
+
+      <div class="right buttons">
+        <%= button_to "Return to Garden!", garden_url(@note.list.garden_id), method: :get %>
+      </div>
+
+    </div>
+
+    <hr>
+
+    <%= render "/comments/form", note: @note %>
+
+  </div>
+
+  <% @note.comments.each do |comment| %>
+
+  <div class="comment group">
+
+    <div class="comment-text">
+      <h3><%= comment.user.name %></h3>
+      <p><%= comment.text %></p>
+
+      <div class="comment-options">
+        <ul>
+          <li><h4 class="sub"><%= time_ago_in_words(comment.created_at) %> ago</h4><li>
+
+          <% if current_user.id == comment.user_id %>
+
+            <li><%= button_to "Delete", comment_url(comment), method: :delete %><li>
+            <li><%= button_to "Edit", edit_comment_url(comment), method: :get %><li>
+
+          <% end %>
+
+        </ul>
+
+        <br>
+      </div>
+    </div>
+  </div>
 
   <% end %>
 
-<% end %>
+  </section>
+  <%= render "note_options" %>
 
-<nav>
-  <li>
-    <form action="<%= note_url(params[:id]) %>" method="POST">
-      <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-      <input type="hidden" name="_method" value="PUT">
-      <input type="date" name="note[due_date]">
-
-      <p><input type="submit" value="Due Date"></p>
-    </form>
-
-  </li>
-
-
-  <li>
-
-
-  </li>
-
-
-  <li>
-
-
-  </li>
-
-
-  <li>
-
-
-  </li>
-
-</nav>
-
+</section>
