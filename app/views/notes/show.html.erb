@@ -70,7 +70,9 @@
 
       <div class="comment-options">
         <ul>
-          <li><h4 class="sub"><%= time_ago_in_words(comment.created_at) %> ago</h4><li>
+          <% if comment.created_at %>
+            <li><h4 class="sub"><%= time_ago_in_words(comment.created_at) %> ago</h4><li>
+          <% if comment.created_at %>
 
           <% if current_user.id == comment.user_id %>
 
