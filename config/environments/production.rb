@@ -68,8 +68,8 @@ GardenApp::Application.configure do
     :storage => :s3,
     :s3_credentials => {
       :bucket => "garden_app_prod",
-      :access_key_id => ENV["AKIAJJ32TMJNSQQACKJA"],
-      :secret_access_key => ENV["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"],
+      :access_key_id => ENV["S3_PUBLIC_KEY"],
+      :secret_access_key => ENV["S3_SECRET_KEY"],
       :s3_host_name => 's3.amazonaws.com'
     }
   }
