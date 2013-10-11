@@ -35,7 +35,11 @@
 
       </nav>
 
-      <%= render "gardens/notifications" %>
+      	<% if !current_user.nil? %>
+
+          <%= render "gardens/notifications" %>
+
+      	<% end %>
 
   </header>
 

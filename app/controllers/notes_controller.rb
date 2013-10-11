@@ -18,7 +18,7 @@ class NotesController < ApplicationController
     if @note.update_attributes(params[:note])
       redirect_to note_url(@note)
     else
-      flash[:errors] = "is this thing on?"
+      render :index
     end
   end
 

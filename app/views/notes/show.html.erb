@@ -35,6 +35,11 @@
           <i class="icon-calendar"></i>
           <p class="sub icon"><%= format_date(@note.due_date) %></p>
         <% end %>
+
+        <% if @note.assigne_user %>
+          <i class="icon-calendar"></i>
+          <p class="sub icon"><%= format_date(@note.due_date) %></p>
+        <% end %>
       </div>
 
       <% if @note.note_photo_file_name %>

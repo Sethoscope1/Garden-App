@@ -20,7 +20,6 @@ class ListsController < ApplicationController
     if @list.save
       redirect_to garden_url(@list.garden_id)
     else
-      flash[:errors] = "Couldn't save your list"
       redirect_to garden_url(1)
     end
   end
