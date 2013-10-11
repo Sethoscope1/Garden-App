@@ -70,10 +70,9 @@ GardenApp::Application.configure do
       :bucket => ENV["garden_app_prod"],
       :access_key_id => ENV["AKIAJJ32TMJNSQQACKJA"],
       :secret_access_key => ENV["mXnvdTCXYCfrilwcxarTwbjXKgIK1gXqsY6SoH1/"],
-      :s3_host_name => 's3.amazonaws.com' # or whatever your region host name is
+      :s3_host_name => 's3.amazonaws.com'
     }
   }
 
-  https://s3.amazonaws.com/garden_app_devt/pink+ponderosa.jpeg
 
 end
