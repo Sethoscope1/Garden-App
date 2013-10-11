@@ -6,7 +6,7 @@ module ApplicationHelper
 
   def format_due_date(date)
     @date = date
-    "is due in " + distance_of_time_in_words(Time.now, @date)
+    " is due in " + distance_of_time_in_words(Time.now, @date)
   end
 
   def distance_time(date)
