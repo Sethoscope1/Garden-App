@@ -22,25 +22,39 @@
 
       <% end %>
 
-      <div class="right">
-        <form action="<%= new_note_url %>" method="get">
-          <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+      <nav class="list-button"></nav>
+        <div class="right">
+          <form action="<%= new_note_url %>" method="get">
+            <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
 
-          <input type="hidden" name="list_id" value="<%= list.id %>">
+            <input type="hidden" name="photo" value="add photo">
 
-          <p><input type="submit" value="Add a Note!"></p>
-        </form>
-      </div>
+            <input type="hidden" name="list_id" value="<%= list.id %>">
 
-      <div class="right">
-        <form action="<%= new_crop_url %>" method="get">
-          <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+            <p><input type="submit" value="Add a Photo!"></p>
+          </form>
+        </div>
 
-          <input type="hidden" name="list_id" value="<%= list.id %>">
+        <div class="right">
+          <form action="<%= new_note_url %>" method="get">
+            <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
 
-          <p><input type="submit" value="Add a Crop!"></p>
-        </form>
-      </div>
+            <input type="hidden" name="list_id" value="<%= list.id %>">
+
+            <p><input type="submit" value="Add a Note!"></p>
+          </form>
+        </div>
+
+        <div class="right">
+          <form action="<%= new_crop_url %>" method="get">
+            <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+            <input type="hidden" name="garden_id" value="<%= list.garden.id %>">
+            <input type="hidden" name="list_id" value="<%= list.id %>">
+
+            <p><input type="submit" value="Add a Crop!"></p>
+          </form>
+        </div>
+      </nav>
   </section>
 
   <% end %>

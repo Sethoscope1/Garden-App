@@ -110,11 +110,10 @@ i {
   margin: auto;
 }
 
-.ribbon1 {
 
+.ribbon1 {
   height: 20px;
   width: 5px;
-
   margin: 3px;
   border-left: 7px solid #3D4CF2;
   border-right: 7px solid #3D4CF2;
@@ -124,7 +123,6 @@ i {
 .ribbon2 {
   height: 20px;
   width: 5px;
-
   margin: 3px;
   border-left: 7px solid #ff0054;
   border-right: 7px solid #ff0054;
@@ -164,7 +162,7 @@ i {
 .ribbons {
   position: relative;
   top: -10px;
-  left: 128px;
+  left: 108px;
   margin: 0;
   border: 0;
   padding: 0;
@@ -230,8 +228,16 @@ h1, h2, h3, h4, h5, h6 {
 
 }
 
+img {
+  display: block;
+  width: 91%;
+  margin: 10px 0px;
+  padding: 10px;
+  background-color: red;
+}
+
 .flag-toggle ul {
-  display: inline;
+  display: block;
 }
 
 h1 {
@@ -241,12 +247,14 @@ h1 {
 }
 
 h2 {
-  size: 24px;
-  color: #acb1b6;
+  color: #3DF2B9;
+  font-size: 18pt;
 }
 
 h3 {
   color: #bdc3c7;
+  font-size: 14pt;
+  font-weight: lighter;
 }
 
 p {
@@ -279,7 +287,12 @@ section {
   margin: 10px;
   border-radius: 8px;
   float: left;
-  width: 240px;
+  width: 280px;
+}
+
+form {
+  padding-right: 3px;
+  padding-bottom: 3px;
 }
 
 li {
@@ -296,7 +309,7 @@ label {
 .crop-info, .note-info {
   position: relative;
   padding: 10px;
-  width: 200px;
+  width: 240px;
   background-color: white;
   border-radius: 8px;
 }

@@ -1,35 +1,26 @@
-  <h3>New Note...</h3>
+
+
+<section class="list-view note-form">
+
+  <h2 class="list-header">New Note...</h3>
 
   <form action="/notes/" method="POST" enctype="multipart/form-data">
 
-    <input type="hidden" name="note[crop_id]" value="<%= crop.id %>">
-
-
     <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token%>" id="some_name">
 
-    <label>Title
-      <input type="text" name="note[title]" value="<%= @note.title if @note %>">
+    <input type="hidden" name="note[user_id]" value="<%= current_user.id %>">
+
+    <input type="hidden" name="note[list_id]" value="<%= params[:list_id]%>">
+
+    <input type="text" name="note[title]" value="<%= @note.title if @note %>">
+
+    <label>Upload a File
+      <input type="file_field" name="note[photo_url]">
     </label>
 
     <br>
 
-    <label>Note
-      <textarea name="note[text]" text="<%= @note.title if @note %>"></textarea>
-    </label>
-
-    <br>
-
-    <p><input type="submit" value="Make a Note"></p>
+    <p class="right"><input type="submit" value="Make a Note"></p>
   </form>
 
 </section>
-
-  <h3>New Note...</h3>
-
-<% @note = Note.new %>
-  <%= form_for @note, url: { action: "create" } do |f| %>
-  <%= f.file_field :note_photo %>
-  <%= f.text_field :title %>
-  <%= f.text_field :text %>
-  <%= f.submit %>
-<% end %>

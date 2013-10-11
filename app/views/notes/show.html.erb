@@ -4,7 +4,7 @@
   <div class="note-header group">
     <h1><%= @note.title %></h1><h2>In <em><%= @note.list.garden.name %></em></h2>
 
-    <% if @note.text && current_user.id != @note.user_id %>
+    <% if @note.text != "" && current_user.id != @note.user_id %>
       <h2 class="note-text"><%= @note.text %></h2>
     <% end %>
 
@@ -36,6 +36,12 @@
           <p class="sub icon"><%= format_date(@note.due_date) %></p>
         <% end %>
       </div>
+
+      <% if @note.note_photo_file_name %>
+
+        <%= image_tag @note.note_photo.url(:big) %>
+
+      <% end %>
 
       <div class="right buttons">
         <%= button_to "Return to Garden!", garden_url(@note.list.garden_id), method: :get %>

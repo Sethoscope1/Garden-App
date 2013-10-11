@@ -1,15 +1,44 @@
 <section class="note-info">
 
-  <div class="ribbons">
-    <div class="ribbon1"></div>
-    <div class="ribbon2"></div>
-    <div class="ribbon3"></div>
-    <div class="ribbon4"></div>
+  <div class="ribbons group">
+    <% if note.flag1 %>
+    <div class="ribbon1 ribbon"></div>
+    <% end %>
+
+    <% if note.flag2 %>
+    <div class="ribbon2 ribbon"></div>
+    <% end %>
+
+    <% if note.flag3 %>
+    <div class="ribbon3 ribbon"></div>
+    <% end %>
+
+    <% if note.flag4 %>
+    <div class="ribbon4 ribbon"></div>
+    <% end %>
+
+    <% if note.flag5 %>
+    <div class="ribbon5 ribbon"></div>
+    <% end %>
   </div>
 
-  <h2><%= note.title %></h2>
+  <h1><%= note.crop_id %><h1>
 
+  <% if note.crop_id %>
 
+    <%= render "/crops/crop_info", crop: Crop.find(note.crop) %>
+
+  <% else %>
+
+    <h3><%= note.title %></h3>
+
+    <% if note.note_photo_file_name %>
+
+      <%= image_tag note.note_photo.url(:small) %>
+
+    <% end %>
+
+  <% end %>
 
   <span class="icons left">
       <% if note.comments.length > 0 %>

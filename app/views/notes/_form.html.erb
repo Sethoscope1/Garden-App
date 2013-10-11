@@ -1,20 +1,10 @@
-<section class="list-view note-form">
+<% @list_id =  params[:list_id] %>
+<%= form_for @note do |f| %>
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+  <%= hidden_field_tag 'note[list_id]', @list_id  %>
+  <%= f.label :Upload %>
+  <%= f.file_field :note_photo %>
 
-  <h2 class="list-header">New Note...</h3>
-
-  <form action="/notes/" method="POST" enctype="multipart/form-data">
-
-    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token%>" id="some_name">
-
-    <input type="hidden" name="note[user_id]" value="<%= current_user.id %>">
-
-    <input type="hidden" name="note[list_id]" value="<%= params[:list_id]%>">
-
-    <input type="text" name="note[title]" value="<%= @note.title if @note %>">
-
-    <br>
-
-    <p class="right"><input type="submit" value="Make a Note"></p>
-  </form>
-
-</section>
+  <%= f.submit %>
+<% end %>

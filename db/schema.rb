@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131010193904) do
+ActiveRecord::Schema.define(:version => 20131010235323) do
 
   create_table "comments", :force => true do |t|
     t.integer  "user_id"
@@ -35,6 +35,7 @@ ActiveRecord::Schema.define(:version => 20131010193904) do
     t.date     "to_plant_date"
     t.date     "to_harvest_date"
     t.integer  "list_id"
+    t.integer  "user_id"
   end
 
   add_index "crops", ["name"], :name => "index_crops_on_name"

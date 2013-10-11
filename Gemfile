@@ -44,5 +44,4 @@ end
 # gem 'debugger'
 
 gem 'paperclip'
-
 gem 'aws-sdk'

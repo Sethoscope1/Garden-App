@@ -6,7 +6,6 @@ class NotesController < ApplicationController
 
   def create
     @note = Note.new(params[:note])
-
     if @note.save
       redirect_to note_url(@note)
     else
@@ -27,8 +26,8 @@ class NotesController < ApplicationController
 
 
   def destroy
-    @note = Note.find(:id)
-    garden = @note.garden_id
+    @note = Note.find(params[:id])
+    garden = @note.list.garden
 
     @note.destroy
     redirect_to garden_url(garden)

@@ -6,9 +6,12 @@ class CropsController < ApplicationController
 
   def create
     @crop = Crop.new(params[:crop])
-
     if @crop.save
-      redirect_to user_url(current_user)
+      @note = Note.new(params[:note])
+      @note.user_id = current_user.id
+      @note.crop_id = @crop.id
+      @note.save
+      redirect_to garden_url(@crop.garden)
     else
       render json: @crop.errors.full_messages
     end
