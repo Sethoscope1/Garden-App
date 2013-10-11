@@ -1,9 +1,11 @@
+<section "note-page">
+<section class="note-view">
 
-<section class="profile">
+
 
 <h2>Profile</h2>
 
-  <p>Name: <%= current_user.name %></p>
+  <p><h3>Name: <%= current_user.name %></h3></p>
 
   <h2>My Gardens</h2>
 
@@ -11,7 +13,7 @@
     <% current_user.gardens.each do |garden| %>
 
 
-      <%= link_to garden.name, garden_url(garden), method: :get %>
+      <h3 class="note-text"><%= link_to garden.name, garden_url(garden), method: :get %></h3>
 
       <br>
 
@@ -20,6 +22,7 @@
     <% end %>
   </ul>
 
+</section>
 </section>
 
 <%= button_to "Plant a New Garden!", new_garden_url, method: :get %>
