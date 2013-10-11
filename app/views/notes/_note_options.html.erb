@@ -4,27 +4,15 @@
       <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
       <input type="hidden" name="_method" value="PUT">
       <input type="date" name="note[due_date]">
-
-      <p><input type="submit" value="Due Date"></p>
+      <input type="submit" value="Due Date">
     </form>
   </li>
 
-  <li>
-
+  <li class="group">
     <%= render "notes/flag_toggle" %>
   </li>
-
-  <li>
-    <form action="<%= note_url(params[:id]) %>" method="POST">
-      <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-      <input type="hidden" name="_method" value="PUT">
-      <input type="date" name="note[due_date]">
-
-      <p><input type="submit" value="Due Date"></p>
-    </form>
-  </li>
-
-  <li>
-    <%= button_to "Delete!", note_url(@note), method: :delete %>
+  <br>
+  <li class="delete">
+    <p><%= button_to "Delete!", note_url(@note), method: :delete %></p>
   </li>
 </nav>

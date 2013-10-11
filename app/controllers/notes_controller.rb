@@ -17,7 +17,6 @@ class NotesController < ApplicationController
     @note = Note.find(params[:id])
     if @note.update_attributes(params[:note])
       redirect_to note_url(@note)
-      flash[:errors] = "Huhwut"
     else
       flash[:errors] = "is this thing on?"
     end

@@ -1,0 +1,13 @@
+<h2 class="list-header">Notifications</h3>
+
+<div class="notification-links">
+
+  <% current_user.notifications.each do |notification| %>
+
+  <div class="comment-text">
+    <p><a href="<%= note_url(notification.note) %>"><%= notification.text %></a></p>
+  </div>
+
+  <% end %>
+
+  <div>

@@ -7,12 +7,12 @@ class CropsController < ApplicationController
   def create
     @crop = Crop.new(params[:crop])
     if @crop.save
-      @note = Note.new(params[:note])
-      @note.user_id = current_user.id
-      @note.crop_id = @crop.id
-      @note.save
+      flash[:errors] = "It worked"
+
+
       redirect_to garden_url(@crop.garden)
     else
+      flash[:error] = "It broked!"
       render json: @crop.errors.full_messages
     end
   end

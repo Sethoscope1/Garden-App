@@ -53,9 +53,18 @@ body {
   border-right: 1px solid white;
 }
 
+.delete {
+  display: block;
+  width: 200px;
+  float: left;
+
+  padding-top: 10px;
+  border-top: 1px solid white;
+  margin-top: 10px;
+}
 .note-nav {
   padding: 40px 20px;
-  width: 200px;
+  width: 220px;
   float: right;`
 }
 
@@ -159,21 +168,27 @@ i {
   border-bottom: 8px solid transparent;
 }
 
+.new-crop h3 {
+  padding-left: 20px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+}
+
+
 .ribbons {
   position: relative;
   top: -10px;
-  left: 108px;
   margin: 0;
   border: 0;
   padding: 0;
 }
 
 #growy {
-  font-size: 30px;
-  color: black;
-  padding: 10px;
-  padding-left: 20px;
-  font-family: 'Kite One', sans-serif;
+  font-size: 36px;
+  color: #3DF2B9;
+  padding: 20px;
+  padding-left: 40px;
+  font-family: 'Titillium Web', sans-serif;
 }
 
 .icons {
@@ -183,6 +198,15 @@ i {
 
 .button_to {
   display: inline;
+}
+
+.notification-bar a, .notification-bar i{
+  color: #ff0054;
+  padding: 10px;
+}
+
+.notification-bar a {
+  padding-right: 40px;
 }
 
 .button {
@@ -200,12 +224,24 @@ a {
   font-family: sans-serif;
 }
 
+header li {
+  margin-left: 40px;
+}
+
+.notification-bar {
+  float: right;
+}
+
+a:visited {
+  color: inherit;
+}
+
 .list-header {
   padding: 20px;
 }
 
 header.top {
-  background-color: #3DF2B9;
+  background-color: #4d4d4d;
   color: white;
 }
 
@@ -233,11 +269,16 @@ img {
   width: 91%;
   margin: 10px 0px;
   padding: 10px;
-  background-color: red;
 }
 
 .flag-toggle ul {
   display: block;
+}
+
+.new-list-button {
+  display: block;
+  float: left;
+  margin-top: 5px;
 }
 
 h1 {
@@ -246,13 +287,23 @@ h1 {
   font-weight: lighter;
 }
 
+.notification-links {
+  display: block;
+  padding-left: 20px;
+}
+
+.notification-links .comment-text {
+  margin: 5px;
+}
+
 h2 {
   color: #3DF2B9;
   font-size: 18pt;
+  font-weight: lighter;
 }
 
 h3 {
-  color: #bdc3c7;
+  color: #4d4d4d;
   font-size: 14pt;
   font-weight: lighter;
 }
@@ -261,6 +312,15 @@ p {
   font-size: 10pt;
 }
 
+.garden-list {
+  border-top: 1px dotted #ff0054;
+  padding-top: 15px;
+  width: 200px;
+}
+
+.garden-list h3 {
+  color: #bdc3c7
+}
 
 .sub {
   color: #acb1b6;
@@ -273,8 +333,15 @@ section {
 }
 
 .garden-info {
-  padding: 10px;
-  background-color: #3DF2B9;
+  margin: 10px;
+  background: #4d4d4d;
+  float: left;
+  width: 240px;
+  border-radius: 8px;
+}
+
+.garden-data {
+  padding: 15px 10px;
 }
 
 .crop-info {

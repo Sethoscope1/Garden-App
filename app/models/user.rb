@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
   validates :name, presence: true
 
   has_many :gardens
+  has_many :notifications
   has_many :notes
   has_many :crops, through: :gardens
   has_many :garden_memberships

@@ -9,7 +9,6 @@ class CommentsController < ApplicationController
     if @comment.save
       redirect_to note_url(@comment.note_id)
     else
-      flash[:errors] = "what the what?"
       redirect_to note_url(@comment.note_id)
     end
   end

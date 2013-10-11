@@ -2,8 +2,6 @@
 
   <%= render "garden_info", garden: @garden %>
 
-    <%= button_to "Add a List!", new_garden_list_url(@garden), method: :get, class: "button" %>
-
   <% @garden.lists.each do |list| %>
 
   <section class="list-view">
@@ -59,6 +57,6 @@
 
   <% end %>
 
-
+  <div class="new-list-button"><%= button_to "Add a List!", new_garden_list_url(@garden), method: :get, class: "button" %></div>
 
 </section>

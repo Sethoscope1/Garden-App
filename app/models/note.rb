@@ -5,6 +5,7 @@ class Note < ActiveRecord::Base
   belongs_to :crop
   belongs_to :list
 
+  has_many :notifications
   has_many :comments
 
   # moving from list to crop - update!

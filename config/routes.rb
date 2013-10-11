@@ -15,6 +15,8 @@ GardenApp::Application.routes.draw do
     end
   end
 
+  resources :notifications
+
   resources :crops, only: [:create, :update, :show, :new] do
     resources :notes, only: [:index]
   end

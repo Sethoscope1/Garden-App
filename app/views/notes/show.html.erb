@@ -4,7 +4,7 @@
   <div class="note-header group">
     <h1><%= @note.title %></h1><h2>In <em><%= @note.list.garden.name %></em></h2>
 
-    <% if @note.text != "" && current_user.id != @note.user_id %>
+    <% if @note.text && @note.text != "" && current_user.id != @note.user_id %>
       <h2 class="note-text"><%= @note.text %></h2>
     <% end %>
 
@@ -84,6 +84,7 @@
   <% end %>
 
   </section>
+
   <%= render "note_options" %>
 
 </section>

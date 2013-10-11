@@ -1,6 +1,6 @@
 class SessionsController < ApplicationController
   #before_filters
-
+include ActionView::Helpers::DateHelper
   def create
     user = User.find_by_credentials(
       params[:user][:name],
@@ -13,6 +13,7 @@ class SessionsController < ApplicationController
       render :new
     else
       self.current_user = user
+      add_notifications(user)
       redirect_to user_url(user)
     end
   end

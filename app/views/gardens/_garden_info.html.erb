@@ -1,14 +1,16 @@
 <section class="garden-info">
+  <section class="garden-data">
+    <h2><%= garden.name %></h2><br>
+    <p class="sub">Created by: <%= garden.user.name %></p>
+    <p class="sub">Location: <%= garden.location %></p>
 
-  <h3><%= garden.name %></h3><br>
-  <p>Created by: <%= garden.user.name %></p>
-  <p>Location: <%= garden.location %></p>
+    <br>
 
-  <br>
-
-  <ul>
-    <% garden.crops.each do |crop| %>
-      <li><p><%= crop.name %><span class="sub"> <%= crop.variant %></span></p></li><br>
-    <% end %>
-  </ul>
+    <ul class="garden-list">
+      <% garden.lists.each do |list| %>
+        <a href="<%= list_url(list) %>"><li><h3><%= list.name %></h3></li></a><br>
+      <% end %>
+    </ul>
+  </section>
 </section>
+

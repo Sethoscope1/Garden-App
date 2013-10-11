@@ -33,8 +33,7 @@
 
   <% end %>
 
-  <%= button_to "View!", crop_url(crop), method: :get %>
-
+  <span class="right"><%= button_to "View!", crop_url(crop), method: :get %></span>
 
   <% crop.notes.each do |note| %>
     <%= render "/notes/note_info", note: note %>
