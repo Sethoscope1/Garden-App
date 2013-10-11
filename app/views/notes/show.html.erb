@@ -70,10 +70,7 @@
 
       <div class="comment-options">
         <ul>
-          <% if comment.created_at %>
             <li><h4 class="sub"><%= time_ago_in_words(comment.created_at) %> ago</h4><li>
-          <% if comment.created_at %>
-
           <% if current_user.id == comment.user_id %>
 
             <li><%= button_to "Delete", comment_url(comment), method: :delete %><li>
