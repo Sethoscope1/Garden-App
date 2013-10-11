@@ -14,6 +14,9 @@ module ApplicationHelper
   end
 
   def add_notifications(user)
+    user.notifications.each do |notification|
+      notification.destroy
+    end
     user.notes.each do |note|
       if note.due_date
         if distance_time(note.due_date) < 3

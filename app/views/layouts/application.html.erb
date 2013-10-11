@@ -22,7 +22,7 @@
       <nav class="login-buttons">
 
       	<% if !current_user.nil? %>
-
+            <% add_notifications(current_user) %>
             <li>Current User: <%= current_user.name %></li>
             <li><%= button_to "Logout", session_url, method: :delete %></li>
 

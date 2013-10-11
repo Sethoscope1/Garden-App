@@ -1,0 +1,92 @@
+<section "crop-page">
+<section class="crop-view">
+
+  <div class="crop-header group">
+    <h1><%= @crop.name %></h1><h2><em><%= @crop.variant %></em></h2>
+
+    <% if current_user.id == @crop.user_id %>
+
+      <form action="<%= crop_url(@crop) %>" method="POST" enctype="multipart/form-data">
+
+        <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token%>" id="some_name">
+
+        <input type="hidden" name="_method" value="PUT">
+
+        <input type="text" name="crop[variant]" value="<%= @crop.variant if @crop %>" placeholder="Description">
+
+        <br>
+        <p class="right"><input type="submit" value="<%= @crop.variant ? "Update Description" : "Add Description" %>"</p>
+      </form>
+
+    <% end %>
+
+    <div class="group">
+      <div class="left info">
+        <% if @crop.comments && crop.comments.length > 0 %>
+          <i class="icon-comment"></i>
+          <p class="sub icon"><%= @crop.comments.length %></p>
+        <% end %>
+
+        <% if @crop.to_plant_date %>
+          <i class="icon-calendar"></i>
+          <p class="sub icon"><%= format_date(@crop.to_plant_date) %></p>
+        <% end %>
+
+      </div>
+
+      <div class="right buttons">
+        <%= button_to "Return to Garden!", garden_url(@crop.list.garden_id), method: :get %>
+      </div>
+
+    </div>
+
+    <hr>
+
+    <h3>Add a Comment!</h3>
+
+    <form action="<%= crop_url(@crop) %>" method="POST">
+
+      <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+
+      <input type="hidden" name="comment[user_id]" value="<%= current_user.id %>">
+
+      <textarea name="comment[text]" rows="8" cols="40" placeholder="comment..."></textarea>
+
+      <p><input type="submit" value="COMMENT"></p>
+    </form>
+
+
+  </div>
+  <% if @crop.comments %>
+  <% @crop.comments.each do |comment| %>
+
+  <div class="comment group">
+
+    <div class="comment-text">
+      <h3><%= comment.user.name %></h3>
+      <p><%= comment.text %></p>
+
+      <div class="comment-options">
+        <ul>
+          <li><h4 class="sub"><%= time_ago_in_words(comment.created_at) %> ago</h4><li>
+
+          <% if current_user.id == comment.user_id %>
+
+            <li><%= button_to "Delete", comment_url(comment), method: :delete %><li>
+            <li><%= button_to "Edit", edit_comment_url(comment), method: :get %><li>
+
+          <% end %>
+
+        </ul>
+
+        <br>
+      </div>
+    </div>
+  </div>
+
+  <% end %>
+  <% end %>
+
+  </section>
+
+</section>
