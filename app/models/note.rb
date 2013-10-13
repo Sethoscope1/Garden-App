@@ -7,6 +7,7 @@ class Note < ActiveRecord::Base
 
   has_many :notifications
   has_many :comments
+  has_many :crops
 
   # moving from list to crop - update!
 

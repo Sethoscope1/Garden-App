@@ -1,0 +1,35 @@
+
+
+<nav class="list-buttons"></nav>
+
+  <div class="right">
+    <form action="<%= new_note_url %>" method="get">
+      <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+      <input type="hidden" name="list_id" value="<%= list.id %>">
+
+      <p><input type="submit" value="Add a Note!"></p>
+    </form>
+  </div>
+
+  <div class="right">
+    <form action="<%= new_note_url %>" method="get">
+      <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+      <input type="hidden" name="list_id" value="<%= list.id %>">
+
+      <input type="hidden" name="options" value="photo">
+
+      <p><input type="submit" value="Add a Photo!"></p>
+    </form>
+  </div>
+
+  <div class="right">
+    <form action="<%= new_note_url %>" method="get">
+      <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+      <input type="hidden" name="list_id" value="<%= list.id %>">
+
+      <input type="hidden" name="options" value="" id="crop">
+
+      <p><input type="submit" value="Add a Crop!"></p>
+    </form>
+  </div>
+</nav>
