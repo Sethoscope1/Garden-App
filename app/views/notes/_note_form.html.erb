@@ -1,39 +1,39 @@
+<section class="content group">
+
+  <section class="content-main">
+
+    <form action="/notes/" method="POST" enctype="multipart/form-data">
+
+    <% if params[:options] == "photo" %>
+    <h2>This is a photo</h2>
+      <%= render partial: "photo_form" %>
+
+    <% elsif params[:options] == "crop" %>
+    <h2>This is a crop</h2>
+      <%= render partial: "crops/crop_form"%>
+    <% else %>
+    <h2>This is a regular note</h2>
+      <h2 class="list-header">New Note</h3>
+
+    <% end %>
 
 
-<section class="list-view note-form">
+      <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token%>" id="some_name">
 
-  <h2 class="list-header">New Note...</h3>
+      <input type="hidden" name="note[user_id]" value="<%= current_user.id %>">
 
-  <form action="/notes/" method="POST" enctype="multipart/form-data">
+      <input type="hidden" name="note[list_id]" value="<%= params[:list_id]%>">
 
-  <% if params[:options] == "photo" %>
+      <input type="text" name="note[title]" value="<%= @note.title if @note %>">
 
-    <%= render partial: "photo_form" %>
+      <br>
 
-  <% end %>
+      <p class="right"><input type="submit" value="Make a Note"></p>
 
-  <% if params[:options] == "crop" %>
+    </form>
 
-    <%= render partial: "crop_form"%>
-
-  <% end %>
-
-
-    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token%>" id="some_name">
-
-    <input type="hidden" name="note[user_id]" value="<%= current_user.id %>">
-
-    <input type="hidden" name="note[list_id]" value="<%= params[:list_id]%>">
-
-    <input type="text" name="note[title]" value="<%= @note.title if @note %>">
-
-    <br>
-
-    <p class="right"><input type="submit" value="Make a Note"></p>
-
-  </form>
+  </section>
 
 </section>
-
 
 

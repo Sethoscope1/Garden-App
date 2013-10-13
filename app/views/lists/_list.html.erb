@@ -1,13 +1,21 @@
-<section class="list-view">
+<section class="info list group">
 
-  <h2 class="list-header"><%= list.name %></h2>
+  <section class="data">
 
-  <% list.notes.each do |note| %>
+    <h2><%= list.name %></h2>
 
-    <%= render partial: "/notes/note_info", locals: { note: note } %>
+    <% list.notes.each do |note| %>
 
-  <% end %>
+      <section class="info card">
 
-  <%= render partial: "lists/list_nav", locals: { list: list} %>
+        <%= render partial: "/notes/note_info", locals: { note: note } %>
+
+      </section>
+
+    <% end %>
+
+      <%= render partial: "lists/list_nav", locals: { list: list} %>
+
+  </section>
 
 </section>

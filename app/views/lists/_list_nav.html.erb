@@ -1,8 +1,8 @@
 
 
-<nav class="list-buttons"></nav>
+<nav class="list-button group">
 
-  <div class="right">
+  <div class="left">
     <form action="<%= new_note_url %>" method="get">
       <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
       <input type="hidden" name="list_id" value="<%= list.id %>">
@@ -11,7 +11,7 @@
     </form>
   </div>
 
-  <div class="right">
+  <div class="left">
     <form action="<%= new_note_url %>" method="get">
       <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
       <input type="hidden" name="list_id" value="<%= list.id %>">
@@ -22,14 +22,15 @@
     </form>
   </div>
 
-  <div class="right">
+  <div class="left">
     <form action="<%= new_note_url %>" method="get">
       <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
       <input type="hidden" name="list_id" value="<%= list.id %>">
 
-      <input type="hidden" name="options" value="" id="crop">
+      <input type="hidden" name="options" value="crop">
 
       <p><input type="submit" value="Add a Crop!"></p>
     </form>
   </div>
+
 </nav>

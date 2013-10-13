@@ -12,11 +12,12 @@
   <link rel="stylesheet" href="vendor/assets/font-awesome/css/font-awesome.min.css">
   <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
 </head>
+
 <body>
 
-  <header class="top group">
+  <header class="group">
 
-    <h1 id="growy">EARLY WORM</h2>
+    <h1 id="logo">EARLY WORM</h2>
 
       <%= flash[:errors] if flash[:errors] %>
 
@@ -24,13 +25,13 @@
 
       	<% if !current_user.nil? %>
             <% add_notifications(current_user) %>
-            <li>Current User: <%= current_user.name %></li>
+            <li><h2>Current User: <%= current_user.name %><h2></li>
             <li><%= button_to "Logout", session_url, method: :delete %></li>
 
         <% else %>
 
-            <%= button_to "Sign In", new_session_url, method: :get %>
-            <%= button_to "Join", new_user_url, method: :get %>
+            <li><%= button_to "Sign In", new_session_url, method: :get %></li>
+            <li><%= button_to "Join", new_user_url, method: :get %></li>
 
       	<% end %>
 
@@ -44,11 +45,11 @@
 
   </header>
 
-    <div class="page-body group">
+  <section class="main group">
 
     	<%= yield %>
 
-    </div>
+  </section>
 
 </body>
 </html>

@@ -1,28 +1,29 @@
-<section "note-page">
-<section class="note-view">
 
+<section class="content group">
 
+  <section class="content-main">
 
-<h2>Profile</h2>
+    <h2>Profile</h2>
 
-  <p><h3>Name: <%= current_user.name %></h3></p>
+    <p><h3>Name: <%= current_user.name %></h3></p>
 
-  <h2>My Gardens</h2>
+    <h2>My Gardens</h2>
 
-  <ul>
-    <% current_user.gardens.each do |garden| %>
+    <ul>
+      <% current_user.gardens.each do |garden| %>
 
+        <h3 class="link-text"><%= link_to garden.name, garden_url(garden), method: :get %></h3>
+        <!-- <%= render "gardens/garden_info", garden: garden %> -->
+      <% end %>
+    </ul>
 
-      <h3 class="note-text"><%= link_to garden.name, garden_url(garden), method: :get %></h3>
+  </section>
 
-      <br>
+  <section class="content-sidebar">
 
-      <!-- <%= render "gardens/garden_info", garden: garden %> -->
+    <%= button_to "Plant a New Garden!", new_garden_url, method: :get %>
 
-    <% end %>
-  </ul>
+  </section>
 
 </section>
-</section>
 
-<%= button_to "Plant a New Garden!", new_garden_url, method: :get %>
