@@ -1,4 +1,5 @@
 class NotesController < ApplicationController
+  before_filter :require_current_user!, only: [:create]
 
   def new
     @note = Note.new
@@ -6,6 +7,11 @@ class NotesController < ApplicationController
 
   def create
     @note = Note.new(params[:note])
+
+    if params[:crop]
+      @note.crops.new(params[:crop])
+      @note.title = params[:crop][:name]
+    end
     if @note.save
       redirect_to note_url(@note)
     else

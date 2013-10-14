@@ -40,17 +40,7 @@
 
   <% end %>
 
-  <span class="icons left">
-      <% if note.comments.length > 0 %>
-        <i class="icon-comment"></i>
-        <span class="sub"><%= note.comments.length %></span>
-      <% end %>
-
-      <% if note.due_date %>
-        <i class="icon-calendar"></i>
-        <span class="sub"><%= format_date(note.due_date) %></span>
-      <% end %>
-  </span>
+  <%= render partial: "notes/note_icons", locals: {note: note} %>
 
   <span class="right">
     <%= button_to "View!", note_url(note), method: :get %>

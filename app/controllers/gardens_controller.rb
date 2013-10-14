@@ -1,4 +1,5 @@
 class GardensController < ApplicationController
+    before_filter :require_current_user!, only: [:create, :new]
 
   def new
     @garden = Garden.new

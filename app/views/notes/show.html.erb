@@ -1,8 +1,8 @@
-<section "note-page">
-<section class="note-view">
+<section class="content group">
 
-  <div class="note-header group">
-    <h1><%= @note.title %></h1><h2>In <em><%= @note.list.garden.name %></em></h2>
+  <section class="content-main">
+
+    <h1><%= @note.title %></h1><h2>In: <em><%= @note.list.garden.name %></em></h2>
 
     <% if @note.text && @note.text != "" && current_user.id != @note.user_id %>
       <h2 class="note-text"><%= @note.text %></h2>
@@ -24,23 +24,7 @@
 
     <% end %>
 
-    <div class="group">
-      <div class="left info">
-        <% if @note.comments.length > 0 %>
-          <i class="icon-comment"></i>
-          <p class="sub icon"><%= @note.comments.length %></p>
-        <% end %>
-
-        <% if @note.due_date %>
-          <i class="icon-calendar"></i>
-          <p class="sub icon"><%= format_date(@note.due_date) %></p>
-        <% end %>
-
-        <% if @note.assigned_user %>
-          <i class="icon-calendar"></i>
-          <p class="sub icon"><%= format_date(@note.due_date) %></p>
-        <% end %>
-      </div>
+    <%= render partial: "note_icons", locals: {note: @note} %>
 
       <% if @note.note_photo_file_name %>
 
@@ -48,12 +32,7 @@
 
       <% end %>
 
-      <div class="right buttons">
         <%= button_to "Return to Garden!", garden_url(@note.list.garden_id), method: :get %>
-      </div>
-
-    </div>
-
     <hr>
 
     <%= render "/comments/form", note: @note %>
@@ -62,13 +41,13 @@
 
   <% @note.comments.each do |comment| %>
 
-  <div class="comment group">
+  <!-- <div class="comment group">
 
-    <div class="comment-text">
+    <div class="comment-text"> -->
       <h3><%= comment.user.name %></h3>
-      <p><%= comment.text %></p>
+      <p class="link-text"><%= comment.text %></p>
 
-      <div class="comment-options">
+      <!-- <div class="comment-options"> -->
         <ul>
             <li><h4 class="sub"><%= time_ago_in_words(comment.created_at) %> ago</h4><li>
           <% if current_user.id == comment.user_id %>
@@ -81,14 +60,17 @@
         </ul>
 
         <br>
-      </div>
+      <!-- </div>
     </div>
-  </div>
+  </div> -->
 
   <% end %>
 
+  <span class="right">
+
+    <%= render "note_options" %>
+
+  </span>
+
   </section>
-
-  <%= render "note_options" %>
-
 </section>

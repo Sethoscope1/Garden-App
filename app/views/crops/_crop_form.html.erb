@@ -1,13 +1,13 @@
 
 <h2 class="list-header">New Crop</h3>
-
 <form action="/crops" method="POST" class="new-crop">
 
   <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token%>">
 
-  <input type="hidden" name="crop[garden_id]" value="<%= params[:garden_id] %>">
+  <input type="hidden" name="crop[garden_id]" value="<%= List.find(params[:list_id]).garden_id %>">
   <input type="hidden" name="crop[user_id]" value="<%= current_user.id %>">
   <input type="hidden" name="crop[list_id]" value="<%= params[:list_id]%>">
+  <input type="hidden" name="crop[zip]" value="<%= params[:zip] if params[:zip] %>" id="some_name">
 
   <input type="hidden" name="note[user_id]" value="<%= current_user.id %>">
   <input type="hidden" name="note[list_id]" value="<%= params[:list_id]%>">

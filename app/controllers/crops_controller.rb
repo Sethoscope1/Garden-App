@@ -1,4 +1,5 @@
 class CropsController < ApplicationController
+  before_filter :require_current_user!, only: [:create]
 
   def new
     @crop = Crop.new

@@ -1,4 +1,5 @@
 class CommentsController < ApplicationController
+  before_filter :require_current_user!, only: [:create]
 
   def new
     @comment = Comment.new

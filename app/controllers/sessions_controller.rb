@@ -1,4 +1,7 @@
 class SessionsController < ApplicationController
+  before_filter :require_current_user!, only: [:destroy]
+  before_filter :require_no_current_user!, only: [:new]
+
   #before_filters
 include ActionView::Helpers::DateHelper
   def create

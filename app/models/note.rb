@@ -1,6 +1,8 @@
 class Note < ActiveRecord::Base
   attr_accessible :user_id, :crop_id, :list_id, :title, :text, :note_photo, :due_date, :flag1, :flag2, :flag3, :flag4, :flag5, :assigned_user
 
+  validates :user_id, :list_id, :title, presence: true
+
   belongs_to :user
   belongs_to :crop
   belongs_to :list

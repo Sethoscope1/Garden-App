@@ -26,7 +26,7 @@
     <form action="<%= new_note_url %>" method="get">
       <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
       <input type="hidden" name="list_id" value="<%= list.id %>">
-
+      <input type="hidden" name="zip" value="<%= list.garden.zip if list.garden.zip %>">
       <input type="hidden" name="options" value="crop">
 
       <p><input type="submit" value="Add a Crop!"></p>

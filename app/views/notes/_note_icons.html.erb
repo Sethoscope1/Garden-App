@@ -1,0 +1,13 @@
+<div class="left icons">
+
+  <% if note.due_date %>
+    <i class="icon-calendar icon left"></i>
+    <p class="sub icon left"><%= format_date(note.due_date) %></p>
+  <% end %>
+
+  <% if note.comments.count > 0 %>
+    <i class="icon-comment-alt icon left"></i>
+    <p class="sub icon left"><%= note.comments.count %></p>
+  <% end %>
+
+<div>

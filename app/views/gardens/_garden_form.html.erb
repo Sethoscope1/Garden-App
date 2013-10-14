@@ -10,13 +10,19 @@
         <input type="text" name="garden[name]">
       </label>
 
+      <br>
+
       <label>Location
         <input type="text" name="garden[location]">
       </label>
 
-      <label>Zip Code
-        <input type="number" name="garden[zip]">
+      <br>
+
+      <label class="optional">Zip Code
+        <input type="integer" name="garden[zip]" value="<%= current_user.zip if current_user.zip %>" class="optional">
       </label>
+
+      <br>
 
       <p><input type="submit" value="Start a New Garden"></p>
     </form>

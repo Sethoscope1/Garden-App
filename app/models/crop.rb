@@ -1,8 +1,8 @@
 class Crop < ActiveRecord::Base
-  attr_accessible :name, :variant, :list_id, :garden_id, :zip, :plant_date, :harvest_date, :to_plant_date, :to_harvest_date, :user_id
+  attr_accessible :name, :variant, :list_id, :garden_id, :zip, :plant_date, :harvest_date, :to_plant_date, :to_harvest_date, :user_id, :note_id
 
   # remove garden_id validation, move to note_id
-  validates :garden_id, presence: true
+  validates :name, :garden_id, presence: true
   has_many :notes
   belongs_to :note
   #remove garden_association, move to note

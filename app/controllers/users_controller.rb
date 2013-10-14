@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-  # before_filters
+  before_filter :require_current_user!, only: [:index, :destroy]
+  before_filter :require_no_current_user!, only: [:create, :new]
 
   def create
     @user = User.new(params[:user])
@@ -26,6 +27,7 @@ class UsersController < ApplicationController
   end
 
   def index
-
+    # search for users in area?
+    # search for by email?
   end
 end
