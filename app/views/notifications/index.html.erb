@@ -1,13 +1,21 @@
-<h2 class="list-header">Notifications</h3>
+<section class="content group">
 
-<div class="notification-links">
+  <section class="content-main">
 
-  <% current_user.notifications.each do |notification| %>
+    <h2 class="list-header">Notifications</h3>
 
-  <div class="comment-text">
-    <p><a href="<%= note_url(notification.note) %>"><%= notification.text %></a></p>
-  </div>
+    <div class="link-text">
 
-  <% end %>
+      <% current_user.notifications.each do |notification| %>
 
-  <div>
+      <div class="comment-text">
+        <p><a href="<%= note_url(notification.note) %>"><%= notification.text %></a></p>
+      </div>
+
+      <% end %>
+
+    </div>
+
+  </section>
+
+</section>

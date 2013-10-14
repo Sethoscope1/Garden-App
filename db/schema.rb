@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131012210433) do
+ActiveRecord::Schema.define(:version => 20131014141519) do
 
   create_table "comments", :force => true do |t|
     t.integer  "user_id"
@@ -38,9 +38,11 @@ ActiveRecord::Schema.define(:version => 20131012210433) do
     t.integer  "user_id"
     t.string   "comments"
     t.integer  "note_id"
+    t.integer  "zip"
   end
 
   add_index "crops", ["name"], :name => "index_crops_on_name"
+  add_index "crops", ["zip"], :name => "index_crops_on_zip"
 
   create_table "garden_memberships", :force => true do |t|
     t.integer  "garden_id"
@@ -55,7 +57,10 @@ ActiveRecord::Schema.define(:version => 20131012210433) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
     t.integer  "user_id"
+    t.integer  "zip"
   end
+
+  add_index "gardens", ["zip"], :name => "index_gardens_on_zip"
 
   create_table "lists", :force => true do |t|
     t.integer  "user_id"
@@ -111,6 +116,9 @@ ActiveRecord::Schema.define(:version => 20131012210433) do
     t.string   "password"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.integer  "zip"
   end
+
+  add_index "users", ["zip"], :name => "index_users_on_zip"
 
 end

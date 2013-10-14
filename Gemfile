@@ -7,7 +7,6 @@ gem 'rails', '3.2.14'
 
 gem 'pg'
 
-
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
@@ -44,5 +43,13 @@ end
 # gem 'debugger'
 
 gem 'paperclip'
+
 gem 'aws-sdk'
+
 gem 'figaro'
+
+gem 'addressable'
+
+require 'addressable/uri'
+
+gem 'rest-client'

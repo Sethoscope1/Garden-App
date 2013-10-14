@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  attr_accessible :name, :token, :password
+  attr_accessible :name, :token, :password, :zip
   attr_reader :password
   # validates :password, length: { minimum: 6 }
   validates :name, presence: true

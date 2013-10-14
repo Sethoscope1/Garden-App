@@ -1,3 +1,4 @@
+
 module ApplicationHelper
 
   def format_date(date)
@@ -29,5 +30,19 @@ module ApplicationHelper
         end
       end
     end
+  end
+
+  REDLINE_API_KEY = "khAGpIjuD0BiqXS6ti15gVWRrh7YjFaEXKknsDR6Esp4piaTAbYQ7VHzcPxwvHat"
+
+  def set_zip_radius_url(zip, distance)
+    url = Addressable::URI.new(
+      scheme: "http",
+        host: "zipcodedistanceapi.redline13.com",
+        path: "/rest/#{REDLINE_API_KEY}/radius.json/#{zip}/#{distance}/miles"
+    ).to_s
+  end
+
+  def get_zips_in_radius(zip, distance)
+    RestClient.get(set_zip_radius_url(zip, distance))
   end
 end

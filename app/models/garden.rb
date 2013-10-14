@@ -1,5 +1,7 @@
 class Garden < ActiveRecord::Base
-  attr_accessible :name, :user_id, :location
+
+  include ApplicationHelper
+  attr_accessible :name, :user_id, :location, :zip
 
   validates :name, :user_id, presence: true
 
@@ -10,4 +12,10 @@ class Garden < ActiveRecord::Base
   has_many :garden_memberships, dependent: :destroy
   has_many :gardeners, through: :garden_memberships, source: :user
 
+  def get_gardens_in_radius(zip, distance)
+    local_zips = get_zips_in_radius(zip, distance)
+
+    Garden.where("zip = ?", 11215).to_a
+
+  end
 end

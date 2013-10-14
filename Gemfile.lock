@@ -28,6 +28,7 @@ GEM
     activesupport (3.2.14)
       i18n (~> 0.6, >= 0.6.4)
       multi_json (~> 1.0)
+    addressable (2.3.5)
     arel (3.0.2)
     aws-sdk (1.5.8)
       httparty (~> 0.7)
@@ -112,6 +113,8 @@ GEM
     rake (10.1.0)
     rdoc (3.12.2)
       json (~> 1.4)
+    rest-client (1.6.7)
+      mime-types (>= 1.16)
     sass (3.2.11)
     sass-rails (3.2.6)
       railties (~> 3.2.0)
@@ -138,6 +141,7 @@ PLATFORMS
   x86-mingw32
 
 DEPENDENCIES
+  addressable
   aws-sdk
   better_errors
   binding_of_caller
@@ -147,5 +151,6 @@ DEPENDENCIES
   paperclip
   pg
   rails (= 3.2.14)
+  rest-client
   sass-rails (~> 3.2.3)
   uglifier (>= 1.0.3)

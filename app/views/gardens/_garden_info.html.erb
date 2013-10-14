@@ -9,6 +9,7 @@
       <br>
 
       <ul class="garden-list">
+
         <% garden.lists.each do |list| %>
           <a href="<%= list_url(list) %>"><li><h3><%= list.name %></h3></li></a><br>
         <% end %>

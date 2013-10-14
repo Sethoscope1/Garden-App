@@ -103,7 +103,15 @@ section.page-view {
   margin: 10px;
   float: left;
   border-radius: 8px;
-  width: 240px;
+}
+
+.card {
+  background-color: white;
+  width: 260px;
+}
+
+.card i {
+  color: #3DF2B9;
 }
 
 .info.garden {
@@ -125,21 +133,14 @@ section.page-view {
   padding: 10px;
 }
 
-.card {
-  background-color: white;
-  width: 260px;
+.icons {
+  padding: 10px;
 }
+
 
 .list-button {
   width: 100%;
 }
-
-
-
-
-
-
-
 
 .main {
   margin: auto;
@@ -189,6 +190,10 @@ section.page-view {
   padding: 10px 0;
 }
 
+.data h3 {
+  font-size: 20px;
+}
+
 .link-text {
   background-color: white;
   padding: 10px 20px;
@@ -201,7 +206,10 @@ footer {
   width: 740;
   color: blue;
   background-color: blue;
+
 }
+
+
 
 
 /*Dragons Below*/
@@ -209,20 +217,6 @@ footer {
 
 
 /*
-.icons.left {
-  margin-top: 10px;
-}
-
-.left.info {
-  margin-top: 8px;
-}
-
-p.icon {
-  display: inline;
-  padding-left: 3px;
-  padding-right: 6px;
-}
-
 
 
 .delete {
@@ -238,14 +232,6 @@ p.icon {
 .note-nav {
   padding: 40px 20px;
   width: 220px;
-  float: right;
-}
-
-.left {
-  float: left;
-}
-
-.right {
   float: right;
 }
 
@@ -283,9 +269,7 @@ div {
   display: inline;
 }
 
-i {
-  color: #3DF2B9 ;
-}
+
 
 .form-view {
   width: 600px;
@@ -403,9 +387,6 @@ a {
   color: black;
 }
 
-
-
-
 a:visited {
   color: inherit;
 }
@@ -413,8 +394,6 @@ a:visited {
 .list-header {
   padding: 20px;
 }
-
-
 
 ul {
   list-style: none;
