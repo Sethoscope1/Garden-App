@@ -2,7 +2,6 @@
 
   <%= render partial: "garden_info", locals: {garden: @garden} %>
 
-
   <section id="lists">
 
     <%= render partial: "lists/list", collection: @garden.lists %>
@@ -12,3 +11,12 @@
   <div class="new-list-button"><%= button_to "Add a List!", new_garden_list_url(@garden), method: :get, class: "button" %></div>
 
 </section>
+
+<script>
+$(function() {
+  $( ".sortable" ).sortable({
+    connectWith: ".sortable"
+  }).disableSelection();
+});
+
+</script>

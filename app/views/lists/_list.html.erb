@@ -4,17 +4,21 @@
 
   <section class="data">
 
-    <h2><%= list.name %></h2>
+      <ul class="sortable">
 
-    <% list.notes.each do |note| %>
+        <h2><%= list.name %></h2>
 
-      <section class="info card">
+        <% list.notes.each do |note| %>
 
-        <%= render partial: "/notes/note_info", locals: { note: note } %>
+          <li class="info card ui-state-default">
 
-      </section>
+            <%= render partial: "/notes/note_info", locals: { note: note } %>
 
-    <% end %>
+          </li>
+
+        <% end %>
+
+      </ul>
 
       <%= render partial: "lists/list_nav", locals: { list: list} %>
 

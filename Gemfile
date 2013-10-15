@@ -53,3 +53,8 @@ gem 'addressable'
 require 'addressable/uri'
 
 gem 'rest-client'
+
+gem 'backbone-on-rails'
+gem 'ejs'
+
+gem 'jquery-ui-rails'

@@ -1,72 +1,84 @@
 <h2>FLAGS</h2>
 
-<ul class="flag-toggle">
+<ul class="flag-toggle" id="toggle-forms">
   <li>
-    <form action="<%= note_url(params[:id]) %>" method="POST" enctype="multipart/form-data">
+    <form action="<%= toggle_flag_note_url(params[:id]) %>" method="POST" enctype="multipart/form-data toggle-form" class="group toggle-form" data-remote="true"  >
 
       <% @note = Note.find(params[:id]) %>
 
       <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token%>">
 
       <input type="hidden" name="_method" value="PUT">
+
+      <input type="hidden" name="flag" value="flag1">
 
       <input type="hidden" name="note[flag1]" value="<%= @note.flag1 ? false : true %>">
 
-      <p class="right"><input type="submit" class="flag1" value="<%= @note.flag1 ? 'REMOVE' : '' %>"</p>
+      <p class="flag-wrapper">
+        <input type="submit" class="flag1 flag <%= @note.flag1 ? "unflag-button" : "" %>" value=""><i class="icon-circle-blank"></i>
+      </p>
     </form>
   </li>
 
-
-
   <li>
-    <form action="<%= note_url(params[:id]) %>" method="POST" enctype="multipart/form-data">
+    <form action="<%= toggle_flag_note_url(params[:id]) %>" method="POST" enctype="multipart/form-data toggle-form" class="group toggle-form" data-remote="true"  >
 
       <% @note = Note.find(params[:id]) %>
 
       <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token%>">
 
       <input type="hidden" name="_method" value="PUT">
+
+      <input type="hidden" name="flag" value="flag2">
 
       <input type="hidden" name="note[flag2]" value="<%= @note.flag2 ? false : true %>">
 
-      <p class="right"><input type="submit" class="flag2" value="<%= @note.flag3 ? 'REMOVE' : '' %>"</p>
+      <p class="flag-wrapper">
+        <input type="submit" class="flag2 flag <%= @note.flag2 ? "unflag-button" : "" %>" value=""><i class="icon-circle-blank"></i>
+      </p>
     </form>
   </li>
 
-
   <li>
-    <form action="<%= note_url(params[:id]) %>" method="POST" enctype="multipart/form-data">
+    <form action="<%= toggle_flag_note_url(params[:id]) %>" method="POST" enctype="multipart/form-data toggle-form" class="group toggle-form" data-remote="true"  >
 
       <% @note = Note.find(params[:id]) %>
 
       <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token%>">
 
       <input type="hidden" name="_method" value="PUT">
+
+      <input type="hidden" name="flag" value="flag3">
 
       <input type="hidden" name="note[flag3]" value="<%= @note.flag3 ? false : true %>">
 
-      <p class="right"><input type="submit" class="flag3" value="<%= @note.flag3 ? 'REMOVE' : '' %>"</p>
+      <p class="flag-wrapper">
+        <input type="submit" class="flag3 flag <%= @note.flag3 ? "unflag-button" : "" %>" value=""><i class="icon-circle-blank"></i>
+      </p>
     </form>
   </li>
 
   <li>
-    <form action="<%= note_url(params[:id]) %>" method="POST" enctype="multipart/form-data">
+    <form action="<%= toggle_flag_note_url(params[:id]) %>" method="POST" enctype="multipart/form-data toggle-form" class="group toggle-form" data-remote="true"  >
 
       <% @note = Note.find(params[:id]) %>
 
       <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token%>">
 
       <input type="hidden" name="_method" value="PUT">
+
+      <input type="hidden" name="flag" value="flag4">
 
       <input type="hidden" name="note[flag4]" value="<%= @note.flag4 ? false : true %>">
 
-      <p class="right"><input type="submit" class="flag4" value="<%= @note.flag4 ? 'REMOVE' : '' %>"</p>
+      <p class="flag-wrapper">
+        <input type="submit" class="flag4 flag <%= @note.flag4 ? "unflag-button" : "" %>" value=""><i class="icon-circle-blank"></i>
+      </p>
     </form>
   </li>
 
-
   <li>
-    <form action="<%= note_url(params[:id]) %>" method="POST" enctype="multipart/form-data">
+    <form action="<%= toggle_flag_note_url(params[:id]) %>" method="POST" enctype="multipart/form-data toggle-form" class="group toggle-form" data-remote="true"  >
 
       <% @note = Note.find(params[:id]) %>
 
@@ -74,9 +86,35 @@
 
       <input type="hidden" name="_method" value="PUT">
 
+      <input type="hidden" name="flag" value="flag5">
+
       <input type="hidden" name="note[flag5]" value="<%= @note.flag5 ? false : true %>">
 
-      <p class="right"><input type="submit" class="flag5" value="<%= @note.flag5 ? 'REMOVE' : '' %>"</p>
+      <p class="flag-wrapper">
+        <input type="submit" class="flag5 flag <%= @note.flag5 ? "unflag-button" : "" %>" value=""><i class="icon-circle-blank"></i>
+      </p>
     </form>
   </li>
+
 </ul>
+
+<script>
+
+$(document).ready(function(){
+
+  $("#toggle-forms").on("ajax:success", ".toggle-form", function(event, data){
+      var $form = $(this);
+      var $input = $form.children("p").children();
+      var this_flag = $input[0].className.split(" ")[0];
+      console.log($input[0].className.split(" ")[0]);
+      if(data[this_flag]){
+        $input.addClass("unflag-button");
+      }
+      else {
+        $input.removeClass("unflag-button");
+      }
+      })
+});
+
+
+</script>

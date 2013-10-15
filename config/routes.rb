@@ -23,7 +23,11 @@ GardenApp::Application.routes.draw do
 
   resources :lists, only: [:create, :show]
 
-  resources :notes, only: [:create, :new, :show, :edit, :update, :destroy]
+  resources :notes, only: [:create, :new, :show, :edit, :update, :destroy] do
+    member do
+      put "toggle_flag"
+    end
+  end
 
   resources :comments, only: [:create, :destroy, :edit]
 

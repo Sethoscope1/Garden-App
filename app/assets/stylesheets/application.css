@@ -73,6 +73,7 @@ header {
   top: 0px;
 
   position: fixed;
+  z-index: 1;
 }
 
 #logo {
@@ -189,14 +190,12 @@ section.page-view {
   width: 400px;
   float: left;
   padding: 20px;
-  border-right: 1px solid white;
-
 }
 
 .content-sidebar {
   width: 200px;
   padding: 20px;
-
+  border-left: 1px solid white;
 }
 
 
@@ -562,6 +561,35 @@ input[type=integer] {
   float: left;
 }
 
+.flag {
+  width: 70px;
+}
+
+.unflag-button {
+  width: 100px;
+
+}
+
+.flag-wrapper {
+  position: relative;
+}
+
+
+input[type=submit] + i {
+  position: absolute;
+  display: none;
+  top: 10px;
+  left: 86px;
+}
+
+input[type=submit].unflag-button + i {
+  position: absolute;
+  display: block;
+  color: gray;
+  top: 10px;
+  left: 86px;
+}
+
 .one {
   border-left: 7px solid #3D4CF2;
   border-right: 7px solid #3D4CF2;
@@ -570,6 +598,15 @@ input[type=integer] {
 .two {
   border-left: 7px solid #ff0054;
   border-right: 7px solid #ff0054;
+}
+
+.flag-toggle {
+  float: left;
+}
+
+.flag-toggle li {
+  display: block;
+  float: none;
 }
 
 /*.ribbon2 {

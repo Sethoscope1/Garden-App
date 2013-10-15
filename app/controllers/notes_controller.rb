@@ -28,8 +28,6 @@ class NotesController < ApplicationController
     end
   end
 
-
-
   def destroy
     @note = Note.find(params[:id])
     garden = @note.list.garden
@@ -47,4 +45,16 @@ class NotesController < ApplicationController
     render :new
   end
 
+  def toggle_flag
+    @note = Note.find(params[:id])
+    @note.toggle!(params[:flag])
+
+    if request.xhr?
+      render json: @note
+    else
+      redirect_to note_url(@note)
+    end
+  end
 end
+
+
