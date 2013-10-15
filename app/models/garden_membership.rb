@@ -7,10 +7,7 @@ class GardenMembership < ActiveRecord::Base
   belongs_to :garden
 
 
-  def find_gardens_by_zip {
+  def find_gardens_by_zip
 
-
-  }
-
-  # ALSO DO CROPS BY ZIP!!!!
+  end
 end

@@ -1,57 +1,35 @@
-<nav class="note-nav group">
-  <section class="group">
+<section class="sidebar">
+  <nav class="note-nav group center">
+    <section class="group">
 
-    <% if @note.due_date %>
+      <li class="group set">
+        <%= render "notes/flag_toggle" %>
+      </li>
+      <br>
 
-      <i class="icon-calendar"></i>
-      <p class="sub icon"><%= format_date(@note.due_date) %></p>
+      <li class="group set">
+        <%= render "notes/note_due" %>
+      </li>
+      <br>
 
-      <form action="<%= note_url(params[:id]) %>" method="POST">
-        <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-        <input type="hidden" name="_method" value="PUT">
-        <input type="hidden" name="note[due_date]" value="nil" id="some_name">
-        <input type="submit" value="Done it!">
-      </form>
+      <li class="group set">
+        <%= render "notes/note_assign" %>
+      </li>
+      <br>
 
-    <% else %>
+      <% if current_user.id = @note.user_id %>
 
-      <form action="<%= note_url(params[:id]) %>" method="POST">
-        <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-        <input type="hidden" name="_method" value="PUT">
-        <input type="date" name="note[due_date]">
-        <input type="submit" value="Due Date">
-      </form>
-    <% end %>
+        <li class="group set">
 
-  </section>
+          <h2>DELETE NOTE</h2>
 
-  <div class="delete">
+            <p><%= button_to "Delete!", note_url(@note), method: :delete %></p>
 
-    <form action="<%= note_url(params[:id]) %>" method="POST">
+        </li>
 
-      <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-      <input type="hidden" name="_method" value="PUT">
-
-      <select name="note[assigned_user]">
-        <% User.all.each do |user| %>
-          <% next if user.id == current_user.id %>
-          <option value="<%= user.id %>"><%= user.name %></option>
-        <% end %>
-      </select>
-
-      <input type="submit" value="Assign!">
-    </form>
+      <% end %>
 
 
-  </delete>
-
-
-  <li class="group">
-    <%= render "notes/flag_toggle" %>
-  </li>
-  <br>
-  <li class="delete">
-    <p><%= button_to "Delete!", note_url(@note), method: :delete %></p>
-  </li>
-
-</nav>
+    </section>
+  </nav>
+</section>

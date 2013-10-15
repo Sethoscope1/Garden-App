@@ -13,9 +13,7 @@
  */
 
 
-
-
-/* LAYOUT RESETS */
+/* --- FORMATTING --- */
 
 h1, h2, h3, h4, h5, h6, p, ul, li, section, header, div, span, body, img, html, footer {
   margin: 0;
@@ -28,7 +26,7 @@ h1, h2, h3, h4, h5, h6, p, ul, li, section, header, div, span, body, img, html, 
 }
 
 .group:after {
-  content: " ";
+  content: "";
   display: table;
   clear: both;
 }
@@ -41,8 +39,21 @@ h1, h2, h3, h4, h5, h6, p, ul, li, section, header, div, span, body, img, html, 
   float: right;
 }
 
+.set {
+  padding: 5px;
+  border-bottom: 1px solid white;
+  width: 100%;
+}
+
+
+/* --- ELEMENTS --- */
+
 h1, h2, h3, h4, h5, h6 {
   color: #3DF2B9;
+}
+
+button {
+  border: none;
 }
 
 body {
@@ -50,7 +61,7 @@ body {
 }
 
 
-/*header*/
+/* --- HEADER --- */
 
 header {
   background-color: #4d4d4d;
@@ -85,10 +96,21 @@ header h2 {
 }
 
 .notification-bar {
+  padding-top: 10px;
   float: right;
 }
 
-/* Body */
+.notification-bar i, .notification-bar span {
+  color: #ff0054;
+  padding: 10px;
+}
+
+.notification-bar a {
+  padding-right: 40px;
+}
+
+
+/* --- BODY --- */
 
 section.page-view {
   width: 5000px;
@@ -133,6 +155,10 @@ section.page-view {
   padding: 10px;
 }
 
+.view-buttons {
+  display: block;
+}
+
 .icons {
   padding: 10px 0;
 }
@@ -140,7 +166,6 @@ section.page-view {
 .icon {
   padding: 3px;
 }
-
 
 .list-button {
   width: 100%;
@@ -169,21 +194,11 @@ section.page-view {
 }
 
 .content-sidebar {
-  width: 180px;
-  float: right;
+  width: 200px;
   padding: 20px;
 
 }
 
-.content h1 {
-  display: block;
-  padding: 20px;
-}
-
-.content h2 {
-  display: block;
-  padding: 0px 20px;
-}
 
 .content h3 {
   display: block;
@@ -192,6 +207,12 @@ section.page-view {
 
 .content ul {
   padding: 10px 0;
+}
+
+.list {
+  max-height: 800px;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
 .data h3 {
@@ -205,6 +226,9 @@ section.page-view {
   border-radius: 9px;
   color: #ff0054;
 }
+
+
+/* --- FOOTER --- */
 
 footer {
   width: 740;
@@ -297,53 +321,7 @@ div {
 }
 
 
-.ribbon1 {
-  height: 20px;
-  width: 5px;
-  margin: 3px;
-  border-left: 7px solid #3D4CF2;
-  border-right: 7px solid #3D4CF2;
-  border-bottom: 8px solid transparent;
-}
 
-.ribbon2 {
-  height: 20px;
-  width: 5px;
-  margin: 3px;
-  border-left: 7px solid #ff0054;
-  border-right: 7px solid #ff0054;
-  border-bottom: 8px solid transparent;
-}
-
-.ribbon3 {
-  height: 20px;
-  width: 5px;
-
-  margin: 3px;
-  border-left: 7px solid #adadad;
-  border-right: 7px solid #adadad;
-  border-bottom: 8px solid transparent;
-}
-
-.ribbon4 {
-  height: 20px;
-  width: 5px;
-
-  margin: 3px;
-  border-left: 7px solid #3DF2B9;
-  border-right: 7px solid #3DF2B9;
-  border-bottom: 8px solid transparent;
-}
-
-.ribbon5 {
-  height: 20px;
-  width: 5px;
-
-  margin: 3px;
-  border-left: 7px solid #ff4d00;
-  border-right: 7px solid #ff4d00;
-  border-bottom: 8px solid transparent;
-}
 
 .new-crop h3 {
   padding-left: 20px;
@@ -377,14 +355,6 @@ div {
   display: inline;
 }
 
-.notification-bar a, .notification-bar i{
-  color: #ff0054;
-  padding: 10px;
-}
-
-.notification-bar a {
-  padding-right: 40px;
-}
 
 .button {
   background-color: #ff0054;
@@ -527,6 +497,10 @@ input[type=text-area] {
 }
 
 input[type=submit] {
+  border: none;
+}
+
+input[type=submit] {
   background-color: #ff0054;
   color: white;
   padding: 6px;
@@ -572,6 +546,55 @@ input[type=integer] {
   font-style: bold;
 }
 
+.ribbons {
+  position: relative;
+  top: -18px;
+  margin: 0;
+  border: 0;
+  padding: 0;
+}
+
+.ribbon {
+  height: 20px;
+  width: 0px;
+  margin: 3px;
+  border-bottom: 8px solid transparent;
+  float: left;
+}
+
+.one {
+  border-left: 7px solid #3D4CF2;
+  border-right: 7px solid #3D4CF2;
+}
+
+.two {
+  border-left: 7px solid #ff0054;
+  border-right: 7px solid #ff0054;
+}
+
+/*.ribbon2 {
+  height: 20px;
+  width: 5px;
+  margin: 3px;
+  border-left: 7px solid #ff0054;
+  border-right: 7px solid #ff0054;
+  border-bottom: 8px solid transparent;
+}*/
+
+.three {
+  border-left: 7px solid #adadad;
+  border-right: 7px solid #adadad;
+}
+
+.four {
+  border-left: 7px solid #3DF2B9;
+  border-right: 7px solid #3DF2B9;
+}
+
+.five {
+  border-left: 7px solid #ff4d00;
+  border-right: 7px solid #ff4d00;
+}
 
 input[type=submit].flag1 {
   background-color: #3D4CF2;

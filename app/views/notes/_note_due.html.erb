@@ -1,0 +1,23 @@
+<h2>DUE DATE</h2>
+
+<% if @note.due_date %>
+
+  <i class="icon-calendar"></i>
+  <p class="sub icon"><%= format_date(@note.due_date) %></p>
+
+  <form action="<%= note_url(params[:id]) %>" method="POST">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    <input type="hidden" name="_method" value="PUT">
+    <input type="hidden" name="note[due_date]" value="nil" id="some_name">
+    <input type="submit" value="Done it!">
+  </form>
+
+<% else %>
+
+  <form action="<%= note_url(params[:id]) %>" method="POST">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    <input type="hidden" name="_method" value="PUT">
+    <input type="date" name="note[due_date]">
+    <input type="submit" value="Due Date">
+  </form>
+<% end %>

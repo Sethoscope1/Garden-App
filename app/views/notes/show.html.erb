@@ -1,8 +1,10 @@
 <section class="content group">
 
-  <section class="content-main">
+  <section class="content-main left">
 
-    <h1><%= @note.title %></h1><h2>In: <em><%= @note.list.garden.name %></em></h2>
+    <h1><%= @note.title %></h1>
+
+    <h2 class="sub">In: <em><%= @note.list.garden.name %></em></h2>
 
     <% if @note.text && @note.text != "" && current_user.id != @note.user_id %>
       <h2 class="note-text"><%= @note.text %></h2>
@@ -37,40 +39,29 @@
 
     <%= render "/comments/form", note: @note %>
 
-  </div>
+    <% @note.comments.each do |comment| %>
 
-  <% @note.comments.each do |comment| %>
-
-  <!-- <div class="comment group">
-
-    <div class="comment-text"> -->
       <h3><%= comment.user.name %></h3>
+
       <p class="link-text"><%= comment.text %></p>
 
-      <!-- <div class="comment-options"> -->
-        <ul>
-            <li><h4 class="sub"><%= time_ago_in_words(comment.created_at) %> ago</h4><li>
-          <% if current_user.id == comment.user_id %>
+      <ul>
+        <li><h4 class="sub"><%= time_ago_in_words(comment.created_at) %> ago</h4><li>
 
+          <% if current_user.id == comment.user_id %>
             <li><%= button_to "Delete", comment_url(comment), method: :delete %><li>
             <li><%= button_to "Edit", edit_comment_url(comment), method: :get %><li>
-
           <% end %>
+      </ul>
 
-        </ul>
+      <br>
 
-        <br>
-      <!-- </div>
-    </div>
-  </div> -->
+    <% end %>
+  </section>
 
-  <% end %>
-
-  <span class="right">
+  <span class="content-sidebar left">
 
     <%= render "note_options" %>
 
   </span>
-
-  </section>
 </section>
