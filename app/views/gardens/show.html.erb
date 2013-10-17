@@ -2,13 +2,13 @@
 
   <%= render partial: "garden_info", locals: {garden: @garden} %>
 
-  <ul class="lists list-sortable">
+  <ul class="lists list-sortable left">
 
     <%= render partial: "lists/list", collection: @garden.lists.sort_by { |a| a.list_pos } %>
 
   </ul>
 
-  <div class="new-list-button left"><%= button_to "Add a List!", new_garden_list_url(@garden), method: :get, class: "button" %></div>
+  <div class="left new-list-button-div"><%= button_to "Add a List!", new_garden_list_url(@garden), method: :get, class: "button new-list-button" %></div>
 
 </section>
 
@@ -17,6 +17,28 @@
 <script>
 
 $(document).ready(function(){
+
+  // $( 'a' ).on( 'click', function( event ) {
+//     // Prevent the default action.
+//     event.preventDefault();
+//     // Log stuff.
+//     console.log( 'I was just clicked!' );
+//   });
+
+  // $( "section" ).on("mouseover", function( event ) {
+  //   $( this ).css( "color", "red" );
+  // });
+
+  $( ".new-list-button").on("click", function( event ) {
+    event.preventDefault();
+    $( this ).css( "color", "blue");
+    $( ".list-sortable" ).append(  "<%= render partial: 'lists/list', locals: { list: List.new } %>");
+  });
+
+
+
+
+  ////////////////LIST & NOTE DRAGGING
 
   $( ".ui-state-default" ).mouseover().css( "cursor", "pointer" );
 

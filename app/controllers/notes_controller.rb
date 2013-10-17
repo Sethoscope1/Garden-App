@@ -7,7 +7,7 @@ class NotesController < ApplicationController
 
   def create
     @note = Note.new(params[:note])
-
+    @note.note_pos = @note.list.notes.length
     if params[:crop]
       @note.crops.new(params[:crop])
       @note.title = params[:crop][:name]
