@@ -14,28 +14,25 @@
 
 
 
+<script type="text/template" id="widgets_template">
+  <h2> Big Cheese </h2>
+</script>
+
+
 <script>
+
 
 $(document).ready(function(){
 
-  // $( 'a' ).on( 'click', function( event ) {
-//     // Prevent the default action.
-//     event.preventDefault();
-//     // Log stuff.
-//     console.log( 'I was just clicked!' );
-//   });
-
-  // $( "section" ).on("mouseover", function( event ) {
-  //   $( this ).css( "color", "red" );
-  // });
+  var $list_container = $(".list-sortable");
 
   $( ".new-list-button").on("click", function( event ) {
     event.preventDefault();
-    $( this ).css( "color", "blue");
-    $( ".list-sortable" ).append(  "<%= render partial: 'lists/list', locals: { list: List.new } %>");
+    console.log($("#widgets_template"))
   });
 
 
+  console.log($("#widgets_template").html)
 
 
   ////////////////LIST & NOTE DRAGGING
