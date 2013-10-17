@@ -1,16 +1,18 @@
-<section class="info list group">
+<li class="info list group ui-state-default">
 
   <a id="#<%= list.name %>"></a>
 
   <section class="data">
 
+    <section class="listwrapper" id="<%= list.id %>">
+
+      <h2><%= list.name %></h2>
+
       <ul class="sortable">
 
-        <h2><%= list.name %></h2>
+        <% list.notes.sort_by { |a| a.note_pos }.each do |note| %>
 
-        <% list.notes.each do |note| %>
-
-          <li class="info card ui-state-default">
+          <li class="info card ui-state-default" id="<%= note.id %>" data-list_id="<%= note.list_id %>">
 
             <%= render partial: "/notes/note_info", locals: { note: note } %>
 
@@ -22,6 +24,8 @@
 
       <%= render partial: "lists/list_nav", locals: { list: list} %>
 
+    </section>
+
   </section>
 
-</section>
+</li>

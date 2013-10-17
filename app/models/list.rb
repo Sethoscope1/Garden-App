@@ -1,5 +1,5 @@
 class List < ActiveRecord::Base
-  attr_accessible :user_id, :garden_id, :name
+  attr_accessible :user_id, :garden_id, :name, :list_pos
 
   validates :user_id, :garden_id, presence: true
 

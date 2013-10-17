@@ -2,21 +2,127 @@
 
   <%= render partial: "garden_info", locals: {garden: @garden} %>
 
-  <section id="lists">
+  <ul class="lists list-sortable">
 
-    <%= render partial: "lists/list", collection: @garden.lists %>
+    <%= render partial: "lists/list", collection: @garden.lists.sort_by { |a| a.list_pos } %>
 
-  </section>
+  </ul>
 
-  <div class="new-list-button"><%= button_to "Add a List!", new_garden_list_url(@garden), method: :get, class: "button" %></div>
+  <div class="new-list-button left"><%= button_to "Add a List!", new_garden_list_url(@garden), method: :get, class: "button" %></div>
 
 </section>
 
+
+
 <script>
-$(function() {
-  $( ".sortable" ).sortable({
-    connectWith: ".sortable"
-  }).disableSelection();
+
+$(document).ready(function(){
+
+  $( ".ui-state-default" ).mouseover().css( "cursor", "pointer" );
+
+  $(function() {
+    $( ".list-sortable").sortable({
+      stop: function(e, ui) {
+        var $lists = $(ui.item.closest("ul").children("li"));
+
+        $lists.each( function(i, elem) {
+          var list_wrapper = $(this).find("section.listwrapper")
+          var list_id = $(list_wrapper).attr("id")
+
+          var data = {
+            list: {
+              list_pos: parseInt($(this).index())
+            }
+          }
+
+          $.ajax({
+            url: "/lists/" + list_id,
+            type: "PUT",
+            data: data,
+            dataType:"json",
+            success: function(data){
+              console.log("sent it out!");
+              console.log(data);
+            },
+            error: console.log("This A shit don't work!")
+          });
+        });
+      }
+    }).disableSelection();
+    $( ".sortable" ).sortable({
+      connectWith: ".sortable",
+
+      stop: function(e, ui) {
+        // MOVED ELEMENT AND ITS NEW LIST
+        var that = this;
+
+        var NoteId = ui.item.attr("id");
+        var NoteIndex = ui.item.index();
+        var NoteNewList = ui.item.closest("ul");
+        var NoteNewListId = ui.item.closest("ul").parent().attr("id");
+
+        var newListItems = $(NoteNewList.children("li"));
+
+        /////NEW STUFF/////
+
+        newListItems.each( function(i, elem) {
+          var note_id = $(this).attr("id");
+          console.log(note_id);
+          var data = {
+            note: {
+              list_id: parseInt(NoteNewListId),
+              note_pos: parseInt($(this).index())
+            }
+          };
+
+          $.ajax({
+              url: "/notes/" + note_id,
+              type: "PUT",
+              data: data,
+              dataType:"json",
+              success: function(data){
+                console.log("sent it out!");
+                console.log(data);
+              },
+              error: console.log("This A shit don't work!")
+            });
+
+        });
+
+        /////OLD STUFF/////
+
+        var oldListItems = $(that).children("li");
+        var note_id = $(this).attr("id");
+
+        oldListItems.each( function(i, elem) {
+          var data = {
+            note: {
+              list_id: parseInt($(that).attr("id")),
+              note_pos: parseInt($(this).index())
+            }
+          };
+
+          $.ajax({
+              url: "/notes/" + note_id,
+              type: "PUT",
+              data: data,
+              dataType:"json",
+              success: function(data){
+                console.log("sent it out!");
+                console.log(data);
+              },
+              error: console.log("This B shit don't work!")
+            });
+
+        });
+      },
+
+    }).disableSelection();
+
+  });
+
+
+
 });
 
 </script>

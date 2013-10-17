@@ -17,4 +17,14 @@ class ListsController < ApplicationController
       redirect_to garden_url(1)
     end
   end
+
+  def update
+    @list = List.find(params[:id])
+      flash[:errors] = params
+    if @list.update_attributes(params[:list])
+      render json: @note
+    else
+      flash[:errors] = @note.errors
+    end
+  end
 end

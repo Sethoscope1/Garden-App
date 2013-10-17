@@ -11,14 +11,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131015142616) do
+ActiveRecord::Schema.define(:version => 20131017140737) do
 
   create_table "comments", :force => true do |t|
     t.integer  "user_id"
     t.integer  "note_id"
+    t.string   "text"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
-    t.text     "text"
   end
 
   add_index "comments", ["note_id"], :name => "index_comments_on_note_id"
@@ -68,6 +68,7 @@ ActiveRecord::Schema.define(:version => 20131015142616) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
     t.string   "name"
+    t.integer  "list_pos"
   end
 
   add_index "lists", ["garden_id"], :name => "index_lists_on_garden_id"
@@ -93,6 +94,7 @@ ActiveRecord::Schema.define(:version => 20131015142616) do
     t.boolean  "flag4"
     t.boolean  "flag5"
     t.integer  "assigned_user"
+    t.integer  "note_pos"
   end
 
   add_index "notes", ["crop_id"], :name => "index_notes_on_crop_id"

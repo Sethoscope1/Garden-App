@@ -21,7 +21,7 @@ GardenApp::Application.routes.draw do
     resources :notes, only: [:index]
   end
 
-  resources :lists, only: [:create, :show]
+  resources :lists, only: [:create, :show, :update]
 
   resources :notes, only: [:create, :new, :show, :edit, :update, :destroy] do
     member do
