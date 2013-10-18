@@ -24,9 +24,9 @@ class NotesController < ApplicationController
   def update
     @note = Note.find(params[:id])
     if @note.update_attributes(params[:note])
-      redirect_to note_url(@note)
+      redirect_to garden_url(@note.list.garden)
     else
-      render :index
+      render json: @note
     end
   end
 
@@ -40,6 +40,9 @@ class NotesController < ApplicationController
 
   def show
     @note = Note.find(params[:id])
+    respond_to do |format|
+      format.js
+    end
   end
 
   def edit

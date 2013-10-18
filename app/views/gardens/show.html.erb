@@ -12,13 +12,71 @@
 
 </section>
 
+<!-- note view  -->
 
+<div class="modal">
+
+  <!-- shit renders here ? -->
+
+</div>
 
 
 
 <script>
 
 $(document).ready(function(){
+
+  ////center function////
+  $.fn.center = function () {
+      this.css("position","absolute");
+      this.css("top", ( $(window).height() - this.height() ) / 2+$(window).scrollTop() + "px");
+      this.css("left", ( $(window).width() - this.width() ) / 2+$(window).scrollLeft() + "px");
+      return this;
+  }
+
+
+
+
+
+
+
+
+
+///DISPLAYS MODAL BOX/////
+  var $card = $(".card");
+
+  $card.on("click", function(event){
+    event.preventDefault();
+
+    var id = $(this).attr("id");
+
+    $.ajax({
+      url: "/notes/" + id,
+      type: "GET",
+      success: function(data){
+        console.log(data);
+      },
+    });
+    $(".modal").removeClass("invisible");
+
+    $(".modal").dialog({
+      width: 780,
+      position: ["center", "top"]
+    });
+
+    $('.modal').dialog('option', 'position', 'center');
+
+    $("#blur").removeClass("invisible");
+
+  });
+
+
+///// HIDES MODAL ON CLICK OUTSIDE /////
+$('#blur').click(function() {
+  $(this).addClass("invisible");
+  $(".modal").addClass("invisible");
+})
+
 
 /////DISPLAYS NEW LIST FORM/////
 
@@ -66,19 +124,16 @@ $(document).ready(function(){
   $note_form.on("submit", function(event){
     event.preventDefault();
 
-    $form = $(this)
+    $form = $(this);
 
     $form.addClass("invisible");
     $form.closest("div").find(".note-button").removeClass("invisible");
 
-    console.log($form)
-
     var list_id = $(this).closest("li").find(".listwrapper").attr("id");
-
     var data = {
       note: {
         list_id: list_id,
-        title: $("#title").val()
+        title: $form.find(".title").val()
       }
     }
 
@@ -94,18 +149,6 @@ $(document).ready(function(){
 
     location.reload();
   })
-
-
-
-
-
-
-
-  // $note_form.on("submit", function(event){
- //    $(this).addClass("invisible");
- //    $note_button.removeClass("invisible");
- //  })
-
 
 /////ENABLES LIST & NOTE DRAGGING/////
 
@@ -194,27 +237,25 @@ $(document).ready(function(){
               note_pos: parseInt($(this).index())
             }
           };
-
-          $.ajax({
-              url: "/notes/" + note_id,
-              type: "PUT",
-              data: data,
-              dataType:"json",
-              success: function(data){
-                console.log("sent it out!");
-                console.log(data);
-              },
-              error: console.log("This B shit don't work!")
-            });
-
+          if ( note_id != null ) {
+            $.ajax({
+                url: "/notes/" + note_id,
+                type: "PUT",
+                data: data,
+                dataType:"json",
+                success: function(data){
+                  console.log("sent it out!");
+                  console.log(data);
+                },
+                error: console.log("This B shit don't work!")
+              });
+            }
         });
       },
 
     }).disableSelection();
 
   });
-
-
 
 });
 

@@ -1,0 +1,70 @@
+
+  <section class="group" id="note-view">
+
+    <section class="content-main left">
+
+      <h1><%= @note.title %></h1>
+
+      <h2 class="sub">In: <em><%= @note.list.garden.name %></em></h2>
+
+      <% if @note.text && @note.text != "" && current_user.id != @note.user_id %>
+        <h2 class="note-text"><%= @note.text %></h2>
+      <% end %>
+
+      <% if current_user.id == @note.user_id %>
+
+        <form action="<%= note_url(@note) %>" method="POST" enctype="multipart/form-data">
+
+          <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token%>" id="some_name">
+
+          <input type="hidden" name="_method" value="PUT">
+
+          <input type="text" id="description" name="note[text]" value="<%= @note.text if @note %>" placeholder="Description">
+
+          <p class="right" id="description-button"><input type="submit" value="<%= @note.text ? "Update Description" : "Add Description" %>"</p>
+          <br>
+        </form>
+
+              <hr>
+
+      <% end %>
+
+      <%= render partial: "note_icons", locals: {note: @note} %>
+
+        <% if @note.note_photo_file_name %>
+
+          <%= image_tag @note.note_photo.url(:big) %>
+
+        <% end %>
+
+          <!-- <%= button_to "Return to Garden!", garden_url(@note.list.garden_id), method: :get %> -->
+
+
+      <%= render "/comments/form", note: @note %>
+
+      <% @note.comments.each do |comment| %>
+
+        <h3><%= comment.user.name %></h3>
+
+        <p class="link-text"><%= comment.text %></p>
+
+        <ul>
+          <li><h4 class="sub"><%= time_ago_in_words(comment.created_at) %> ago</h4><li>
+
+            <% if current_user.id == comment.user_id %>
+              <li><%= button_to "Delete", comment_url(comment), method: :delete %><li>
+              <li><%= button_to "Edit", edit_comment_url(comment), method: :get %><li>
+            <% end %>
+        </ul>
+
+        <br>
+
+      <% end %>
+    </section>
+
+    <span class="content-sidebar left">
+
+      <%= render partial: "note_options", locals: { note: @note } %>
+
+    </span>
+  </section>

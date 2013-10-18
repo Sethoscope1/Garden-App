@@ -20,8 +20,8 @@
 
     <% end %>
 
-    <div class="group">
-      <div class="left info">
+
+      <section class="icon info group">
         <% if @crop.comments && crop.comments.length > 0 %>
           <i class="icon-comment"></i>
           <p class="sub icon"><%= @crop.comments.length %></p>
@@ -32,13 +32,7 @@
           <p class="sub icon"><%= format_date(@crop.to_plant_date) %></p>
         <% end %>
 
-      </div>
-
-      <div class="right buttons">
-        <%= button_to "Return to Garden!", garden_url(@crop.list.garden_id), method: :get %>
-      </div>
-
-    </div>
+      </section>
 
     <hr>
 
@@ -52,7 +46,7 @@
 
       <textarea name="comment[text]" rows="8" cols="40" placeholder="comment..."></textarea>
 
-      <p><input type="submit" value="COMMENT"></p>
+      <p><input type="submit" value="COMMENT" class="right"></p>
     </form>
 
 

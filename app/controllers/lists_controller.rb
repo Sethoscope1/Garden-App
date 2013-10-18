@@ -22,9 +22,10 @@ class ListsController < ApplicationController
   def update
     @list = List.find(params[:id])
     if @list.update_attributes(params[:list])
-      render json: @note
+      render json: @list
     else
-      flash[:errors] = @note.errors
+      flash[:errors] = @list.errors
+      render json: @list
     end
   end
 

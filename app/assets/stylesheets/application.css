@@ -90,7 +90,8 @@ body {
 #list-form {
   position: absolute;
   opacity: 50%;
-  top: 0px;
+  top: 10px;
+  left: 10px;
 }
 
 #list-button {
@@ -150,11 +151,15 @@ header {
 
   width: 100%;
   height: 140px;
-  box-shadow: 0px 20px 50px #5E5E5E;
+  box-shadow: 0px 20px 50px #333;
   top: 0px;
 
   position: fixed;
-  z-index: 1;
+  z-index: 0.5;
+}
+
+.top-bar {
+  background-color: none;
 }
 
 #logo {
@@ -164,6 +169,15 @@ header {
     padding: 20px;
     padding-left: 40px;
     font-family: 'Titillium Web', sans-serif;
+}
+
+#description {
+  width: 266px;
+  margin: 10px 0;
+}
+
+#description-button {
+  margin: 6px 0px;
 }
 
 header h2 {
@@ -193,6 +207,8 @@ header h2 {
 
 
 /* --- BODY --- */
+
+
 
 .sortable {
   min-height: 20px;
@@ -606,7 +622,7 @@ input[type=submit] {
 input[type=submit] {
   background-color: #ff0054;
   color: white;
-  padding: 6px;
+  padding: 8px;
   font-family: sans-serif;
   border-radius: 6px;
   box-shadow: none;
@@ -655,6 +671,7 @@ input[type=integer] {
   margin: 0;
   border: 0;
   padding: 0;
+  z-index: 0;
 }
 
 .ribbon {
@@ -694,6 +711,10 @@ input[type=submit].unflag-button + i {
   left: 86px;
 }
 
+input[type=submit].flag {
+  padding: 6px;
+}
+
 .one {
   border-left: 7px solid #3D4CF2;
   border-right: 7px solid #3D4CF2;
@@ -713,6 +734,9 @@ input[type=submit].unflag-button + i {
   float: none;
 }
 
+.icon.info.group {
+  display: block;
+}
 /*.ribbon2 {
   height: 20px;
   width: 5px;
@@ -761,4 +785,32 @@ input[type=submit].flag5 {
   display: none;
 }
 
-*/
+.ui-dialog-titlebar-close {
+  visibility: hidden;
+}
+
+
+#blur {
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  opacity: 0.6;
+  position: fixed;
+  z-index: 0;
+}
+
+#note-view {
+
+  padding: 30px 20px;
+  width: 740px;
+  border: 3 px dashed #ff0054;
+  border-radius: 20px;
+  background-color: gray;
+  z-index: 3;
+}
+
+
+
+.ui-dialog.ui-widget.ui-widget-content {
+  top: 0;
+}
