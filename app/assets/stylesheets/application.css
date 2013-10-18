@@ -75,6 +75,73 @@ body {
     color: #4d4d4d;
 }
 
+#new-list-toggle-div {
+  position: relative;
+}
+
+.list-form {
+  background-color: #ff0054;
+  width: 300px;
+
+
+  float: left;
+  border-radius: 8px;
+}
+#list-form {
+  position: absolute;
+  opacity: 50%;
+  top: 0px;
+}
+
+#list-button {
+  position: absolute;
+  opacity: .6;
+  margin: 10px;
+}
+
+#new-note-toggle-div {
+  padding: 0;
+  border: 0;
+  float: left;
+
+}
+
+#make-a-note {
+  margin: 0px 89px 15px 89px;
+}
+
+.note-button {
+  min-width: 300px;
+  margin-top: 0;
+  padding-bottom: 15px;
+}
+
+.list-form.note-form {
+  background-color: #ecf0f1;
+}
+.list-form input[type=text] {
+  font-size: 18px;
+  text-align: center;
+  margin: 20px 20px 10px 20px;
+  width: 240px;
+}
+
+.list-form input[type=submit], .list-button input[type=submit] {
+  height: 34px;
+  background-color: #4d4d4d;
+  font-size: 18px;
+  min-width: 100px;
+  margin: 0px 100px 15px 100px;
+  padding: 0px 10px;
+}
+
+.list-button input[type=submit] {
+  padding: 5px 10px;
+  display: block;
+  width: auto;
+  margin: auto;
+  background-color: #ff0054;
+}
 /* --- HEADER --- */
 
 header {
@@ -128,7 +195,7 @@ header h2 {
 /* --- BODY --- */
 
 .sortable {
-  min-height: 60px;
+  min-height: 20px;
 }
 
 section.page-view {
@@ -158,6 +225,7 @@ section.page-view {
 .info.garden {
   background: #4d4d4d;
   width: 240px;
+  float: left;
 }
 
 .info.list {
@@ -425,15 +493,21 @@ img {
 }
 
 .new-list-button-div {
+  position: absolute;
   display: block;
   float: left;
-  margin-top: 5px;
+  margin: 10px 5px;
+  width: 300;
 }
 
 .new-list-button {
   width: 300px;
   height: 40px;
   font-size: 20px;
+}
+
+.form-wrapper {
+  width: 300px;
 }
 
 h1 {
@@ -488,7 +562,9 @@ p {
 
 }
 
-
+.front-icons {
+  width: 100%;
+}
 form {
   padding-right: 3px;
   padding-bottom: 3px;
@@ -514,6 +590,10 @@ label {
   position: relative;
 }
 
+
+input {
+  border: none;
+}
 
 input[type=text-area] {
   border-radius: 6px;
@@ -676,4 +756,9 @@ input[type=submit].flag4 {
 input[type=submit].flag5 {
   background-color: #ff4d00;
 }
+
+.invisible {
+  display: none;
+}
+
 */

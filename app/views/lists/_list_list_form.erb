@@ -1,0 +1,25 @@
+
+<div class="left" id="new-list-toggle-div">
+
+    <%= button_to "Add a List!", new_garden_list_url(@garden), method: :get, class: "button new-list-button", id: "list-button"%>
+
+
+
+  <section class="list-form list group invisible" id="list-form">
+
+      <form action="/lists" method="POST">
+
+        <div class="form-wrapper">
+          <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token%>">
+          <input type="hidden" name="list[garden_id]" value="<%= params[:id] %>">
+          <input type="hidden" name="list[user_id]" value="<%= current_user.id %>">
+            <input type="text" name="list[name]" placeholder="Add a List!">
+
+          <p><input type="submit" value="Do it!"></p>
+
+        </div>
+
+      </form>
+
+  </section>
+</div>

@@ -2,7 +2,7 @@ class Garden < ActiveRecord::Base
   include ApplicationHelper
   attr_accessible :name, :user_id, :location, :zip
 
-  validates_numericality_of :zip
+  validates_numericality_of :zip, allow_nil: true
 
   validates :name, :user_id, presence: true
 

@@ -22,9 +22,10 @@
     <% end %>
   </div>
 
-  <h1><%= note.crop_id %><h1>
 
   <% if note.crop_id %>
+
+    <h1><%= note.crop_id %><h1>
 
     <%= render "/crops/crop_info", crop: Crop.find(note.crop) %>
 
@@ -40,12 +41,15 @@
 
   <% end %>
 
+  <div class="front-icons">
+
   <%= render partial: "notes/note_icons", locals: {note: note} %>
-  <nav class="view-buttons group">
+
     <span class="right">
       <%= button_to "View!", note_url(note), method: :get %>
     </span>
-  </nav>
+
+  </div>
 
   <br>
 

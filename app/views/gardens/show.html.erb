@@ -8,34 +8,91 @@
 
   </ul>
 
-  <div class="left new-list-button-div"><%= button_to "Add a List!", new_garden_list_url(@garden), method: :get, class: "button new-list-button" %></div>
+  <%= render partial: "lists/list_list_form" %>
 
 </section>
 
 
 
-<script type="text/template" id="widgets_template">
-  <h2> Big Cheese </h2>
-</script>
 
 
 <script>
 
-
 $(document).ready(function(){
 
-  var $list_container = $(".list-sortable");
+/////DISPLAYS NEW LIST FORM/////
 
-  $( ".new-list-button").on("click", function( event ) {
-    event.preventDefault();
-    console.log($("#widgets_template"))
+  var $list_button = $("#list-button");
+
+  var $list_form = $("#list-form");
+
+  $list_button.on("mouseover", function(){
+    $(this).stop(true).animate({opacity: 1.0}, 200);
+  });
+
+  $list_button.on("mouseout", function(){
+    $(this).stop(true).animate({opacity: 0.6}, 200);
   });
 
 
-  console.log($("#widgets_template").html)
 
 
-  ////////////////LIST & NOTE DRAGGING
+  $list_button.on("click", function(event){
+    $(this).addClass("invisible");
+    $list_form.removeClass("invisible");
+
+    event.preventDefault();
+  });
+
+  $list_form.on("submit", function(event){
+    $(this).addClass("invisible");
+    $list_button.removeClass("invisible");
+  })
+
+
+/////DISPLAYS NEW NOTE FORM/////
+
+
+
+  var $note_button = $(".note-button");
+
+  // var $note_form = $(".note-form");
+
+  // $note_button.on("mouseover", function(){
+  //   $(this).stop(true).animate({opacity: 1.0}, 200);
+  // });
+
+  // $note_button.on("mouseout", function(){
+  //   $(this).stop(true).animate({opacity: 0.6}, 200);
+  // });
+
+
+
+
+  $note_button.on("click", function(event){
+    event.preventDefault();
+    $(this).addClass("invisible");
+    var form = $(this).closest("div").find(".form-wrapper")
+
+
+    $(form).removeClass(".invisible");
+
+    console.log(form)
+
+
+
+
+  });
+
+  // $note_form.on("submit", function(event){
+ //    $(this).addClass("invisible");
+ //    $note_button.removeClass("invisible");
+ //  })
+
+
+/////ENABLES LIST & NOTE DRAGGING/////
+
+  var $list_container = $(".list-sortable");
 
   $( ".ui-state-default" ).mouseover().css( "cursor", "pointer" );
 

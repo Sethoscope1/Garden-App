@@ -1,0 +1,38 @@
+
+<div class="left" class="new-note-toggle-div">
+
+  <nav class="list-button group">
+
+      <form action="<%= new_note_url %>" method="get" class="note-button">
+        <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+        <input type="hidden" name="list_id" value="<%= params[:list_id] %>">
+
+        <input type="submit" value="Add a Note!">
+      </form>
+
+
+  </nav>
+
+
+    <form action="/notes/" method="POST" class="list-form note-form invisible" enctype="multipart/form-data">
+
+      <div class="form-wrapper">
+        <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token%>" id="some_name">
+        <input type="hidden" name="note[user_id]" value="<%= current_user.id %>">
+        <input type="hidden" name="note[list_id]" value="<%= params[:list_id]%>">
+
+
+        <input type="text" name="note[title]" placeholder="  ...beautiful thoughts...">
+
+        <br>
+        <p>
+          <input type="submit" value="Make a Note" id="make-a-note">
+        </p>
+
+      </div>
+
+    </form>
+
+</div>
+
+

@@ -11,6 +11,7 @@ class ListsController < ApplicationController
 
   def create
     @list = List.new(params[:list])
+    @list.list_pos = Garden.find(params[:list][:garden_id]).lists.length
     if @list.save
       redirect_to garden_url(@list.garden_id)
     else
@@ -25,6 +26,17 @@ class ListsController < ApplicationController
       render json: @note
     else
       flash[:errors] = @note.errors
+    end
+  end
+
+  def toggle_flag
+    @note = Note.find(params[:id])
+    @note.toggle!(params[:flag])
+
+    if request.xhr?
+      render json: @note
+    else
+      redirect_to note_url(@note)
     end
   end
 end
