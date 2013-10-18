@@ -15,13 +15,12 @@ class ListsController < ApplicationController
     if @list.save
       redirect_to garden_url(@list.garden_id)
     else
-      redirect_to garden_url(1)
+      redirect_to garden_url(@list.garden_id)
     end
   end
 
   def update
     @list = List.find(params[:id])
-      flash[:errors] = params
     if @list.update_attributes(params[:list])
       render json: @note
     else

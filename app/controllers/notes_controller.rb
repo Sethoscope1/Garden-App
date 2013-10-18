@@ -6,7 +6,9 @@ class NotesController < ApplicationController
   end
 
   def create
+    flash[:errors] = params
     @note = Note.new(params[:note])
+    @note.user_id = current_user.id
     @note.note_pos = @note.list.notes.length
     if params[:crop]
       @note.crops.new(params[:crop])

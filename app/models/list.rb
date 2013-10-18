@@ -1,7 +1,7 @@
 class List < ActiveRecord::Base
   attr_accessible :user_id, :garden_id, :name, :list_pos
 
-  validates :user_id, :garden_id, presence: true
+  validates :user_id, :garden_id, :name, presence: true
 
   belongs_to :garden
   belongs_to :user

@@ -35,8 +35,6 @@ $(document).ready(function(){
   });
 
 
-
-
   $list_button.on("click", function(event){
     $(this).addClass("invisible");
     $list_form.removeClass("invisible");
@@ -55,34 +53,53 @@ $(document).ready(function(){
 
 
   var $note_button = $(".note-button");
-
-  // var $note_form = $(".note-form");
-
-  // $note_button.on("mouseover", function(){
-  //   $(this).stop(true).animate({opacity: 1.0}, 200);
-  // });
-
-  // $note_button.on("mouseout", function(){
-  //   $(this).stop(true).animate({opacity: 0.6}, 200);
-  // });
-
-
-
+  var $note_form = $(".note-form");
 
   $note_button.on("click", function(event){
     event.preventDefault();
     $(this).addClass("invisible");
-    var form = $(this).closest("div").find(".form-wrapper")
 
-
-    $(form).removeClass(".invisible");
-
-    console.log(form)
-
-
-
-
+    var form = $(this).closest("div").find(".list-form");
+    form.removeClass("invisible");
   });
+
+  $note_form.on("submit", function(event){
+    event.preventDefault();
+
+    $form = $(this)
+
+    $form.addClass("invisible");
+    $form.closest("div").find(".note-button").removeClass("invisible");
+
+    console.log($form)
+
+    var list_id = $(this).closest("li").find(".listwrapper").attr("id");
+
+    var data = {
+      note: {
+        list_id: list_id,
+        title: $("#title").val()
+      }
+    }
+
+    $.ajax({
+      url: "/notes",
+      type: "POST",
+      data: data,
+      dataType:"json",
+      success: function(data){
+
+      },
+    });
+
+    location.reload();
+  })
+
+
+
+
+
+
 
   // $note_form.on("submit", function(event){
  //    $(this).addClass("invisible");
