@@ -34,14 +34,6 @@ $(document).ready(function(){
       return this;
   }
 
-
-
-
-
-
-
-
-
 ///DISPLAYS MODAL BOX/////
   var $card = $(".card");
 
@@ -63,8 +55,6 @@ $(document).ready(function(){
       width: 780,
       position: ["center", "top"]
     });
-
-    $('.modal').dialog('option', 'position', 'center');
 
     $("#blur").removeClass("invisible");
 
@@ -180,7 +170,6 @@ $('#blur').click(function() {
               console.log("sent it out!");
               console.log(data);
             },
-            error: console.log("This A shit don't work!")
           });
         });
       }
@@ -220,7 +209,6 @@ $('#blur').click(function() {
                 console.log("sent it out!");
                 console.log(data);
               },
-              error: console.log("This A shit don't work!")
             });
 
         });
@@ -247,12 +235,10 @@ $('#blur').click(function() {
                   console.log("sent it out!");
                   console.log(data);
                 },
-                error: console.log("This B shit don't work!")
               });
             }
         });
       },
-
     }).disableSelection();
 
   });

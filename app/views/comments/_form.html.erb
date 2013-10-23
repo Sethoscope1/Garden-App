@@ -12,3 +12,30 @@
 
   <p><input type="submit" value="COMMENT"></p>
 </form>
+
+
+<!-- WORK ON THIS -->
+
+<!-- <script>
+
+  $(document).ready(function(){
+
+    var $commentform = $("#commentform");
+
+    $commentform.on("submit", function(event){
+      event.preventDefault();
+      $.ajax({
+        url: "/comments",
+        type: "POST",
+        data: $commentform.serialize();,
+        dataType: "json",
+        success: function(data){
+          console.log("success")
+        },
+
+      })
+    })
+
+  });
+
+</script> -->

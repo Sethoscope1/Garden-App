@@ -3,10 +3,11 @@ class NotesController < ApplicationController
 
   def new
     @note = Note.new
+    flash[:errors] = "newd"
   end
 
   def create
-    flash[:errors] = params
+    flash[:errors] = "SUBMITTED"
     @note = Note.new(params[:note])
     @note.user_id = current_user.id
     @note.note_pos = @note.list.notes.length
@@ -15,7 +16,7 @@ class NotesController < ApplicationController
       @note.title = params[:crop][:name]
     end
     if @note.save
-      redirect_to note_url(@note)
+      render json: @note
     else
       render :json => @note.errors.full_messages
     end

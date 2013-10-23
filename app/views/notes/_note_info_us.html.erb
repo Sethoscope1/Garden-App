@@ -1,0 +1,60 @@
+<!-- NOT DONE . USING THIS?  -->
+<script type="text/template" id="note_info_template">
+
+<section class="data">
+
+  <div class="ribbons group right">
+    <%% if note.flag1 %>
+    <div class="ribbon one"></div>
+    <%% end %>
+
+    <%% if note.flag2 %>
+    <div class="ribbon two"></div>
+    <%% end %>
+
+    <%% if note.flag3 %>
+    <div class="ribbon three"></div>
+    <%% end %>
+
+    <%% if note.flag4 %>
+    <div class="ribbon four"></div>
+    <%% end %>
+
+    <%% if note.flag5 %>
+    <div class="ribbon five"></div>
+    <%% end %>
+  </div>
+
+
+  <%% if note.crop_id %>
+
+    <h1><%%= note.crop_id %><h1>
+
+    <%%= render "/crops/crop_info", crop: Crop.find(note.crop) %>
+
+  <%% else %>
+
+    <h3><%%= note.title %></h3>
+
+    <%% if note.note_photo_file_name %>
+
+      <%%= image_tag note.note_photo.url(:small) %>
+
+    <%% end %>
+
+  <%% end %>
+
+  <div class="front-icons">
+
+  <%%= render partial: "notes/note_icons", locals: {note: note} %>
+
+  </div>
+
+  <br>
+
+</section>
+
+<br>
+
+</script>
+
