@@ -14,7 +14,7 @@
   </nav>
 
 
-    <form action="/notes/" method="POST" class="list-form note-form noteform" enctype="multipart/form-data">
+    <form action="/notes/" method="POST" class="list-form note-form noteform invisible" enctype="multipart/form-data">
 
       <div class="form-wrapper">
         <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token%>" id="some_name">
@@ -32,72 +32,4 @@
     </form>
 
 </div>
-
-
-
-
-
-
-
-
-
-
-<script>
-
-$(document).ready(function(){
-
-
-  $(".lists li form.note-form").on("click", "input[type=submit]", function(event){
-    event.preventDefault();
-    console.log("LOOK")
-
-    // var $form = $(this).closest("form");
-   //
-   //  var formData = $form.serialize();
-   //
-   //  var $list = $(this).closest("li").find(".listwrapper");
-   //  var $list_sort = $($list.children(".sortable"));
-   //
-   //  var list_id = $list.attr("id");
-   //  var title = $form.find(".title").val();
-   //
-   //  var data = {
-   //    note: {
-   //      list_id: parseInt(list_id),
-   //      title: title,
-   //      user_id: $form.find(".user_id").val()
-   //    }
-   //  }
-
-    // $.ajax({
-    //   url: "/notes",
-    //   type: "POST",
-    //   data: data,
-    //   dataType:"json",
-    //   success: function(data){
-    //     console.log(data.title)
-    //     $list_sort.append('<li class="info card ui-state-default" id="' + data.id + '"data-list_id="' + list_id + '" style="cursor: pointer;"><section class="data">' + title + '</section></li>')
-    //   },
-    // });
-
-    // return false;
-    // var $form = $(event.target).closest("form")
-    // var formData = $form.serialize();
-
-
-  })
-
-
-});
-
-</script>
-
-
-<!-- <li class="info card ui-state-default" data-list_id=" " style="cursor: pointer;">
-<section class="data">
-  <h1> note.title </h1>
-</section>
-</li>
-
- -->
 
