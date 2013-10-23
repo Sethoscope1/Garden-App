@@ -3,7 +3,6 @@ class NotesController < ApplicationController
 
   def new
     @note = Note.new
-    flash[:errors] = "newd"
   end
 
   def create

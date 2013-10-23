@@ -2,7 +2,7 @@ class ListsController < ApplicationController
   before_filter :require_current_user!, only: [:create]
 
   def show
-    @list = List.find(params[:id])
+    # @list = List.find(params[:id])
   end
 
   def new
@@ -11,11 +11,11 @@ class ListsController < ApplicationController
 
   def create
     @list = List.new(params[:list])
-    @list.list_pos = Garden.find(params[:list][:garden_id]).lists.length
+    @list.list_pos = Garden.find(@list.garden_id).lists.length
     if @list.save
-      redirect_to garden_url(@list.garden_id)
+      render json: @list
     else
-      redirect_to garden_url(@list.garden_id)
+      render json: @list
     end
   end
 

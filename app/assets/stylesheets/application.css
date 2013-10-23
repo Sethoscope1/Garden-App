@@ -208,7 +208,10 @@ header h2 {
 
 /* --- BODY --- */
 
-
+:focus {
+  outline-color: transparent;
+  outline-style: none;
+}
 
 .sortable {
   min-height: 20px;
