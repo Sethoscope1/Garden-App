@@ -52,7 +52,7 @@ gem 'figaro'
 
 gem 'addressable'
 
-require 'addressable/uri'
+gem 'addressable', :require => 'addressable/uri'
 
 gem 'rest-client'
 
