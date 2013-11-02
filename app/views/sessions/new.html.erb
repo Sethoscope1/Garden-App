@@ -1,8 +1,48 @@
-<section class="content group">
+<section class="content group login">
 
-  <section class="content-main">
+	<span class="masthead group">
+		<h2>Welcome to Early Worm!</h2>
+	</span>
+	
+  <section class="content-main bigger-left">
 
-    <h2>Sign In</h2>
+		<h3>New to Early Worm?</h3>
+		
+    <form action="/users" method="post">
+
+    <label for="username">Name</label>
+    <input type="text" name="user[name]" value= "" id="name"><br>
+
+    <label for="password">Password</label>
+    <input type="text" name="user[password]" id="password"><br>
+
+
+    <label for="user_username">Email</label>
+    <input
+        type="text"
+        id="user_username"
+        name="user[email]"
+    >
+
+    <br>
+
+    <label for="user_username" class="optional">Zip Code</label>
+    <input type="integer" name="user[zip]" placeholder="optional" class="optional">
+    <br>
+		
+
+
+		<div>
+			<input type="submit" value="Join">
+		</div>
+		
+    </form>
+
+  </section>
+	
+	<section class="content-main right">
+		
+		<h3>Already a Member?</h3>
 
     <form action="/session" method="post">
       <input
@@ -24,16 +64,16 @@
          type="text">
       <br>
 
-      <input type="submit" value="Sign In">
+      <div><input type="submit" value="Sign In"></div>
     </form>
 
   </section>
 
-  <section class="content-sidebar">
+  <!-- <section class="content-sidebar right">
 
     <%= button_to "Plant a New Garden!", new_garden_url, method: :get %>
 
-  </section>
+  </section> -->
 
 
 </section>
