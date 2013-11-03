@@ -24,8 +24,9 @@ include ActionView::Helpers::DateHelper
     end_session!
     redirect_to new_session_url
   end
-
+  
   def new
+    # render layout: "session"
     render :new
   end
 

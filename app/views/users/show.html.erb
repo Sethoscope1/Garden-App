@@ -1,11 +1,7 @@
 
-<section class="content group">
+<section class="content user group">
 
   <section class="content-main">
-
-    <h2>Profile</h2>
-
-    <p><h3>Name: <%= current_user.name %></h3></p>
 
     <h2>My Gardens</h2>
 
@@ -16,14 +12,22 @@
         <!-- <%= render "gardens/garden_info", garden: garden %> -->
       <% end %>
     </ul>
+		
+		<div class="center-button">
+		    <%= button_to "Plant a New Garden!", new_garden_url, method: :get %>
+		</div>
+		
+    <h2>My Cards</h2>
 
+    <ul>
+      <% current_user.notes.each do |note| %>
+
+        <h3 class="link-text"><%= note.title %></h3>
+      <% end %>
+    </ul>
+	
   </section>
 
-  <section class="content-sidebar">
-
-    <%= button_to "Plant a New Garden!", new_garden_url, method: :get %>
-
-  </section>
 
 </section>
 

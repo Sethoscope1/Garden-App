@@ -184,6 +184,11 @@ $('#blur').click(function() {
 
   $(function() {
     $( ".list-sortable").sortable({
+			placeholder: "list-sortable-placeholder",
+			start: function(e, ui) {
+				ui.placeholder.height(ui.item.height());
+				ui.placeholder.width(ui.item.width());
+			},
       stop: function(e, ui) {
         var $lists = $(ui.item.closest("ul").children("li"));
 
@@ -211,7 +216,11 @@ $('#blur').click(function() {
 
     $( ".sortable" ).sortable({
       connectWith: ".sortable",
-
+			placeholder: "note-sortable-placeholder",
+			start: function(e, ui) {
+				ui.placeholder.height(ui.item.height());
+				ui.placeholder.width(ui.item.width());
+			},
       stop: function(e, ui) {
         // MOVED ELEMENT AND ITS NEW LIST
         // var that = this;

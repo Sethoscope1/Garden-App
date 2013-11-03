@@ -91,6 +91,26 @@ body {
 	position: absolute;
 }*/
 
+.list-sortable-placeholder {
+	margin: 10px;
+	border-radius: 8px;
+	border: 1px dotted white;
+}
+
+.note-sortable-placeholder {
+	margin: 10px;
+	border-radius: 8px;
+	border: 1px dotted black;
+}
+
+.ui-state-highlight-list {
+	background-color: black;
+}
+
+.ui-state-highlight-card {
+	background-color: black;
+}
+
 #new-list-toggle-div {
   position: relative;
 }
@@ -308,7 +328,7 @@ section.page-view {
 
 .content {
   padding: 30px 20px;
-  width: 890px;
+  width: 800px;
   margin: auto;
   margin-top: 160px;
   border: 1px dashed #ff0054;
@@ -316,7 +336,7 @@ section.page-view {
 }
 
 .content-main {
-  width: 400px;
+  width: 350px;
   float: left;
   padding: 20px;
 }
@@ -353,8 +373,14 @@ section.page-view {
 	font-size: 18px;
 }
 
+.content.login h5 {
+	padding: 15px 0;
+	font-size: 11px;
+}
 .content.login label {
 	color: white;
+	width: 100px;
+	display: inline-block;
 }
 .content.login h3 {
 	text-align: center;
@@ -363,7 +389,11 @@ section.page-view {
 	padding-bottom: 20px;
 }
 
-.content.login div{
+div.center {
+	text-align: center;
+}
+
+div.center-button {
 	border-top: 1px dotted #ff0054;
 	text-align: center;
 	padding: 20px;
@@ -373,6 +403,7 @@ section.page-view {
 .content.login input[type=submit] {
 	margin: auto;
 }
+
 
 /*.content h3 {
 	border-bottom: 1px dotted #ff0054;	
@@ -397,6 +428,10 @@ section.page-view {
   margin: 8px 0px;
   border-radius: 9px;
   color: #ff0054;
+}
+
+.content.user {
+	background-color: #4d4d4d;
 }
 
 
