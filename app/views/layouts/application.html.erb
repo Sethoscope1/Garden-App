@@ -15,14 +15,15 @@
 
 <body>
   <div id="blur" class="invisible"></div>
+
   <header class="group">
-
-    <h1 id="logo">EARLY WORM</h2>
-
       <%= flash[:errors] if flash[:errors] %>
 
       <nav class="top-bar group">
-        <nav class="login-buttons">
+				
+		    <h1 id="logo" class="left">EARLY WORM</h2>
+
+        <nav class="login-buttons group">
 
         	<% if !current_user.nil? %>
               <!-- <% add_notifications(current_user) %>
@@ -31,12 +32,12 @@
 
           <% else %>
 
-              <li><%= button_to "Sign In", new_session_url, method: :get %></li>
-              <li><%= button_to "Join", new_user_url, method: :get %></li>
+              <!-- <li><%= button_to "Sign In", new_session_url, method: :get %></li>
+              <li><%= button_to "Join", new_user_url, method: :get %></li> -->
 
         	<% end %>
 
-        </nav>
+
 
         	<% if !current_user.nil? %>
           <!-- <li><h2>Current User: <%= current_user.name %><h2></li>
@@ -44,8 +45,8 @@
             <%= render "users/notifications" %> -->
 						<%= render partial: "users/header"%>
         	<% end %>
-
         </nav>
+      </nav>
   </header>
 
   <section class="main group">

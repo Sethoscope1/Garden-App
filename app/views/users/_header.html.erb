@@ -1,11 +1,22 @@
-<section class="header-bar right">
-				
-	<div class="group"><a href="<%= user_url(current_user)%>" class="left"><i class="icon-male"></i><span><%= current_user.name%></span></a></div>
-	
-	<div class="group"><a href="<%= user_url(current_user)%>" class="left"><i class="icon-home"></i><span>Home</span></a></div>
-	<br>
-	<%= render partial: "users/notifications" %>
-	<br>
 
-</section>
+
+<ul class="header-bar right group">
+	
+	<li>
+			<div class="group left"><%= render partial: "users/notifications" %></div>
+	</li>
+	
+	<li>
+			<div class="group"><a href="<%= user_url(current_user)%>" class="left"><i class="icon-home"></i>Home</a></div>
+	</li>
+	
+	<li>
+			<div class="group"><a href="<%= user_url(current_user)%>" class="left"><i class="icon-male"></i><%= current_user.name%></a></div>
+	</li>
+	
+	<li>
+			<div class="group"><a href="#" class="left"></i>Logout</a></div>
+	</li>
+
+</ul>
 
