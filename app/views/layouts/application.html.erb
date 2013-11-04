@@ -25,9 +25,9 @@
         <nav class="login-buttons">
 
         	<% if !current_user.nil? %>
-              <% add_notifications(current_user) %>
+              <!-- <% add_notifications(current_user) %>
               <li><h2>Current User: <%= current_user.name %><h2></li>
-              <li><%= button_to "Logout", session_url, method: :delete %></li>
+              <li><%= button_to "Logout", session_url, method: :delete %></li> -->
 
           <% else %>
 
@@ -39,9 +39,10 @@
         </nav>
 
         	<% if !current_user.nil? %>
-
-            <%= render "gardens/notifications" %>
-
+          <!-- <li><h2>Current User: <%= current_user.name %><h2></li>
+          <li><%= button_to "Logout", session_url, method: :delete %></li>
+            <%= render "users/notifications" %> -->
+						<%= render partial: "users/header"%>
         	<% end %>
 
         </nav>

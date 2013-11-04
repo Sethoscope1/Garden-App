@@ -16,6 +16,7 @@ include ActionView::Helpers::DateHelper
       render :new
     else
       self.current_user = user
+      add_notifications(self.current_user)
       redirect_to user_url(user)
     end
   end

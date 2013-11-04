@@ -64,21 +64,23 @@ $(document).ready(function(){
       }
     }
 
-    $.ajax({
-      url: "/notes",
-      type: "POST",
-      data: data,
-      dataType:"json",
-      success: function(data){
+		if (title != "") {
+	    $.ajax({
+	      url: "/notes",
+	      type: "POST",
+	      data: data,
+	      dataType:"json",
+	      success: function(data){
 
-        var $newNote = ('<li class="info card ui-state-default" id="' + data.id + '"data-list_id="' + list_id + '" style="cursor: pointer;"><section class="data"><h3>' + title + '</h3></section></li>');
-        $list_sort.append($newNote).sortable({connectWith: ".sortable"});
-        $form[0].reset();
-        $form.addClass("invisible");
-              $form.closest("div").find(".note-button").removeClass("invisible");
-        console.log($form);
-      },
-    });
+	        var $newNote = ('<li class="info card ui-state-default" id="' + data.id + '"data-list_id="' + list_id + '" style="cursor: pointer;"><section class="data"><h3>' + title + '</h3><div class="front-icons"><div class="left icons group"></div></div></section></li>');
+	        $list_sort.append($newNote).sortable({connectWith: ".sortable"});
+	      },
+	    });
+		};
+		
+    $form[0].reset();
+    $form.closest("div").find(".note-button").removeClass("invisible");
+    $form.addClass("invisible");
     // var $form = $(event.target).closest("form")
     // var formData = $form.serialize();
 
@@ -186,8 +188,8 @@ $('#blur').click(function() {
     $( ".list-sortable").sortable({
 			placeholder: "list-sortable-placeholder",
 			start: function(e, ui) {
-				ui.placeholder.height(ui.item.height());
-				ui.placeholder.width(ui.item.width());
+				ui.placeholder.height(ui.item.height() - 2);
+				ui.placeholder.width(ui.item.width() - 2);
 			},
       stop: function(e, ui) {
         var $lists = $(ui.item.closest("ul").children("li"));
@@ -218,8 +220,8 @@ $('#blur').click(function() {
       connectWith: ".sortable",
 			placeholder: "note-sortable-placeholder",
 			start: function(e, ui) {
-				ui.placeholder.height(ui.item.height());
-				ui.placeholder.width(ui.item.width());
+				ui.placeholder.height(ui.item.height() - 2);
+				ui.placeholder.width(ui.item.width() - 2);
 			},
       stop: function(e, ui) {
         // MOVED ELEMENT AND ITS NEW LIST

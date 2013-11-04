@@ -1,28 +1,51 @@
 
 <section class="content user group">
 
-  <section class="content-main">
+	<section class="group">
 
-    <h2>My Gardens</h2>
+	  <section class="content-main left bigger-left">
 
-    <ul>
-      <% current_user.gardens.each do |garden| %>
+	    <h2>My Gardens</h2>
 
-        <h3 class="link-text"><%= link_to garden.name, garden_url(garden), method: :get %></h3>
-        <!-- <%= render "gardens/garden_info", garden: garden %> -->
-      <% end %>
-    </ul>
+	    <ul>
+	      <% current_user.gardens.each do |garden| %>
+
+	        <div class="group"><li class="link-text link-button"><%= link_to garden.name, garden_url(garden), method: :get %></li></div>
+
+	      <% end %>
+	    </ul>
 		
-		<div class="center-button">
-		    <%= button_to "Plant a New Garden!", new_garden_url, method: :get %>
-		</div>
+			<div class="center-button">
+			    <%= button_to "Plant a New Garden!", new_garden_url, method: :get %>
+			</div>
+		</section>
 		
+		<section class="content-main right">
+			<h2>Notifications</h2>
+			<% current_user.notifications.each do |notification| %>
+      <div class="comment-text link-text notification">
+        <p><a href="<%= note_url(notification.note) %>"><%= notification.text %></a><i class="icon-remove-sign right"></i></p>
+				
+				            
+      </div>
+			<% end %>
+			
+		</section>
+	</section>
+	
+	<section class="loose-cards group">
     <h2>My Cards</h2>
 
     <ul>
-      <% current_user.notes.each do |note| %>
+			
+      <% current_user.notes.sort_by { |a| a.updated_at }.each do |note| %>
 
-        <h3 class="link-text"><%= note.title %></h3>
+	      <li class="info card ui-state-default" id="<%= note.id %>" data-list_id="<%= note.list_id %>">
+
+	        <%= render partial: "/notes/note_info", locals: { note: note } %>
+
+	      </li>
+
       <% end %>
     </ul>
 	
@@ -30,4 +53,7 @@
 
 
 </section>
+
+
+
 
