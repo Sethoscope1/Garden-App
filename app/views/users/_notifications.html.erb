@@ -1,10 +1,10 @@
 
 <% if current_user.notifications.length > 0 %>
-
+	<div class="group left">
     <% if current_user.notifications.length == 1 %>
       <a href="<%= notifications_url %>"><i class="icon-exclamation-sign"></i>You have a notification</a>
     <% else %>
       <a href="<%= notifications_url %>"><i class="icon-exclamation-sign"></i>You have <%= current_user.notifications.length %> notifications</a>
     <% end %>
-
+	</div>
 <% end %>

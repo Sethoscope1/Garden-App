@@ -646,6 +646,9 @@ img {
 	
 }
 
+#list-button {
+	font-size: 18px;
+}
 .loose-cards {
 	padding: 10px;
 }
@@ -660,7 +663,6 @@ img {
 .new-list-button {
   width: 280px;
   height: 40px;
-  font-size: 20px;
 }
 
 .form-wrapper {

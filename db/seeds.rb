@@ -12,20 +12,20 @@ User.create(name: "james")
 User.create(name: "cat")
 User.create(name: "Totoro")
 
-Garden.create(name: "My Garden", user_id: 1, location: "Park Slope")
-Garden.create(name: "Community Garden", user_id: 1, location: "the Bronx")
-
-GardenMembership.create(user_id: 1, garden_id: 2)
-GardenMembership.create(user_id: 2, garden_id: 1)
-GardenMembership.create(user_id: 3, garden_id: 1)
-GardenMembership.create(user_id: 4, garden_id: 1)
-
-List.create(name: "Summer Plants", user_id: 1, garden_id: 1)
-List.create(name: "Community Garden Plants", user_id: 1, garden_id: 2)
-List.create(name: "Home Depot List", user_id: 1, garden_id: 1)
-List.create(name: "Heirloom Toms", user_id: 1, garden_id: 1)
-List.create(name: "Halloween Party", user_id: 1, garden_id: 1)
-List.create(name: "Winter Plants", user_id: 1, garden_id: 1)
+# Garden.create(name: "My Garden", user_id: 1, location: "Park Slope")
+# Garden.create(name: "Community Garden", user_id: 1, location: "the Bronx")
+# 
+# GardenMembership.create(user_id: 1, garden_id: 2)
+# GardenMembership.create(user_id: 2, garden_id: 1)
+# GardenMembership.create(user_id: 3, garden_id: 1)
+# GardenMembership.create(user_id: 4, garden_id: 1)
+# 
+# List.create(name: "Summer Plants", user_id: 1, garden_id: 1)
+# List.create(name: "Community Garden Plants", user_id: 1, garden_id: 2)
+# List.create(name: "Home Depot List", user_id: 1, garden_id: 1)
+# List.create(name: "Heirloom Toms", user_id: 1, garden_id: 1)
+# List.create(name: "Halloween Party", user_id: 1, garden_id: 1)
+# List.create(name: "Winter Plants", user_id: 1, garden_id: 1)
 
 
 

@@ -28,8 +28,6 @@ $(document).ready(function(){
 
   /////DISPLAYS NEW NOTE FORM/////
 
-
-
     var $note_button = $(".note-button");
     var $note_form = $(".note-form");
     $(".lists").on("click", "li .note-button", function(event){
@@ -154,7 +152,6 @@ $('#blur').click(function() {
     event.preventDefault();
 
     var $lists = $(this).closest(".page-view").find(".lists")
-    console.log($lists)
     var $form = $(this).children("form")
     var formData = $form.serialize();
 
@@ -164,11 +161,12 @@ $('#blur').click(function() {
       data: formData,
       dataType: "json",
       success: function(data){
-        console.log("I did it!")
-        var listForm = '<li class="info list group ui-state-default"><a id="#' + data.name +'"></a><section class="data"><section class="listwrapper" id="'+ data.id +'"><h2>' + data.name + '</h2><ul class="sortable"></ul></section></section><%= escape_javascript(render partial: "notes/note_note_form") %></li>'
-        $lists.append(listForm)
+        var $listForm = '<li class="info list group ui-state-default"><a id="#' + data.name +'"></a><section class="data"><section class="listwrapper" id="'+ data.id +'"><h2>' + data.name + '</h2><ul class="sortable ui-sortable"></ul></section></section><%= escape_javascript(render partial: "notes/note_note_form") %></li>';
+        $lists.append($listForm);
+				$form[0].reset();
       }
     })
+ 	 // $listForm[0].reset();
    $(this).addClass("invisible");
    $list_button.removeClass("invisible");
 
