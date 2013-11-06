@@ -93,6 +93,47 @@ body {
 	position: absolute;
 }*/
 
+.modal i {
+	padding-right: 5px;
+}
+
+.modal span {
+	margin-right: 10px;
+}
+
+.modal .content-main {
+	width: 420px;
+}
+
+.modal input[type=text] {
+	width: 400px;
+	margin-left: 0;
+	margin-right: 20px;
+}
+
+.modal textarea {
+	width: 415px;
+}
+
+.modal input[type=submit]{
+	margin-right: 0;
+}
+
+.modal .frame {
+	width: 420px;
+}
+
+.modal img {
+	width: 420px;
+	height: auto;
+	margin: 0;
+	padding: 0;
+}
+
+.modal h3 {
+	display: inline-block;
+}
+
 .list-sortable-placeholder {
 	margin: 10px;
 	border-radius: 8px;
@@ -214,14 +255,6 @@ header {
     font-family: 'Titillium Web', sans-serif;
 }
 
-#description {
-  width: 266px;
-  margin: 10px 0;
-}
-
-#description-button {
-  margin: 6px 0px;
-}
 
 header h2 {
   font-size: 16px;
@@ -349,6 +382,8 @@ section.page-view {
   margin: auto;
 	margin-top: 93px;
   padding: 0 30px;
+	
+	padding-top: 22px;
 }
 
 /*.content {
@@ -801,7 +836,7 @@ input[type=submit], .header-bar div {
 }
 
 input[type=text] {
-  border-radius: 6px;
+  border-radius: 9px;
   color: #ff0054;
   margin-left: 18px;
   width: 180px;
@@ -838,7 +873,7 @@ input[type=integer] {
 
 .ribbons {
   position: relative;
-  top: -18px;
+/*  top: -18px;*/
   margin: 0;
   border: 0;
   padding: 0;
@@ -969,7 +1004,7 @@ input[type=submit].flag5 {
   background-color: black;
   opacity: 0.6;
   position: fixed;
-  z-index: 0;
+  z-index: 1;
 }
 
 #note-view {

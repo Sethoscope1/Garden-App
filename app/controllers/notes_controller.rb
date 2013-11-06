@@ -6,7 +6,6 @@ class NotesController < ApplicationController
   end
 
   def create
-    flash[:errors] = "SUBMITTED"
     @note = Note.new(params[:note])
     @note.user_id = current_user.id
     @note.note_pos = @note.list.notes.length
@@ -26,7 +25,7 @@ class NotesController < ApplicationController
     if @note.update_attributes(params[:note])
       redirect_to garden_url(@note.list.garden)
     else
-      render json: @note
+      redirect_to garden_url(@note.list.garden)
     end
   end
 

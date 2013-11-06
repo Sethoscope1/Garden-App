@@ -4,9 +4,13 @@
     <section class="content-main left">
 
       <h1><%= @note.title %></h1>
+			
+      <h3 class="sub">In: <em><%= @note.list.garden.name %></em></h3>
+			
+		<%= render partial: "note_icons", locals: {note: @note} %>
 
-      <h2 class="sub">In: <em><%= @note.list.garden.name %></em></h2>
-
+		<section class="group">
+			
       <% if @note.text && @note.text != "" && current_user.id != @note.user_id %>
         <h2 class="note-text"><%= @note.text %></h2>
       <% end %>
@@ -21,19 +25,20 @@
 
           <input type="text" id="description" name="note[text]" value="<%= @note.text if @note %>" placeholder="Description">
 
-          <p class="right" id="description-button"><input type="submit" value="<%= @note.text ? "Update Description" : "Add Description" %>"</p>
+          <div class="group right"><p id="description-button"><input type="submit" value="<%= @note.text ? "Update Description" : "Add Description" %>"></p></div>
           <br>
         </form>
-
-              <hr>
-
       <% end %>
-
-      <%= render partial: "note_icons", locals: {note: @note} %>
+		</section>
+			              <hr>
 
         <% if @note.note_photo_file_name %>
 
-          <%= image_tag @note.note_photo.url(:big) %>
+        	<div class="frame"><%= image_tag @note.note_photo.url(:big) %></div>
+					
+				<% else %>
+				
+				<%= render partial: "photo_form" %>
 
         <% end %>
 
@@ -44,16 +49,19 @@
 
       <% @note.comments.each do |comment| %>
 
-        <h3><%= comment.user.name %></h3>
+        <div class="group">
+					<h3 class="left"><%= comment.user.name %></h3>
+					<h4 class="sub right"><%= time_ago_in_words(comment.created_at) %> ago</h4>
+				</div>
 
         <p class="link-text"><%= comment.text %></p>
 
         <ul>
-          <li><h4 class="sub"><%= time_ago_in_words(comment.created_at) %> ago</h4><li>
-
             <% if current_user.id == comment.user_id %>
-              <li><%= button_to "Delete", comment_url(comment), method: :delete %><li>
-              <li><%= button_to "Edit", edit_comment_url(comment), method: :get %><li>
+              <nav class="right group">
+								<li><%= button_to "Delete", comment_url(comment), method: :delete %><li>
+             		<li><%= button_to "Edit", edit_comment_url(comment), method: :get %><li>
+							<nav>
             <% end %>
         </ul>
 
@@ -62,7 +70,7 @@
       <% end %>
     </section>
 
-    <span class="content-sidebar left">
+    <span class="content-sidebar left bigger-right">
 
       <%= render partial: "note_options", locals: { note: @note } %>
 

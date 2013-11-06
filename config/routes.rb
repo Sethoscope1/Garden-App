@@ -31,6 +31,8 @@ GardenApp::Application.routes.draw do
 
   resources :comments, only: [:create, :destroy, :edit]
 
-  root to: "users#index"
+  root to: redirect("/session/new")
+  
+  match '/', to: "session#new"
 
 end

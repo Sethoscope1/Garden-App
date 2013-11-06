@@ -2,7 +2,7 @@
 
   <%= render partial: "garden_info", locals: {garden: @garden} %>
 
-  <ul class="lists list-sortable left">
+  <ul class="lists list-sortable left" id="list-container">
 
     <%= render partial: "lists/list", collection: @garden.lists.sort_by { |a| a.list_pos } %>
 
@@ -27,8 +27,7 @@
 $(document).ready(function(){
 
 
-	/// Header Bar Animations and Actions ////
-	
+	/////--- Header Bar Animations and Actions ---/////
 	
 	/// Logout
 	var $logout = $("#logout");
@@ -45,7 +44,6 @@ $(document).ready(function(){
 		    $(this).stop(true).animate({opacity: 1.0}, 200);
 	});
 	
-	
 	/// User
 	
 	
@@ -55,30 +53,23 @@ $(document).ready(function(){
 
 
 	
-  /////DISPLAYS NEW NOTE FORM/////
-	
+  /////--- DISPLAYS NEW NOTE FORM ---/////
 
-	
-	
-	
-	
+  var $note_button = $(".note-button");
+  var $note_form = $(".note-form");
+  $(".lists").on("click", "li .note-button", function(event){
+    event.preventDefault();
+    $(this).addClass("invisible");
 
-    var $note_button = $(".note-button");
-    var $note_form = $(".note-form");
-    $(".lists").on("click", "li .note-button", function(event){
-      event.preventDefault();
-      $(this).addClass("invisible");
+    var form = $(this).closest("div").find(".list-form");
+    form.removeClass("invisible");
+  });
 
-      var form = $(this).closest("div").find(".list-form");
-      form.removeClass("invisible");
-    });
 
-  /// NEW NOTE //
-
+  /////--- NEW NOTE CREATION ---/////
 
   $(".lists").on("click", "li form.note-form input[type=submit]", function(event){
     event.preventDefault();
-
 
     var $form = $(this).closest("form");
     var formData = $form.serialize();
@@ -112,15 +103,14 @@ $(document).ready(function(){
 		};
 		
     $form[0].reset();
-    $form.closest("div").find(".note-button").removeClass("invisible");
+    		$form.closest("div").find(".note-button").removeClass("invisible");
     $form.addClass("invisible");
-    // var $form = $(event.target).closest("form")
-    // var formData = $form.serialize();
+
+  });
 
 
-  })
-
-  ////center function////
+  /////--- CENTER FUNCTION ---/////
+	
   $.fn.center = function () {
       this.css("position","absolute");
       this.css("top", ( $(window).height() - this.height() ) / 2+$(window).scrollTop() + "px");
@@ -128,8 +118,9 @@ $(document).ready(function(){
       return this;
   }
 
-///DISPLAYS MODAL BOX/////
-  // var $card = $(".card");
+
+	/////--- DISPLAYS MODAL BOX ---/////
+
 
   $(".lists").on("click", " li .card", function(event){
     event.preventDefault();
@@ -154,14 +145,15 @@ $(document).ready(function(){
   });
 
 
-///// HIDES MODAL ON CLICK OUTSIDE /////
-$('#blur').click(function() {
-  $(this).addClass("invisible");
-  $(".modal").addClass("invisible");
-})
+	/////--- HIDES MODAL ON CLICK OUTSIDE ---/////
+
+	$('#blur').click(function() {
+	  $(this).addClass("invisible");
+	  $(".modal").addClass("invisible");
+	})
 
 
-/////DISPLAYS NEW LIST FORM/////
+	/////--- DISPLAYS NEW LIST FORM ---/////
 
   var $list_button = $("#list-button");
 
@@ -174,7 +166,6 @@ $('#blur').click(function() {
   $list_button.on("mouseout", function(){
     $(this).stop(true).animate({opacity: 0.6}, 200);
   });
-
 
   $list_button.on("click", function(event){
     $(this).addClass("invisible");
@@ -201,192 +192,96 @@ $('#blur').click(function() {
 				$form[0].reset();
       }
     })
-		
-		// var $newLists = 
-	// 	console.log($lists.find("li"))
-		
-		// var $newList = $(this).closest(".page-view").find(".lists").find(".list").last().find(".sortable");
-		// 
-		// $newList.sortable({connectWith: ".sortable"});
-		// console.log($newList)
-		// console.log(newList);
-		
-		
-		
-		
-		
-		
-		
-
-		// var $newList = $lists.last("li");
-		// $newList.sortable({ connectWith: ".sortable"});
-		// console.log($newList);
-		
-	 // var $list_sort = $($list.children(".sortable"));
- 	 // $listForm[0].reset();
-		
-		///////////////////////
-		
-		
-    // var $list = $(this).closest("li").find(".listwrapper");
-  //   var $list_sort = $($list.children(".sortable"));
-  // 
-  //   var list_id = $list.attr("id");
-  //   var title = $form.find(".title").val();
-  // 
-  //   var data = {
-  //     note: {
-  //       list_id: parseInt(list_id),
-  //       title: title,
-  //       user_id: $form.find(".user_id").val()
-  //     }
-  //   }
-  // 
-  // 		if (title != "") {
-  // 	    $.ajax({
-  // 	      url: "/notes",
-  // 	      type: "POST",
-  // 	      data: data,
-  // 	      dataType:"json",
-  // 	      success: function(data){
-  // 
-  // 	        var $newNote = ('<li class="info card ui-state-default" id="' + data.id + '"data-list_id="' + list_id + '" style="cursor: pointer;"><section class="data"><h3>' + title + '</h3><div class="front-icons"><div class="left icons group"></div></div></section></li>');
-  // 	        $list_sort.append($newNote).sortable({connectWith: ".sortable"});
-  // 	      },
-  // 	    });
-		
-		
-		
-		
-		
-		////////////////////////
-		
-		
-   $(this).addClass("invisible");
-   $list_button.removeClass("invisible");
-	 
-	 
-
-  })
-
-
-
-
-
-/////ENABLES LIST & NOTE DRAGGING/////
-
-  // var $list_container = $(".list-sortable");
-
-	
-  // var $list_container = $(".list-sortable");
-
-	var $listContainer = $(".page-view").children("ul");
-	
-	console.log($listContainer);
-	
-	
-  $( ".ui-state-default" ).mouseover().css( "cursor", "pointer" );
-
-  $(function() {
-    $( ".list-sortable").sortable({
-			placeholder: "list-sortable-placeholder",
-			start: function(e, ui) {
-				ui.placeholder.height(ui.item.height() - 2);
-				ui.placeholder.width(ui.item.width() - 2);
-			},
-      stop: function(e, ui) {
-        var $lists = $(ui.item.closest("ul").children("li"));
-
-        $lists.each( function(i, elem) {
-          var list_wrapper = $(this).find("section.listwrapper")
-          var list_id = $(list_wrapper).attr("id")
-
-          var data = {
-            list: {
-              list_pos: parseInt($(this).index())
-            }
-          }
-
-          $.ajax({
-            url: "/lists/" + list_id,
-            type: "PUT",
-            data: data,
-            dataType:"json",
-            success: function(data){
-            },
-          });
-        });
-      }
-    }).disableSelection();
-
-    $( ".sortable" ).sortable({
-      connectWith: ".sortable",
-			placeholder: "note-sortable-placeholder",
-			start: function(e, ui) {
-				ui.placeholder.height(ui.item.height() - 2);
-				ui.placeholder.width(ui.item.width() - 2);
-			},
-      stop: function(e, ui) {
-        // MOVED ELEMENT AND ITS NEW LIST
-        // var that = this;
-
-        var NoteId = ui.item.attr("id");
-        var NoteIndex = ui.item.index();
-        var NoteNewList = ui.item.closest("ul");
-        var NoteNewListId = ui.item.closest("ul").parent().attr("id");
-
-        var newListItems = $(NoteNewList.children("li"));
-
-        /////NEW STUFF/////
-
-        newListItems.each( function(i, elem) {
-          var note_id = $(this).attr("id");
-          var data = {
-            note: {
-              list_id: parseInt(NoteNewListId),
-              note_pos: parseInt($(this).index())
-            }
-          };
-
-          $.ajax({
-              url: "/notes/" + note_id,
-              type: "PUT",
-              data: data,
-              dataType:"json",
-              success: function(data){
-              },
-            });
-
-        });
-
-        /////OLD STUFF/////
-
-        // var oldListItems = $(that).children("li");
-        // var note_id = $(this).attr("id");
-
-        // oldListItems.each( function(i, elem) {
-        //   var data = {
-        //     note: {
-        //       list_id: parseInt($(that).attr("id")),
-        //       note_pos: parseInt($(this).index())
-        //     }
-        //   };
-        //   if ( note_id != null ) {
-        //     $.ajax({
-        //         url: "/notes/" + note_id,
-        //         type: "PUT",
-        //         data: data,
-        //         dataType:"json",
-        //         success: function(data){
-        //         },
-        //       });
-        //     }
-        // });
-      },
-    }).disableSelection();
-
+			
+  	$(this).addClass("invisible");
+   	$list_button.removeClass("invisible"); 
   });
+	
+	
+	/////--- ENABLES LIST & NOTE DRAGGING ---/////
+	
+	
+	var enableDragging = function(){
+		var $listContainer = $(".page-view").children("ul");
+	
+	  $( ".ui-state-default" ).mouseover().css( "cursor", "pointer" );
 
+	  $(function() {
+	    $( ".list-sortable").sortable({
+				placeholder: "list-sortable-placeholder",
+				start: function(e, ui) {
+					ui.placeholder.height(ui.item.height() - 2);
+					ui.placeholder.width(ui.item.width() - 2);
+				},
+	      stop: function(e, ui) {
+	        var $lists = $(ui.item.closest("ul").children("li"));
+
+	        $lists.each( function(i, elem) {
+	          var list_wrapper = $(this).find("section.listwrapper")
+	          var list_id = $(list_wrapper).attr("id")
+
+	          var data = {
+	            list: {
+	              list_pos: parseInt($(this).index())
+	            }
+	          }
+
+	          $.ajax({
+	            url: "/lists/" + list_id,
+	            type: "PUT",
+	            data: data,
+	            dataType:"json",
+	            success: function(data){
+	            },
+	          });
+	        });
+	      }
+	    }).disableSelection();
+
+	    $( ".sortable" ).sortable({
+	      connectWith: ".sortable",
+				placeholder: "note-sortable-placeholder",
+				start: function(e, ui) {
+					ui.placeholder.height(ui.item.height() - 2);
+					ui.placeholder.width(ui.item.width() - 2);
+				},
+	      stop: function(e, ui) {
+	        var NoteId = ui.item.attr("id");
+	        var NoteIndex = ui.item.index();
+	        var NoteNewList = ui.item.closest("ul");
+	        var NoteNewListId = ui.item.closest("ul").parent().attr("id");
+
+	        var newListItems = $(NoteNewList.children("li"));
+
+	        newListItems.each( function(i, elem) {
+	          var note_id = $(this).attr("id");
+	          var data = {
+	            note: {
+	              list_id: parseInt(NoteNewListId),
+	              note_pos: parseInt($(this).index())
+	            }
+	          };
+
+	          $.ajax({
+	              url: "/notes/" + note_id,
+	              type: "PUT",
+	              data: data,
+	              dataType:"json",
+	              success: function(data){
+	              },
+	            });
+
+	        });
+	      },
+	    }).disableSelection();
+	  });
+	}; ///// Dragging Function
+	enableDragging();
+	
+	
+	$("#list-container").on("change", function(){
+		enableDragging();
+	});
 });
 
 </script>
