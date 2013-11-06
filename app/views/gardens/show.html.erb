@@ -26,7 +26,42 @@
 
 $(document).ready(function(){
 
+
+	/// Header Bar Animations and Actions ////
+	
+	
+	/// Logout
+	var $logout = $("#logout");
+	
+	$logout.on("mouseover", function() {
+	    $(this).stop(true).animate({color: green}, 200);	
+	});
+	
+	$logout.on("mouseout", function() {
+	    $(this).stop(true).animate({opacity: 1.0}, 200);	
+	});
+	
+	$logout.on("click", function() {
+		    $(this).stop(true).animate({opacity: 1.0}, 200);
+	});
+	
+	
+	/// User
+	
+	
+	
+	/// Home
+	
+
+
+	
   /////DISPLAYS NEW NOTE FORM/////
+	
+
+	
+	
+	
+	
 
     var $note_button = $(".note-button");
     var $note_form = $(".note-form");
@@ -161,14 +196,76 @@ $('#blur').click(function() {
       data: formData,
       dataType: "json",
       success: function(data){
-        var $listForm = '<li class="info list group ui-state-default"><a id="#' + data.name +'"></a><section class="data"><section class="listwrapper" id="'+ data.id +'"><h2>' + data.name + '</h2><ul class="sortable ui-sortable"></ul></section></section><%= escape_javascript(render partial: "notes/note_note_form") %></li>';
+        var $listForm = '<li class="info list group ui-state-default" style="cursor: pointer"><a id="#' + data.name +'"></a><section class="data"><section class="listwrapper" id="'+ data.id +'"><h2>' + data.name + '</h2><ul class="sortable ui-sortable"></ul></section></section><%= escape_javascript(render partial: "notes/note_note_form") %></li>';
         $lists.append($listForm);
 				$form[0].reset();
       }
     })
+		
+		// var $newLists = 
+	// 	console.log($lists.find("li"))
+		
+		// var $newList = $(this).closest(".page-view").find(".lists").find(".list").last().find(".sortable");
+		// 
+		// $newList.sortable({connectWith: ".sortable"});
+		// console.log($newList)
+		// console.log(newList);
+		
+		
+		
+		
+		
+		
+		
+
+		// var $newList = $lists.last("li");
+		// $newList.sortable({ connectWith: ".sortable"});
+		// console.log($newList);
+		
+	 // var $list_sort = $($list.children(".sortable"));
  	 // $listForm[0].reset();
+		
+		///////////////////////
+		
+		
+    // var $list = $(this).closest("li").find(".listwrapper");
+  //   var $list_sort = $($list.children(".sortable"));
+  // 
+  //   var list_id = $list.attr("id");
+  //   var title = $form.find(".title").val();
+  // 
+  //   var data = {
+  //     note: {
+  //       list_id: parseInt(list_id),
+  //       title: title,
+  //       user_id: $form.find(".user_id").val()
+  //     }
+  //   }
+  // 
+  // 		if (title != "") {
+  // 	    $.ajax({
+  // 	      url: "/notes",
+  // 	      type: "POST",
+  // 	      data: data,
+  // 	      dataType:"json",
+  // 	      success: function(data){
+  // 
+  // 	        var $newNote = ('<li class="info card ui-state-default" id="' + data.id + '"data-list_id="' + list_id + '" style="cursor: pointer;"><section class="data"><h3>' + title + '</h3><div class="front-icons"><div class="left icons group"></div></div></section></li>');
+  // 	        $list_sort.append($newNote).sortable({connectWith: ".sortable"});
+  // 	      },
+  // 	    });
+		
+		
+		
+		
+		
+		////////////////////////
+		
+		
    $(this).addClass("invisible");
    $list_button.removeClass("invisible");
+	 
+	 
 
   })
 
@@ -180,6 +277,14 @@ $('#blur').click(function() {
 
   // var $list_container = $(".list-sortable");
 
+	
+  // var $list_container = $(".list-sortable");
+
+	var $listContainer = $(".page-view").children("ul");
+	
+	console.log($listContainer);
+	
+	
   $( ".ui-state-default" ).mouseover().css( "cursor", "pointer" );
 
   $(function() {
@@ -256,27 +361,27 @@ $('#blur').click(function() {
 
         /////OLD STUFF/////
 
-        var oldListItems = $(that).children("li");
-        var note_id = $(this).attr("id");
+        // var oldListItems = $(that).children("li");
+        // var note_id = $(this).attr("id");
 
-        oldListItems.each( function(i, elem) {
-          var data = {
-            note: {
-              list_id: parseInt($(that).attr("id")),
-              note_pos: parseInt($(this).index())
-            }
-          };
-          if ( note_id != null ) {
-            $.ajax({
-                url: "/notes/" + note_id,
-                type: "PUT",
-                data: data,
-                dataType:"json",
-                success: function(data){
-                },
-              });
-            }
-        });
+        // oldListItems.each( function(i, elem) {
+        //   var data = {
+        //     note: {
+        //       list_id: parseInt($(that).attr("id")),
+        //       note_pos: parseInt($(this).index())
+        //     }
+        //   };
+        //   if ( note_id != null ) {
+        //     $.ajax({
+        //         url: "/notes/" + note_id,
+        //         type: "PUT",
+        //         data: data,
+        //         dataType:"json",
+        //         success: function(data){
+        //         },
+        //       });
+        //     }
+        // });
       },
     }).disableSelection();
 

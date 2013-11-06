@@ -27,18 +27,18 @@ User.create(name: "Totoro")
 # List.create(name: "Halloween Party", user_id: 1, garden_id: 1)
 # List.create(name: "Winter Plants", user_id: 1, garden_id: 1)
 
-
-
-Crop.create(name: "Tomato", variant: "Pink Ponderosa", garden_id: 1, plant_date: "2013-5-07", list_id: 1)
-Crop.create(name: "Tomato", variant: "Pink Ponderosa", garden_id: 2, list_id: 2)
-Crop.create(name: "Tomato", variant: "Green Zebra", garden_id: 1, list_id: 4)
-Crop.create(name: "Tomato", variant: "Mortgage Lifter", garden_id: 1, list_id: 4)
-Crop.create(name: "Kale", variant: "Dinosaur", garden_id: 1, plant_date: "2013-3-15", harvest_date: "2013-5-30", list_id: 6)
-Crop.create(name: "Kale", variant: "Dinosaur", garden_id: 2, list_id: 2)
-Crop.create(name: "Beets", variant: "Yellow", garden_id: 1, list_id: 6)
-Crop.create(name: "Swiss Chard", variant: "My First Try", garden_id: 1, plant_date: "2013-2-28", harvest_date: "2013-4-30", list_id: 6)
-
-Note.create(user_id: 1, list_id: 1, title: "New Plants", text: "These look great - Hope they do well")
-Note.create(user_id: 1, list_id: 4, title: "Problems", text: "Leaves are yellowing. Overwatering?")
-Note.create(user_id: 1, list_id: 4, title: "It worked!", text: "Looking better. Need food.")
-Note.create(user_id: 1, list_id: 5, title: "Harvest Time!", text: "So delicious!")
+# 
+# 
+# Crop.create(name: "Tomato", variant: "Pink Ponderosa", garden_id: 1, plant_date: "2013-5-07", list_id: 1)
+# Crop.create(name: "Tomato", variant: "Pink Ponderosa", garden_id: 2, list_id: 2)
+# Crop.create(name: "Tomato", variant: "Green Zebra", garden_id: 1, list_id: 4)
+# Crop.create(name: "Tomato", variant: "Mortgage Lifter", garden_id: 1, list_id: 4)
+# Crop.create(name: "Kale", variant: "Dinosaur", garden_id: 1, plant_date: "2013-3-15", harvest_date: "2013-5-30", list_id: 6)
+# Crop.create(name: "Kale", variant: "Dinosaur", garden_id: 2, list_id: 2)
+# Crop.create(name: "Beets", variant: "Yellow", garden_id: 1, list_id: 6)
+# Crop.create(name: "Swiss Chard", variant: "My First Try", garden_id: 1, plant_date: "2013-2-28", harvest_date: "2013-4-30", list_id: 6)
+# 
+# Note.create(user_id: 1, list_id: 1, title: "New Plants", text: "These look great - Hope they do well")
+# Note.create(user_id: 1, list_id: 4, title: "Problems", text: "Leaves are yellowing. Overwatering?")
+# Note.create(user_id: 1, list_id: 4, title: "It worked!", text: "Looking better. Need food.")
+# Note.create(user_id: 1, list_id: 5, title: "Harvest Time!", text: "So delicious!")

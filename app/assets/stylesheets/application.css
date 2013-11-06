@@ -132,6 +132,11 @@ body {
   left: 10px;
 }
 
+#list-form input[type=text] {
+	margin-top: 25px;
+/*	should this be a little more*/
+}
+
 #list-button {
   position: absolute;
   opacity: .6;
@@ -161,7 +166,7 @@ body {
 .list-form input[type=text] {
   font-size: 18px;
   text-align: center;
-  margin: 20px 16px 10px 16px;
+  margin: 0px 16px 10px 16px;
   width: 228px;
 }
 
@@ -193,7 +198,7 @@ header {
   top: 0px;
 
   position: fixed;
-  z-index: 1000;
+  z-index: 2;
 }
 
 .top-bar {
@@ -274,7 +279,7 @@ header h2 {
 
 section.page-view {
   width: 5000px;
-  margin-top: 160px;
+/*  margin-top: 160px;*/
 }
 
 #lists {
@@ -307,8 +312,16 @@ section.page-view {
   width: 280px;
 }
 
+.listwrapper h2 {
+	border-bottom: 1px dotted gray;
+}
+
+.listwrapper ul {
+	margin-top: 5px;
+}
+
 .data {
-  padding: 15px 7px;
+  padding: 15px 7px 10px 7px;
 }
 
 .data h2 {
@@ -334,17 +347,17 @@ section.page-view {
 
 .main {
   margin: auto;
+	margin-top: 93px;
   padding: 0 30px;
 }
 
-.content {
+/*.content {
   padding: 30px 20px;
   width: 800px;
   margin: auto;
   margin-top: 160px;
-/*  border: 1px dashed #ff0054;*/
   border-radius: 20px;
-}
+}*/
 
 .content-main {
   width: 350px;
@@ -758,6 +771,13 @@ input[type=text-area] {
   border-radius: 6px;
 }
 
+.header-bar {
+	padding: 15px;
+}
+
+.header-bar ul {
+	float: right;
+}
 
 input[type=submit], .header-bar div {
   border: none;
@@ -826,6 +846,8 @@ input[type=integer] {
 }
 
 .ribbon {
+	position: relative;
+	z-index: 0;
   height: 20px;
   width: 0px;
   margin: 3px;
@@ -951,7 +973,7 @@ input[type=submit].flag5 {
 }
 
 #note-view {
-
+	position: relative;
   padding: 30px 20px;
   width: 740px;
   border: 3 px dashed #ff0054;
