@@ -8,9 +8,9 @@
 #
 ##
 User.create(name: "seth", password: "password")
-User.create(name: "james")
-User.create(name: "cat")
-User.create(name: "Totoro")
+User.create(name: "james", password: "password")
+User.create(name: "cat", password: "password")
+User.create(name: "Totoro", password: "password")
 
 # Garden.create(name: "My Garden", user_id: 1, location: "Park Slope")
 # Garden.create(name: "Community Garden", user_id: 1, location: "the Bronx")

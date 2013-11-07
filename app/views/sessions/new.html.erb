@@ -1,22 +1,32 @@
-<section class="content group login">
+<section class="content group login modal">
 
 	<span class="masthead group">
 		<div class="center"><h2>Welcome to Early Worm!</h2></div>
 	</span>
 	
-  <section class="content-main bigger-left">
+  <section class="content-main bigger-left left">
 
 		<h3>New to Early Worm?</h3>
+
+		
+
 		
     <form action="/users" method="post">
-
+		<% if flash[:errors] && flash[:errors].include?("Name has already been taken")%>
+			<div class="errors group"><h5>* Sorry, that name's already been taken.</h5></div>
+		<% end %>
     <label for="username">Name</label>
     <input type="text" name="user[name]" value= "" id="name"><br>
 
+		<% if flash[:errors] && flash[:errors].include?("Password is too short (minimum is 6 characters)")%>
+		<div class="errors group"><h5 class="left">* Passwords need to be at least six characters.</h5></div>
+		<% end %>
     <label for="password">Password</label>
     <input type="text" name="user[password]" id="password"><br>
 
-
+		<div class="errors group"><% if flash[:errors] && flash[:errors].include?("Email can't be blank")%>
+<h5 class="left">* You need to enter an email address.</h5></div>
+		<% end %>
     <label for="user_username">Email</label>
     <input
         type="text"
@@ -30,7 +40,7 @@
     <input type="integer" name="user[zip]" placeholder="optional" class="optional">
     <br>
 		
-		<h5>* Your location data lets us give you tips and connect you with other gardeners in your hood!</h5>
+		<h5>Your location data lets us give you tips about what to grow and connect you with other gardeners in your hood!</h5>
 		
 
 
@@ -42,11 +52,14 @@
 
   </section>
 	
-	<section class="content-main right">
+	<section class="content-main left">
 		
 		<h3>Already a Member?</h3>
 
     <form action="/session" method="post">
+			<div class="errors group"><% if flash[:errors] && flash[:errors].include?("Make sure you enter a correct Name and Password")%>
+	<h5 class="left">* Make sure you're entering the right info!</h5></div>
+			<% end %>
       <input
          name="authenticity_token"
          type="hidden"
@@ -72,3 +85,15 @@
   </section>
 
 </section>
+
+
+<script>
+$(".modal").dialog({
+  width: 830,
+  position: ["center", "top"]
+});
+
+$("#blur").removeClass("invisible");
+  
+
+</script>

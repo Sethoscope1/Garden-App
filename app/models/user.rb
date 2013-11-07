@@ -1,7 +1,9 @@
 class User < ActiveRecord::Base
   attr_accessible :name, :token, :password, :zip, :email
-  attr_reader :password
-  # validates :password, length: { minimum: 6 }
+  # attr_reader :password
+  validates :password, length: { minimum: 6 }
+  validates :name, uniqueness: true
+  validates :email, presence: true
   validates :name, presence: true
 
   has_many :gardens
@@ -16,8 +18,7 @@ class User < ActiveRecord::Base
 
   def self.find_by_credentials(name, password)
     user = User.find_by_name(name)
-    return nil if user.nil?
-
+    return nil if user.nil? || user.password != password
     user
   end
 
@@ -25,9 +26,9 @@ class User < ActiveRecord::Base
     SecureRandom::urlsafe_base64(16)
   end
 
-  def password=(password)
-    @password = password
-  end
+  # def password=(password)
+  #   @password = password
+  # end
 
   private
     def ensure_session_token

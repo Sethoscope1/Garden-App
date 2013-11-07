@@ -13,7 +13,7 @@ include ActionView::Helpers::DateHelper
     if user.nil?
       # flash[:errors] = user.errors.full_messages
       flash[:errors] = "Make sure you enter a correct Name and Password"
-      render :new
+      redirect_to new_session_url
     else
       self.current_user = user
       add_notifications(self.current_user)

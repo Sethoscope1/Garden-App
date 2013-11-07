@@ -134,6 +134,14 @@ body {
 	display: inline-block;
 }
 
+.login .content-main {
+	width: 350px;
+}
+.login .content-main input[type=text] {
+	width: 200px;
+}
+
+
 .list-sortable-placeholder {
 	margin: 10px;
 	border-radius: 8px;
@@ -470,7 +478,7 @@ div.center-button {
 }*/
 
 .masthead {
-	width: 100%;
+	width: 800px
 }
 .list {
   max-height: 800px;
@@ -666,7 +674,7 @@ ul {
 }
 
 .text-area {
-  border-radius: 8px;
+  border-radius: 6px;
 }
 
 ul:after {
@@ -836,7 +844,7 @@ input[type=submit], .header-bar div {
 }
 
 input[type=text] {
-  border-radius: 9px;
+  border-radius: 6px;
   color: #ff0054;
   margin-left: 18px;
   width: 180px;
@@ -1007,7 +1015,7 @@ input[type=submit].flag5 {
   z-index: 1;
 }
 
-#note-view {
+#note-view, .content{
 	position: relative;
   padding: 30px 20px;
   width: 740px;
@@ -1017,6 +1025,14 @@ input[type=submit].flag5 {
   z-index: 3;
 }
 
+.content {
+	width: 790px;
+}
+
+.errors {
+	display: block;
+	text-align: left;
+}
 
 
 .ui-dialog.ui-widget.ui-widget-content {

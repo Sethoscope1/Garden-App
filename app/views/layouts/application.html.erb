@@ -57,3 +57,50 @@
 
 </body>
 </html>
+
+
+<script>
+
+$(document).ready(function(){
+
+
+	/////--- Header Bar Animations and Actions ---/////
+	
+	/// Logout ///
+	var $logout = $("#logout");
+	
+	$logout.on("click", function(event){
+		console.log("click logout");
+		
+		$.ajax({
+			url: "/session/",
+			type: "DELETE",
+			success: function(data){
+				// console.log("session killed")
+			}
+		})
+	})
+	
+
+	
+
+	
+	/// User
+	
+	var $user = $("#user");
+	
+	$user.on("click", function(event){
+		console.log("user");
+	});
+	
+	/// Home
+	
+	var $home = $("#home");
+	
+	$home.on("click", function(event){
+		console.log("home");
+	});
+
+});
+
+</script>
