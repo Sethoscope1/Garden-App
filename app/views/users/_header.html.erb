@@ -7,15 +7,15 @@
 		</li>
 	
 		<li>
-				<div class="group"><a href="<%= user_url(current_user)%>" class="left"><i class="icon-home"></i>Home</a></div>
+				<div class="group" id="home"><a href="<%= user_url(current_user)%>" class="left"><i class="icon-home"></i>Home</a></div>
 		</li>
 	
 		<li>
-				<div class="group"><a href="<%= user_url(current_user)%>" class="left"><i class="icon-male"></i><%= current_user.name%></a></div>
+				<div class="group" id="user"><a href="<%= user_url(current_user)%>" class="left"><i class="icon-male"></i><%= current_user.name%></a></div>
 		</li>
 	
 		<li>
-				<div class="group"><a href="#" class="left" id="logout"></i>Logout</a></div>
+				<div class="group" id="logout"><a href="#" class="left"></i>Logout</a></div>
 		</li>
 	</ul>
 

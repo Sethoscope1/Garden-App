@@ -32,25 +32,37 @@ $(document).ready(function(){
 	/// Logout
 	var $logout = $("#logout");
 	
-	$logout.on("mouseover", function() {
-	    $(this).stop(true).animate({color: green}, 200);	
-	});
+	$logout.on("click", function(event){
+		console.log("click");
+		
+		$.ajax({
+			url: "/session/",
+			type: "DELETE",
+			success: function(data){
+				// console.log("session killed")
+			}
+		})
+	})
 	
-	$logout.on("mouseout", function() {
-	    $(this).stop(true).animate({opacity: 1.0}, 200);	
-	});
+
 	
-	$logout.on("click", function() {
-		    $(this).stop(true).animate({opacity: 1.0}, 200);
-	});
+
 	
 	/// User
 	
+	var $user = $("#user");
 	
+	$user.on("click", function(event){
+		console.log("user");
+	});
 	
 	/// Home
 	
-
+	var $home = $("#home");
+	
+	$home.on("click", function(event){
+		console.log("home");
+	});
 
 	
   /////--- DISPLAYS NEW NOTE FORM ---/////

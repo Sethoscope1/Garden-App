@@ -382,8 +382,8 @@ section.page-view {
   margin: auto;
 	margin-top: 93px;
   padding: 0 30px;
+	padding-top: 20px;
 	
-	padding-top: 22px;
 }
 
 /*.content {
@@ -873,7 +873,7 @@ input[type=integer] {
 
 .ribbons {
   position: relative;
-/*  top: -18px;*/
+  top: -18px;
   margin: 0;
   border: 0;
   padding: 0;
