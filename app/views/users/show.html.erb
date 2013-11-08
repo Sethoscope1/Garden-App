@@ -6,13 +6,22 @@
 	  <section class="content-main left bigger-left">
 
 	    <h2>My Gardens</h2>
-			<% if current_user.gardens.length > 0 %>
+			<% if current_user.gardens.length > 0 || current_user.garden_memberships.length > 0 %>
 		    <ul>
 		      <% current_user.gardens.each do |garden| %>
 
 		        <div class="group">
 							<li class="link-text link-button"><%= link_to garden.name, garden_url(garden), method: :get %></li>
 							<li class="group"><h4 class="sub"><%= garden.location %></h4></li>
+						</div>
+
+		      <% end %>
+					
+		      <% current_user.garden_memberships.each do |membership| %>
+
+		        <div class="group">
+							<li class="link-text link-button"><%= link_to Garden.find(membership.garden).name, garden_url(membership.garden), method: :get %></li>
+							<li class="group"><h4 class="sub"><%= Garden.find(membership.garden).location %></h4></li>
 						</div>
 
 		      <% end %>

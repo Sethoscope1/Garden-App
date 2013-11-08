@@ -8,13 +8,15 @@
       <div><h3 class="sub">In: <em><%= @note.list.garden.name %></em></h3></div>
 
 		<div class="left icons group">
-			<%= render partial: "note_icons", locals: {note: @note} %>
+			<div><%= render partial: "note_icons", locals: {note: @note} %></div>
 		</div>
+		
+		<br>
 		
 		<section class="group">
 			
       <% if @note.text && @note.text != "" && current_user.id != @note.user_id %>
-        <h2 class="note-text"><%= @note.text %></h2>
+        <div><h4 class="note-text"><%= @note.text %></h4></div>
       <% end %>
 
       <% if current_user.id == @note.user_id %>

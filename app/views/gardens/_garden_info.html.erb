@@ -9,11 +9,67 @@
       <br>
 
       <ul class="garden-list">
+				
+				<h2 id="members">Members</h2>
+          <li><a href="#"><p class="sub"><%= current_user.name %></p></a></li><br>
+				
+				<% if garden.garden_memberships.length > 0 %>
+					
 
-        <% garden.lists.each do |list| %>
-          <li><a href="#<%= list.name %>"><h3><%= list.name %></h3></a></li><br>
+				
+				
+		
+				<% end %>
+
+        <% garden.garden_memberships.each do |member| %>
+          <li><a href="#<%= User.find(member.user_id).name %>"><p class="sub"><%= User.find(member.user_id).name %></p></a></li><br>
         <% end %>
       </ul>
+			
+			<ul>
+				<form action="<%= garden_memberships_url %>" method="POST" class="group">
+
+				  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+				  <input type="hidden" name="_method" value="POST">
+					<input type="hidden" name="garden_membership[garden_id]" value="<%= params[:id] %>">
+				  <select name="garden_membership[user_id]">
+				    <% User.all.each do |user| %>
+				      <% next if user.id == current_user.id %>
+				      <option value="<%= user.id %>"><%= user.name %></option>
+				    <% end %>
+				  </select>
+
+				  <input type="submit" value="Add Member!" id="add_member" class="right">
+				</form>
+			</ul>
+			
+	    <!-- <form action="/gardens" method="POST">
+
+	      <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+
+	      <label>Name
+	        <input type="text" name="garden[name]">
+	      </label>
+
+	      <br>
+
+	      <label>Location
+	        <input type="text" name="garden[location]">
+	      </label>
+
+	      <br>
+
+	      <label class="optional">Zip Code
+	        <input type="integer" name="garden[zip]" value="<%= current_user.zip if current_user.zip %>" class="optional">
+	      </label>
+
+	      <br>
+
+	      <p><input type="submit" value="Add a Member"></p>
+	    </form> -->
+				
+
+			
     </section>
   </section>
 </section>

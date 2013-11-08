@@ -7,7 +7,7 @@
     <h2 class="sub">In: <em><%= @note.list.garden.name %></em></h2>
 
     <% if @note.text && @note.text != "" && current_user.id != @note.user_id %>
-      <h2 class="note-text"><%= @note.text %></h2>
+      <div><h4 class="note-text"><%= @note.text %></h4></div><br>
     <% end %>
 
     <% if current_user.id == @note.user_id %>

@@ -44,6 +44,8 @@ end
 # To use debugger
 # gem 'debugger'
 
+gem 'seed_dump'
+
 gem 'paperclip'
 
 gem 'aws-sdk'

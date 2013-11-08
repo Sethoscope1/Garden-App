@@ -15,6 +15,11 @@ class User < ActiveRecord::Base
   has_many :lists
 
   after_initialize :ensure_session_token
+  
+  def get_users_in_radius(zip, distance)
+    local_zips = get_zips_in_radius(zip, distance)
+    User.where("zip = ?", current_user.zip).to_a
+  end
 
   def self.find_by_credentials(name, password)
     user = User.find_by_name(name)

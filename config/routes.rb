@@ -16,6 +16,8 @@ GardenApp::Application.routes.draw do
   end
 
   resources :notifications
+  
+  resources :garden_memberships
 
   resources :crops, only: [:create, :update, :show, :new] do
     resources :notes, only: [:index]

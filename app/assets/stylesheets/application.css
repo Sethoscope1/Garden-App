@@ -398,6 +398,11 @@ section.page-view {
   padding: 10px;
 }
 
+#members {
+	padding: none;
+}
+
+
 .view-buttons {
   display: block;
 }
@@ -521,9 +526,9 @@ div.center-button {
 	width: 800px
 }
 .list {
-  max-height: 800px;
-/*  overflow-x: hidden;*/
-/*  overflow-y: auto;*/
+/*  max-height: 800px;*/
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
 .data h3 {
@@ -846,6 +851,7 @@ p {
   color: #bdc3c7
 }
 
+
 .sub {
   color: #acb1b6;
   font-size: 12px%;
@@ -914,6 +920,12 @@ input[type=text-area] {
 	margin-right: 0;
 	margin-top: 40px;
 	margin-left: 10px;
+}
+
+.garden form {
+	border-top: 1px dotted #ff0054;
+	padding-top: 10px;
+	margin-top: 10px;
 }
 
 input[type=submit], .header-bar div, #garden-button, .pink-button {
