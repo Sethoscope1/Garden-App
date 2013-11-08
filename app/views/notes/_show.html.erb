@@ -33,7 +33,7 @@
       <% end %>
 		</section>
 		<hr>
-		<div class=group>
+		<div class="group photo-group`">
 			<h2>PHOTO</h2>
         <% if @note.note_photo_file_name %>
 
@@ -64,8 +64,8 @@
 	        <ul>
 	            <% if current_user.id == comment.user_id %>
 	              <nav class="right group">
-									<li><%= button_to "Delete", comment_url(comment), method: :delete %><li>
-	             		<li><%= button_to "Edit", edit_comment_url(comment), method: :get %><li>
+<li><a href="#" class="pink-button" id="edit-comment">Edit</a></li>
+<li><a href="#" class="pink-button" id="delete-comment">Delete</a></li>
 								<nav>
 	            <% end %>
 	        </ul>

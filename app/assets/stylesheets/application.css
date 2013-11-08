@@ -780,6 +780,10 @@ img {
 	padding-top: 30px;
 }
 
+.loose-cards li {
+	margin: 9px;
+}
+
 .loose-cards h2 {
 	border-top: 1px dotted #ff0054;
 	padding-top: 20px;	  
@@ -853,8 +857,15 @@ p {
 
 }
 
+.icon-calendar {
+	float: left;
+}
 .front-icons {
   width: 100%;
+}
+
+.due-date input[type=date]{
+	margin-left: 0;
 }
 form {
 /*  padding-right: 3px;*/
@@ -898,7 +909,14 @@ input[type=text-area] {
 	float: right;
 }
 
-input[type=submit], .header-bar div, #garden-button {
+#edit-comment, #delete-comment {
+	color: white;
+	margin-right: 0;
+	margin-top: 40px;
+	margin-left: 10px;
+}
+
+input[type=submit], .header-bar div, #garden-button, .pink-button {
   border: none;
 	font-size: 12px;
   background-color: #ff0054;
@@ -908,6 +926,11 @@ input[type=submit], .header-bar div, #garden-button {
   border-radius: 6px;
   box-shadow: none;
   margin: 5px;
+}
+
+.header-bar input[type=submit], header div {
+	padding: 0;
+	margin: 0;
 }
 
 #logout {
@@ -1009,7 +1032,7 @@ input[type=submit].unflag-button + i {
   position: absolute;
   display: block;
   color: gray;
-  top: 10px;
+  top: 11px;
   left: 86px;
 }
 

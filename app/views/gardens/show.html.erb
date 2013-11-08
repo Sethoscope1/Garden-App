@@ -68,7 +68,7 @@ $(document).ready(function(){
 	      dataType:"json",
 	      success: function(data){
 
-	        var $newNote = ('<li class="info card ui-state-default" id="' + data.id + '"data-list_id="' + list_id + '" style="cursor: pointer;"><section class="data"><h3>' + title + '</h3><div class="front-icons"><div class="left icons group"></div></div></section></li>');
+	        var $newNote = ('<li class="info card ui-state-default" id="' + data.id + '"data-list_id="' + list_id + '" style="cursor: pointer;"><section class="data"><div class="ribbons group right"></div><h3>' + title + '</h3><div class="front-icons"><div class="left icons group"></div></div></section></li>');
 	        $list_sort.append($newNote).sortable({connectWith: ".sortable"});
 	      },
 	    });
@@ -194,8 +194,6 @@ $(document).ready(function(){
 		var form = $(this).closest("form");
 		var formData = form.serialize();
 		var comments = $(this).closest(".content-main").find("#comments-wrapper");
-		// var comments = form.find("#comments-wrapper")
-		console.log(comments)
 		var id = $(this).closest(".content-main").attr("id").slice(1);
 		$.ajax({
 			url: "/comments/",
@@ -204,11 +202,79 @@ $(document).ready(function(){
 			dataType: "json",
 			success: function(data){
 				form[0].reset();
-				comments.prepend("cheese")
+				console.log(data.text)
+				// var createdAt =
+				// console.log(createdAt)
+				comments.prepend("<div class='group'><h3 class='left'><%= current_user.name %></h3><h4 class='sub right'></h4></div><p class='link-text'>" + data.text + "</p><ul><nav class='right group'><li></li></nav></ul>")
 			}
 			
 		});
 	});
+	
+	$(".modal").on("click", "#due-date", function(event){
+		event.preventDefault();
+		var form = $(this).closest("form");
+		var formData = form.serialize();
+		var id = $("#note-view").find(".content-main").attr("id").slice(1);
+		console.log(id)
+		$.ajax({
+			url: "/notes/" + id,
+			type: "PUT",
+			data: formData,
+			dataType: "json",
+			success: function(data){
+				form[0].addClass("persisted")
+				// add update here
+			}
+			
+		});
+	});
+	
+	$(".modal").on("click", "#due-done", function(event){
+		event.preventDefault();
+		var form = $(this).closest(".form")
+		var formData = {
+        note: {
+          due_date: "nil"
+        }
+      }
+		var id = $("#note-view").find(".content-main").attr("id").slice(1);
+		console.log(id)
+		$.ajax({
+			url: "/notes/" + id,
+			type: "PUT",
+			data: formData,
+			dataType: "json",
+			success: function(data){
+				// add update here
+			}
+			
+		});
+	});
+
+	
+// 	$(".modal").on("click", "#photo-submit", function(event){
+// 		event.preventDefault();
+// 		var form = $(this).closest("form");
+// 		console.log(form)
+// 		var formData = form.serialize();
+// 		console.log(formData)
+// 		var id = $(this).closest(".content-main").attr("id").slice(1);
+// 		// console.log(id)
+// // 		console.log(formData)
+// 		$.ajax({
+// 			url: "/notes/" + id,
+// 			type: "PUT",
+// 			data: formData,
+// 			dataType: "json",
+// 			success: function(data){
+// 				console.log(data)
+// 				// form[0].reset();
+// 		// 		comments.prepend("cheese")
+// 			}
+// 			
+// 		});
+// 	});
 	
 	
 	

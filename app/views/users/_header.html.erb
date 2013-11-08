@@ -6,17 +6,18 @@
 				<%= render partial: "users/notifications" %>
 		</li>
 	
-		<li>
+		<!-- <li>
 				<div class="group" id="home"><a href="<%= user_url(current_user)%>" class="left"><i class="icon-home"></i>Home</a></div>
-		</li>
+		</li> -->
 	
 		<li>
 				<div class="group" id="user"><a href="<%= user_url(current_user)%>" class="left"><i class="icon-male"></i><%= current_user.name%></a></div>
 		</li>
 	
-		<li>
+	<li><%= button_to "Logout", session_url, method: :delete %></li>
+		<!-- <li>
 				<div class="group" id="logout"><a href="#" class="left"></i>Logout</a></div>
-		</li>
+		</li> -->
 	</ul>
 
 </div>

@@ -11,6 +11,7 @@ module SessionHelper
 
   def end_session!
     session[:token] = nil
+    redirect_to new_session_url
   end
 
   def require_current_user!

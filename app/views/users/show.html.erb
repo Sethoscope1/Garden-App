@@ -39,7 +39,7 @@
 		
 			<% if current_user.notifications.length > 0 %>
 				<% current_user.notifications.each do |notification| %>
-	      <div class="comment-text link-text notification">
+	      <div class="comment-text link-text notification" id="<%= notification.note_id%>">
 	        <p><a href="<%= note_url(notification.note) %>"><%= notification.text %></a><i class="icon-remove-sign right"></i></p>
 	      </div>
 				<% end %>
@@ -55,7 +55,7 @@
 
 		<% if current_user.notes.length > 0 %>
 	    
-			<ul>		
+			<ul id="cards-holder">		
 	      <% current_user.notes.sort_by { |a| a.updated_at }.each do |note| %>
 		      <li class="info card ui-state-default" id="<%= note.id %>" data-list_id="<%= note.list_id %>">
 		        <%= render partial: "/notes/note_info", locals: { note: note } %>
@@ -75,6 +75,12 @@
 	<%= render partial: "gardens/form" %>
 </section>
 
+<div class="modal">
+
+  <!-- stuff renders here -->
+
+</div>
+
 
 <script>
 
@@ -84,6 +90,79 @@ $(document).ready(function(){
 	$("#garden-button").on("click", function(){
 		$("#garden-form").removeClass("invisible");
 		$(this).addClass("invisible");
+		
+	})
+	
+	// $(".notification").on("click", function(){
+	// 	console.log("notification");
+	// })
+	
+	$(".notification").on("click", ".icon-remove-sign", function(){
+		var data = {
+      note: {
+        due_date: "nil"
+      }
+    };
+		
+		var id = $(this).closest(".notification").attr("id");
+
+		$(this).closest(".notification").remove();
+		$.ajax({
+			url: "/notes/" + id,
+			type: "PUT",
+			data: data,
+			dataType: "json",
+			success: function(data){
+				// add update here
+			}
+		});
+	})
+	
+	/////////////////////////////////
+
+
+	/////--- CENTER FUNCTION ---/////
+
+	$.fn.center = function () {
+	    this.css("position","absolute");
+	    this.css("top", ( $(window).height() - this.height() ) / 2+$(window).scrollTop() + "px");
+	    this.css("left", ( $(window).width() - this.width() ) / 2+$(window).scrollLeft() + "px");
+	    return this;
+	}
+
+
+	/////--- DISPLAYS MODAL BOX ---/////
+
+
+	$("#cards-holder").on("click", "li", function(event){
+	  event.preventDefault();
+		console.log("click")
+
+	  var id = $(this).attr("id");
+
+	  $.ajax({
+	    url: "/notes/" + id,
+	    type: "GET",
+	    success: function(data){
+	    },
+	  });
+	  $(".modal").removeClass("invisible");
+
+	  $(".modal").dialog({
+	    width: 780,
+	    position: ["center", "top"]
+	  });
+
+	  $("#blur").removeClass("invisible");
+
+	});
+
+
+	/////--- HIDES MODAL ON CLICK OUTSIDE ---/////
+
+	$('#blur').click(function() {
+	  $(this).addClass("invisible");
+	  $(".modal").addClass("invisible");
 	})
 });
 

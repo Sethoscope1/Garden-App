@@ -106,23 +106,20 @@ $(document).ready(function(){
       var $form = $(this);
       var $input = $form.children("p").children();
       var this_flag = $input[0].className.split(" ")[0];
-      console.log($input[0].className.split(" ")[0]);
       var flag = ($input[0].className.split(" ")[0]);
 			
+			var lists= $(".listwrapper")
+			var card = lists.find("#<%=params[:id]%>")
+			// var $card = $(".listwrapper").find("#<%=params[:id] %>")
 			if(data[this_flag]){
         $input.addClass("unflag-button");
-				var card = $("#<%=params[:id] %>");
 				var ribbons = card.find(".ribbons");
 				ribbons.append("<div class='ribbon " + flag +"'></div>");
-				console.log(ribbons);
 				// $("#<%= params[:id] %>").children(".ribbons").append("<div class='ribbon '" + flag +"></div>")
-				console.log("<%= params[:id] %>");
       }
       else {
         $input.removeClass("unflag-button");
 				console.log("foo");
-				var card = $("#<%=params[:id] %>");
-				console.log(card);
 				var ribbon = card.find("." + flag);
 				ribbon.remove();
 				
