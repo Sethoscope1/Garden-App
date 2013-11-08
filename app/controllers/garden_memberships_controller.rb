@@ -7,9 +7,9 @@ class GardenMembershipsController < ApplicationController
   def create
     @garden_membership = GardenMembership.new(params[:garden_membership])
     if @garden_membership.save
-      render json: "wow"
+      redirect_to garden_url(@garden_membership.garden_id)
     else
-      flash[:errors] = "Couldn't become a member"
+      redirect_to garden_url(@garden_membership.garden_id)
     end
   end
 

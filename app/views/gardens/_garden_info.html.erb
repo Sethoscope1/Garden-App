@@ -35,6 +35,8 @@
 				  <select name="garden_membership[user_id]">
 				    <% User.all.each do |user| %>
 				      <% next if user.id == current_user.id %>
+							<!-- <%= garden.gardeners%> -->
+							<% next if garden.gardeners.include?(user)%>
 				      <option value="<%= user.id %>"><%= user.name %></option>
 				    <% end %>
 				  </select>
@@ -42,34 +44,6 @@
 				  <input type="submit" value="Add Member!" id="add_member" class="right">
 				</form>
 			</ul>
-			
-	    <!-- <form action="/gardens" method="POST">
-
-	      <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-
-	      <label>Name
-	        <input type="text" name="garden[name]">
-	      </label>
-
-	      <br>
-
-	      <label>Location
-	        <input type="text" name="garden[location]">
-	      </label>
-
-	      <br>
-
-	      <label class="optional">Zip Code
-	        <input type="integer" name="garden[zip]" value="<%= current_user.zip if current_user.zip %>" class="optional">
-	      </label>
-
-	      <br>
-
-	      <p><input type="submit" value="Add a Member"></p>
-	    </form> -->
-				
-
-			
     </section>
   </section>
 </section>
