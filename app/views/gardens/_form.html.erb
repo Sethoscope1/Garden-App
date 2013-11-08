@@ -1,14 +1,16 @@
 <form action="/gardens" method="POST">
 
   <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+	
+	<div class="group">
+  <label class="sub">Name</label>
+    <input type="text" name="garden[name]" class="right">
+	</div>
 
-  <label>Name
-    <input type="text" name="garden[name]">
-  </label>
+	<div class="group">
+  <label class="sub">Location</label>
+    <input type="text" name="garden[location]" class="right">
+	</div>
 
-  <label>Location
-    <input type="text" name="garden[location]">
-  </label>
-
-  <p><input type="submit" value="Start a New Garden"></p>
+  <p><input type="submit" value="Start a New Garden" class="right"></p>
 </form>

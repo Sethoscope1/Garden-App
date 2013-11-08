@@ -23,9 +23,9 @@ class NotesController < ApplicationController
   def update
     @note = Note.find(params[:id])
     if @note.update_attributes(params[:note])
-      redirect_to garden_url(@note.list.garden)
+      render json: @note
     else
-      redirect_to garden_url(@note.list.garden)
+      render json: @note
     end
   end
 

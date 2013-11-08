@@ -1,14 +1,16 @@
 
   <section class="group" id="note-view">
 
-    <section class="content-main left">
+    <section class="content-main left" id="A<%= @note.id %>">
 
       <h1><%= @note.title %></h1>
 			
-      <h3 class="sub">In: <em><%= @note.list.garden.name %></em></h3>
-			
-		<%= render partial: "note_icons", locals: {note: @note} %>
+      <div><h3 class="sub">In: <em><%= @note.list.garden.name %></em></h3></div>
 
+		<div class="left icons group">
+			<%= render partial: "note_icons", locals: {note: @note} %>
+		</div>
+		
 		<section class="group">
 			
       <% if @note.text && @note.text != "" && current_user.id != @note.user_id %>
@@ -30,8 +32,9 @@
         </form>
       <% end %>
 		</section>
-			              <hr>
-
+		<hr>
+		<div class=group>
+			<h2>PHOTO</h2>
         <% if @note.note_photo_file_name %>
 
         	<div class="frame"><%= image_tag @note.note_photo.url(:big) %></div>
@@ -41,33 +44,36 @@
 				<%= render partial: "photo_form" %>
 
         <% end %>
+			</div>
+		<hr>
 
           <!-- <%= button_to "Return to Garden!", garden_url(@note.list.garden_id), method: :get %> -->
 
 
       <%= render "/comments/form", note: @note %>
+			<section id="comments-wrapper">
+	      <% @note.comments.each do |comment| %>
 
-      <% @note.comments.each do |comment| %>
+	        <div class="group">
+						<h3 class="left"><%= comment.user.name %></h3>
+						<h4 class="sub right"><%= time_ago_in_words(comment.created_at) %> ago</h4>
+					</div>
 
-        <div class="group">
-					<h3 class="left"><%= comment.user.name %></h3>
-					<h4 class="sub right"><%= time_ago_in_words(comment.created_at) %> ago</h4>
-				</div>
+	        <p class="link-text"><%= comment.text %></p>
 
-        <p class="link-text"><%= comment.text %></p>
+	        <ul>
+	            <% if current_user.id == comment.user_id %>
+	              <nav class="right group">
+									<li><%= button_to "Delete", comment_url(comment), method: :delete %><li>
+	             		<li><%= button_to "Edit", edit_comment_url(comment), method: :get %><li>
+								<nav>
+	            <% end %>
+	        </ul>
 
-        <ul>
-            <% if current_user.id == comment.user_id %>
-              <nav class="right group">
-								<li><%= button_to "Delete", comment_url(comment), method: :delete %><li>
-             		<li><%= button_to "Edit", edit_comment_url(comment), method: :get %><li>
-							<nav>
-            <% end %>
-        </ul>
+	        <br>
 
-        <br>
-
-      <% end %>
+	      <% end %>
+			</section>
     </section>
 
     <span class="content-sidebar left bigger-right">

@@ -20,9 +20,9 @@
       <%= flash[:errors] if flash[:errors] %>
 
       <nav class="top-bar group">
-				
-		    <h1 id="logo" class="left">EARLY WORM</h2>
-
+			<div id="logo-frame"><img src="/images/logo2.png" width="759" height="390" alt="Logo2" id="logo">
+				<!-- <h5 class="left">Early Worm</h5></div> -->
+		    <!-- <h1 id="logo" class="left">EARLY WORM</h1> -->
         <nav class="login-buttons group">
 
         	<% if !current_user.nil? %>
@@ -54,7 +54,9 @@
     	<%= yield %>
 
   </section>
-
+	<footer id="footer">
+		<h3 class="sub">Made with love || Seth H || sethleland@gmail.com</h3>
+	</footer>
 </body>
 </html>
 
@@ -62,7 +64,6 @@
 <script>
 
 $(document).ready(function(){
-
 
 	/////--- Header Bar Animations and Actions ---/////
 	

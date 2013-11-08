@@ -1,33 +1,50 @@
 
-<section class="content user group">
+<section class="content user group" id="user-show">
 
-	<section class="group modal">
+	<section class="group">
 
 	  <section class="content-main left bigger-left">
 
 	    <h2>My Gardens</h2>
+			<% if current_user.gardens.length > 0 %>
+		    <ul>
+		      <% current_user.gardens.each do |garden| %>
 
-	    <ul>
-	      <% current_user.gardens.each do |garden| %>
+		        <div class="group">
+							<li class="link-text link-button"><%= link_to garden.name, garden_url(garden), method: :get %></li>
+							<li class="group"><h4 class="sub"><%= garden.location %></h4></li>
+						</div>
 
-	        <div class="group"><li class="link-text link-button"><%= link_to garden.name, garden_url(garden), method: :get %></li></div>
-
-	      <% end %>
-	    </ul>
+		      <% end %>
+		    </ul>
+				
+			<% else%>
+				<h3 class="sub">All of your different garden projects will live here. Click <em>Plant a New Garden!</em>  below to start your first project!</h3>
+			<% end %>
+			
+			<section class="group" id="new-garden-set">
+				<section class="invisible" id="garden-form">
+					<%= render partial: "gardens/form" %>
+				</section>
 		
-			<div class="center-button">
-			    <%= button_to "Plant a New Garden!", new_garden_url, method: :get %>
-			</div>
+				<div class="center-button">
+				    <div class="group"><a href="#" id="garden-button">Plant a New Garden</a>
+				</div>
+			</section>
+			
 		</section>
 		
 		<section class="content-main right">
 			<h2>Notifications</h2>
-			<% current_user.notifications.each do |notification| %>
-      <div class="comment-text link-text notification">
-        <p><a href="<%= note_url(notification.note) %>"><%= notification.text %></a><i class="icon-remove-sign right"></i></p>
-				
-				            
-      </div>
+		
+			<% if current_user.notifications.length > 0 %>
+				<% current_user.notifications.each do |notification| %>
+	      <div class="comment-text link-text notification">
+	        <p><a href="<%= note_url(notification.note) %>"><%= notification.text %></a><i class="icon-remove-sign right"></i></p>
+	      </div>
+				<% end %>
+			<% else %>
+				<h3 class="sub">You'll be able to see all of your reminders, notifications, and messages here. Right now, you are all caught up!</h3>
 			<% end %>
 			
 		</section>
@@ -36,24 +53,40 @@
 	<section class="loose-cards group">
     <h2>My Cards</h2>
 
-    <ul>
+		<% if current_user.notes.length > 0 %>
+	    
+			<ul>		
+	      <% current_user.notes.sort_by { |a| a.updated_at }.each do |note| %>
+		      <li class="info card ui-state-default" id="<%= note.id %>" data-list_id="<%= note.list_id %>">
+		        <%= render partial: "/notes/note_info", locals: { note: note } %>
+		      </li>
+	      <% end %>
+	    </ul>
 			
-      <% current_user.notes.sort_by { |a| a.updated_at }.each do |note| %>
-
-	      <li class="info card ui-state-default" id="<%= note.id %>" data-list_id="<%= note.list_id %>">
-
-	        <%= render partial: "/notes/note_info", locals: { note: note } %>
-
-	      </li>
-
-      <% end %>
-    </ul>
+		<% else %>
+			<h3 class="sub">As your garden grows all of your notes, pictures, and schedules will be displayed below</h3>
+		<% end %>
 	
   </section>
-
-
 </section>
 
 
+<section class="invisible" id="garden-form">
+	<%= render partial: "gardens/form" %>
+</section>
 
+
+<script>
+
+$(document).ready(function(){
+
+	
+	$("#garden-button").on("click", function(){
+		$("#garden-form").removeClass("invisible");
+		$(this).addClass("invisible");
+	})
+});
+
+
+</script>
 

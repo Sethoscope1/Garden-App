@@ -10,7 +10,7 @@ class GardensController < ApplicationController
     @garden.user_id = current_user.id
 
     if @garden.save
-      redirect_to user_url(current_user)
+      redirect_to garden_url(@garden)
     else
       render json: @garden.errors.full_messages
     end

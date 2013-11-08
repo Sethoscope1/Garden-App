@@ -12,7 +12,7 @@
 
       <input type="hidden" name="flag" value="flag1">
 
-      <input type="hidden" name="note[flag1]" value="<%= @note.flag1 ? false : true %>">
+      <input type="hidden" name="note[s]" value="<%= @note.flag1 ? false : true %>">
 
       <p class="flag-wrapper">
         <input type="submit" class="flag1 flag <%= @note.flag1 ? "unflag-button" : "" %>" value=""><i class="icon-circle"></i>
@@ -107,11 +107,25 @@ $(document).ready(function(){
       var $input = $form.children("p").children();
       var this_flag = $input[0].className.split(" ")[0];
       console.log($input[0].className.split(" ")[0]);
-      if(data[this_flag]){
+      var flag = ($input[0].className.split(" ")[0]);
+			
+			if(data[this_flag]){
         $input.addClass("unflag-button");
+				var card = $("#<%=params[:id] %>");
+				var ribbons = card.find(".ribbons");
+				ribbons.append("<div class='ribbon " + flag +"'></div>");
+				console.log(ribbons);
+				// $("#<%= params[:id] %>").children(".ribbons").append("<div class='ribbon '" + flag +"></div>")
+				console.log("<%= params[:id] %>");
       }
       else {
         $input.removeClass("unflag-button");
+				console.log("foo");
+				var card = $("#<%=params[:id] %>");
+				console.log(card);
+				var ribbon = card.find("." + flag);
+				ribbon.remove();
+				
       }
       })
 });

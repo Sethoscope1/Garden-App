@@ -112,7 +112,11 @@ body {
 }
 
 .modal textarea {
-	width: 415px;
+	width: 400px;
+  border-radius: 6px;
+  color: #ff0054;
+  padding: 10px;
+	border: none;
 }
 
 .modal input[type=submit]{
@@ -298,6 +302,30 @@ header h2 {
   padding: 10px;
 }*/
 
+/* --- FOOTER --- */
+
+#footer {
+   position:fixed;
+   left: 0px;
+   bottom: 0px;
+/*   height: 20px;*/
+   width: 100%;
+   background: #ff0054;
+}
+
+#footer h3 {
+	display: block;
+	padding: 6px 20px 8px 0px;
+ 	color: white;
+ 	font-size: 10px;
+	float: right;
+}
+
+/* IE 6 */
+* html #footer {
+   position:absolute;
+   top:expression((0-(footer.offsetHeight)+(document.documentElement.clientHeight ? document.documentElement.clientHeight : document.body.clientHeight)+(ignoreMe = document.documentElement.scrollTop ? document.documentElement.scrollTop : document.body.scrollTop))+'px');
+}
 
 /* --- BODY --- */
 
@@ -462,10 +490,22 @@ div.center {
 }
 
 div.center-button {
-	border-top: 1px dotted #ff0054;
 	text-align: center;
+}
+
+#new-garden-set {
+	border-top: 1px dotted #ff0054;
 	padding: 20px;
 	margin-top: 20px;
+}
+
+#garden-form label {
+	display: inline-block;
+	padding-top: 5px;
+}
+
+#garden-form input[type=submit]{
+	margin-right: 0;
 }
 
 .content.login input[type=submit] {
@@ -511,11 +551,37 @@ div.center-button {
 	left: 300px;
 	vertical-align: top;
 }
+/*
+.content .modal {
+	width: 900px;
+}*/
 
 .content.user {
 	background-color: #4d4d4d;
+	margin-top: 10px;
+	width: 840px;
+	z-index: 0;
 }
 
+.content span {
+	padding-left: 40px;
+	text-align: right;
+}
+.content h4 {
+	display: block;
+	font-size: 14px;
+	padding: 10px 20px;
+	margin: 8px 0;
+}
+
+.content em {
+	color: #3DF2B9;
+}
+
+#user-show {
+	margin: auto;
+	margin-top: 10px;
+}
 
 /* --- FOOTER --- */
 
@@ -699,14 +765,24 @@ img {
 	background-color: #121f1f;
 	color: #bdc3c7;
 	display: inline-block;
+	font-size: 14px;
 	
 }
 
 #list-button {
 	font-size: 18px;
+	margin-right: 20px;
 }
+
 .loose-cards {
-	padding: 10px;
+/*	border-top: 1px dotted #ff0054;*/
+	padding: 20px;
+	padding-top: 30px;
+}
+
+.loose-cards h2 {
+	border-top: 1px dotted #ff0054;
+	padding-top: 20px;	  
 }
 .new-list-button-div {
   position: absolute;
@@ -822,7 +898,7 @@ input[type=text-area] {
 	float: right;
 }
 
-input[type=submit], .header-bar div {
+input[type=submit], .header-bar div, #garden-button {
   border: none;
 	font-size: 12px;
   background-color: #ff0054;
@@ -837,6 +913,16 @@ input[type=submit], .header-bar div {
 #logout {
 	padding: none;
 	margin: none;
+}
+
+#logo-frame {
+	width: 80px;
+	height: auto;
+}
+
+#logo {
+	width: 80px;
+	height: auto;
 }
 
 .header-bar i, .header-bar a {
@@ -931,12 +1017,12 @@ input[type=submit].flag {
   padding: 6px;
 }
 
-.one {
+.flag1 {
   border-left: 7px solid #3D4CF2;
   border-right: 7px solid #3D4CF2;
 }
 
-.two {
+.flag2 {
   border-left: 7px solid #ff0054;
   border-right: 7px solid #ff0054;
 }
@@ -962,17 +1048,17 @@ input[type=submit].flag {
   border-bottom: 8px solid transparent;
 }*/
 
-.three {
+.flag3 {
   border-left: 7px solid #adadad;
   border-right: 7px solid #adadad;
 }
 
-.four {
+.flag4 {
   border-left: 7px solid #3DF2B9;
   border-right: 7px solid #3DF2B9;
 }
 
-.five {
+.flag5 {
   border-left: 7px solid #ff4d00;
   border-right: 7px solid #ff4d00;
 }
@@ -1034,7 +1120,10 @@ input[type=submit].flag5 {
 	text-align: left;
 }
 
-
 .ui-dialog.ui-widget.ui-widget-content {
   top: 0;
+}
+
+form input[type=text].persisted, form input[type=textarea].persisted {
+	color: #4D4D4D;
 }

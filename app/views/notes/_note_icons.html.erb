@@ -1,5 +1,3 @@
-<div class="left icons group">
-
 	<% if note.assigned_user != nil %>
 		<span><i class="icon-male icon left"></i>
 		<p class="sub icon left"><%= User.find(note.assigned_user).name %></p></span>
@@ -14,5 +12,3 @@
     <span><i class="icon-comment-alt icon left"></i>
     <p class="sub icon left"><%= note.comments.count %></p></span>
   <% end %>
-
-</div>

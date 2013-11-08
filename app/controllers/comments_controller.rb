@@ -8,9 +8,9 @@ class CommentsController < ApplicationController
   def create
     @comment = Comment.new(params[:comment])
     if @comment.save
-      redirect_to note_url(@comment.note_id)
+      render json: @comment
     else
-      redirect_to note_url(@comment.note_id)
+      render json: @comment
     end
   end
 

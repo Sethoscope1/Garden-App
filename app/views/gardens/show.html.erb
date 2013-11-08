@@ -16,7 +16,7 @@
 
 <div class="modal">
 
-  <!-- shit renders here ? -->
+  <!-- stuff renders here -->
 
 </div>
 
@@ -168,6 +168,48 @@ $(document).ready(function(){
   	$(this).addClass("invisible");
    	$list_button.removeClass("invisible"); 
   });
+	
+	
+	/////--- Card View ---/////
+	
+	$(".modal").on("click", "#description-button", function(event){
+		event.preventDefault();
+		var form = $(this).closest("form")
+		var formData = form.serialize();
+		var id = $(this).closest(".content-main").attr("id").slice(1);
+		$.ajax({
+			url: "/notes/" + id,
+			type: "PUT",
+			data: formData,
+			dataType: "json",
+			success: function(data){
+				form.children(":text").addClass("persisted")
+			}
+			
+		});
+	});
+	
+	$(".modal").on("click", "#comment", function(event){
+		event.preventDefault();
+		var form = $(this).closest("form");
+		var formData = form.serialize();
+		var comments = $(this).closest(".content-main").find("#comments-wrapper");
+		// var comments = form.find("#comments-wrapper")
+		console.log(comments)
+		var id = $(this).closest(".content-main").attr("id").slice(1);
+		$.ajax({
+			url: "/comments/",
+			type: "POST",
+			data: formData,
+			dataType: "json",
+			success: function(data){
+				form[0].reset();
+				comments.prepend("cheese")
+			}
+			
+		});
+	});
+	
 	
 	
 	/////--- ENABLES LIST & NOTE DRAGGING ---/////
