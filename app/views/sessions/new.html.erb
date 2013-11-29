@@ -1,15 +1,15 @@
 <section class="content group login modal">
 
 	<span class="masthead group">
-		<div class="center"><h2>Welcome to Early Worm!</h2></div>
+		
+		<div class="center group" id="logo-large"><img src="/images/mascot-small.png" id="logo-big" class="center"></div>
+		<br>
+		<div class="center"><h2>Welcome!</h2></div>
 	</span>
 	
   <section class="content-main bigger-left left">
 
 		<h3>New to Early Worm?</h3>
-
-		
-
 		
     <form action="/users" method="post">
 		<% if flash[:errors] && flash[:errors].include?("Name has already been taken")%>
@@ -56,10 +56,29 @@
 		
 		<h3>Already a Member?</h3>
 
-    <form action="/session" method="post">
-			<div class="errors group"><% if flash[:errors] && flash[:errors].include?("Make sure you enter a correct Name and Password")%>
-	<h5 class="left">* Make sure you're entering the right info!</h5></div>
-			<% end %>
+		<section id="demo" class="group">
+			<div id="demo-back">
+			</div>
+			
+			<div id="demo-info">
+				<h3>DEMO LOGIN</h3>
+				<h4>Name: Demo</h4>
+				<h4>Password: password</h4>
+			
+				<p>
+					Just click <strong>"SIGN IN"</strong> to enter <strong>Early Worm</strong> in DEMO MODE to check out all its features! 
+				</p>
+			<div>
+		</section>
+		
+    <form action="/session" method="post" id="returning">
+			<div class="errors group">
+				<% if flash[:errors] && flash[:errors].include?("Make sure you enter a correct Name and Password")%>
+	<h5 class="left">* Make sure you're entering the right info!</h5>
+				<% end %>
+			</div>
+			
+
       <input
          name="authenticity_token"
          type="hidden"
@@ -69,14 +88,16 @@
       <input
          id="user_username"
          name="user[name]"
-         type="text">
+         type="text"
+				 value="Demo">
       <br>
 
       <label for="user_password">Password</label>
       <input
          id="user_password"
          name="user[password]"
-         type="text">
+         type="password"
+				 value="password">
       <br>
 
       <div class="center-button"><input type="submit" value="Sign In"></div>
