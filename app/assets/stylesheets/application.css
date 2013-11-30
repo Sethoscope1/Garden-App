@@ -84,7 +84,7 @@ body {
 }
 
 #demo h4, #demo h3 {
-	padding: 10px;
+	padding: 5px;
 	margin: 0px;
 }
 
@@ -103,9 +103,12 @@ body {
 
 #demo-info {
 	position: absolute;
-	padding: 10px;
+	padding: 14px;
 }
 
+#demo p {
+	padding: 10px 0;
+}
 #returning {
 	padding-top: 230px;
 }
@@ -140,6 +143,14 @@ body {
 
 .modal .content-main {
 	width: 420px;
+}
+
+.modal .content-main.bigger-right {
+	padding-top: 0;
+}
+
+.modal .content-main.bigger-right h3 {
+	padding-top: 8px;
 }
 
 .modal input[type=text] {
@@ -242,6 +253,10 @@ body {
 
 #make-a-note {
   margin: 0px 80px 15px 80px;
+}
+
+strong {
+	font-weight: bold;
 }
 
 .note-button {
