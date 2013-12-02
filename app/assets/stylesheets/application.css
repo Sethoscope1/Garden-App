@@ -120,13 +120,17 @@ body {
 	margin: auto;
 	margin-bottom: 20px;
 	border-radius: 6px;
-	background-color: #bbb;
+	background-color: #fff;
 }
 
 #instructions-button h3{
 	padding: 5px 10px;
 	font-size: 22px;
 	color: #ff0054;
+}
+
+#user-show #instructions-button h3{
+	padding: 0;
 }
 
 /*.instructions {

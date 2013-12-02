@@ -1,7 +1,7 @@
 
 <% if current_user.name="Demo"%>
 
-	<div id="demo-instructions">
+	<div id="demo-instructions" class="group invisible">
 		<h3>DEMO INSTRUCTIONS</h3>
 
 		<p>
@@ -17,6 +17,7 @@
 			<strong>MY GARDENS</strong> lists each of your garden projects and their locations. Click on <em><strong>Worcester St Community Garden</strong></em> to move on to the project's main page.
 		</p>
 	</div>
+	
 <% end %>
 
 <section class="content user group" id="user-show">
@@ -24,6 +25,14 @@
 	<section class="group">
 
 	  <section class="content-main left bigger-left">
+			
+			<% if current_user.name="Demo"%>
+
+				<div id="instructions-button" class="group">
+					<h3><strong>INSTRUCTIONS <i class="icon-hand-up"></i><strong></h3>
+				</div>
+				
+			<% end %>
 
 	    <h2>My Gardens</h2>
 			<% if current_user.gardens.length > 0 || current_user.garden_memberships.length > 0 %>
@@ -156,7 +165,28 @@ $(document).ready(function(){
 	    return this;
 	}
 
+	/////--- DISPLAYS INSTRUCTIONS ---/////
+	
+  $("#instructions-button").on("click", function(event){
+    event.preventDefault();
+		
+		$("#demo-instructions").removeClass("invisible");
+ 
+    $("#demo-instructions").dialog({
+      width: 780,
+      position: ["center", "top"]
+    });
 
+    $("#blur").removeClass("invisible");
+
+  });
+	
+	$('#blur').click(function() {
+	  $(this).addClass("invisible");
+		$("#demo-instructions").addClass("invisible");
+	  $(".modal").addClass("invisible");
+	})
+	
 	/////--- DISPLAYS MODAL BOX ---/////
 
 
