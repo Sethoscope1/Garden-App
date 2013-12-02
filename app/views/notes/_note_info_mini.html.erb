@@ -21,9 +21,6 @@
     <% end %>
   </div>
 
-
-
-
   <% if note.crop_id %>
 
     <h1><%= note.crop_id %><h1>
@@ -33,12 +30,6 @@
   <% else %>
 
     <h3><%= note.title %></h3>
-
-    <% if note.note_photo_file_name %>
-			<div class="pic-small">
-     	 	<%= image_tag note.note_photo.url(:small) %>
-			<div>
-    <% end %>
 
   <% end %>
 

@@ -1,4 +1,24 @@
 
+<% if current_user.name="Demo"%>
+
+	<div id="demo-instructions">
+		<h3>DEMO INSTRUCTIONS</h3>
+
+		<p>
+			THIS IS THE <strong>PROFILE PAGE</strong> WHERE YOU CAN MANAGE ALL OF YOUR PROJECTS. 
+		</p>
+		<p>
+			If you have any deadlines scheduled within the next 3 days, they'll appear in the <strong>NOTIFICATIONS</strong> section.
+		</p>
+		<p>
+			All of the individual project items you've created will be displayed in the <strong>MY CARDS</strong> list below. Click on a card to see more information.
+		</p>
+		<p>
+			<strong>MY GARDENS</strong> lists each of your garden projects and their locations. Click on <em><strong>Worcester St Community Garden</strong></em> to move on to the project's main page.
+		</p>
+	</div>
+<% end %>
+
 <section class="content user group" id="user-show">
 
 	<section class="group">
@@ -64,10 +84,10 @@
 
 		<% if current_user.notes.length > 0 %>
 	    
-			<ul id="cards-holder">		
+			<ul id="cards-holder" class="list">		
 	      <% current_user.notes.sort_by { |a| a.updated_at }.each do |note| %>
-		      <li class="info card ui-state-default" id="<%= note.id %>" data-list_id="<%= note.list_id %>">
-		        <%= render partial: "/notes/note_info", locals: { note: note } %>
+		      <li class="info card ui-state-default item" id="<%= note.id %>" data-list_id="<%= note.list_id %>">
+		        <%= render partial: "/notes/note_info_mini", locals: { note: note } %>
 		      </li>
 	      <% end %>
 	    </ul>
@@ -120,10 +140,7 @@ $(document).ready(function(){
 			url: "/notes/" + id,
 			type: "PUT",
 			data: data,
-			dataType: "json",
-			success: function(data){
-				// add update here
-			}
+			dataType: "json"
 		});
 	})
 	
@@ -173,7 +190,19 @@ $(document).ready(function(){
 	  $(this).addClass("invisible");
 	  $(".modal").addClass("invisible");
 	})
+
+	/////--- ENABLES MASONRY TILES ---/////
+
+	var list = document.querySelector('.list');
+	var msnry = new Masonry( list, {
+ 	 //options
+ 	 columnWidth: 270,
+ 	 itemSelector: '.item'
+	});
+	
 });
+
+
 
 
 </script>

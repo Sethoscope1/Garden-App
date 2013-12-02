@@ -1,7 +1,19 @@
 <section class="info garden group left">
+	
+	
   <section class="data group left">
-    <h2><%= garden.name %></h2><br>
+		
+		<% if current_user.name="Demo"%>
 
+			<div id="instructions-button" class="group">
+				<h3><strong>INSTRUCTIONS <i class="icon-hand-up"></i><strong></h3>
+			</div>
+	
+		<% end %>
+			
+	
+    <h2><%= garden.name %></h2>
+		
     <section class="info">
       <p class="sub">Created by: <%= garden.user.name %></p>
       <p class="sub">Location: <%= garden.location %></p>
@@ -11,38 +23,37 @@
       <ul class="garden-list">
 				
 				<h2 id="members">Members</h2>
-          <li><a href="#"><p class="sub"><%= current_user.name %></p></a></li><br>
+          <li><p class="sub"><%= current_user.name %></p></li><br>
 				
 				<% if garden.garden_memberships.length > 0 %>
 					
-
-				
-				
-		
+	        <% garden.garden_memberships.each do |member| %>
+	          <li><a href="#<%= User.find(member.user_id).name %>"><p class="sub"><%= User.find(member.user_id).name %></p></a></li><br>
+	        <% end %>
 				<% end %>
 
-        <% garden.garden_memberships.each do |member| %>
-          <li><a href="#<%= User.find(member.user_id).name %>"><p class="sub"><%= User.find(member.user_id).name %></p></a></li><br>
-        <% end %>
+
       </ul>
 			
 			<ul>
-				<form action="<%= garden_memberships_url %>" method="POST" class="group">
+				<% if User.all.length > (garden.garden_memberships.length + 1) %>
+					<form action="<%= garden_memberships_url %>" method="POST" class="group">
 
-				  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-				  <input type="hidden" name="_method" value="POST">
-					<input type="hidden" name="garden_membership[garden_id]" value="<%= params[:id] %>">
-				  <select name="garden_membership[user_id]">
-				    <% User.all.each do |user| %>
-				      <% next if user.id == current_user.id %>
-							<!-- <%= garden.gardeners%> -->
-							<% next if garden.gardeners.include?(user)%>
-				      <option value="<%= user.id %>"><%= user.name %></option>
-				    <% end %>
-				  </select>
+					  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+					  <input type="hidden" name="_method" value="POST">
+						<input type="hidden" name="garden_membership[garden_id]" value="<%= params[:id] %>">
+					  <select name="garden_membership[user_id]">
+					    <% User.all.each do |user| %>
+					      <% next if user.id == current_user.id %>
+								<!-- <%= garden.gardeners%> -->
+								<% next if garden.gardeners.include?(user)%>
+					      <option value="<%= user.id %>"><%= user.name %></option>
+					    <% end %>
+					  </select>
 
-				  <input type="submit" value="Add Member!" id="add_member" class="right">
-				</form>
+					  <input type="submit" value="Add Member!" id="add_member" class="right">
+					</form>
+				<% end %>
 			</ul>
     </section>
   </section>

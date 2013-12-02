@@ -106,9 +106,63 @@ body {
 	padding: 14px;
 }
 
+#demo-instructions {
+	z-index: 3;
+	position: relative;
+}
 #demo p {
 	padding: 10px 0;
 }
+
+#demo-instructions {
+	padding: 20px 15px;
+	width: 890px;
+	margin: auto;
+	margin-bottom: 20px;
+	border-radius: 6px;
+	background-color: #bbb;
+}
+
+#instructions-button h3{
+	padding: 5px 10px;
+	font-size: 22px;
+	color: #ff0054;
+}
+
+/*.instructions {
+  -webkit-transition: all 1s ease-in-out;
+  -moz-transition: all 1s ease-in-out;
+  -o-transition: all 1s ease-in-out;
+  transition: all 1s ease-in-out;
+}
+
+#demo-instructions .instructions {
+	height: 0;
+}
+
+#demo-instructions p {
+	opacity: 0;
+	font-size: 0.01px;
+}
+
+#demo-instructions:hover .instructions {
+	height: auto;
+}
+
+#demo-instructions:hover p {
+	opacity: 1;
+	    -webkit-transition: opacity 1s ease-out;
+}*/
+
+
+
+#demo-instructions h3 {
+	color: #ff0054;
+	font-size: 24px;
+	text-align: center;
+}
+
+
 #returning {
 	padding-top: 230px;
 }
@@ -185,6 +239,7 @@ body {
 .modal h3 {
 	display: inline-block;
 }
+
 
 .login .content-main {
 	width: 350px;
@@ -478,6 +533,7 @@ section.page-view {
 .main {
   margin: auto;
 	margin-top: 93px;
+	margin-bottom: 80px;
   padding: 0 30px;
 	padding-top: 20px;
 	
@@ -620,7 +676,7 @@ div.center-button {
 .content.user {
 	background-color: #4d4d4d;
 	margin-top: 10px;
-	width: 840px;
+	width: 880px;
 	z-index: 0;
 }
 

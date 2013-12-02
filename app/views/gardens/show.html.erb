@@ -1,3 +1,38 @@
+
+	<div id="demo-instructions" class="group instructions invisible">
+
+		<h3>DEMO INSTRUCTIONS</h3>
+		
+		<p>
+			THIS IS A <strong>PROJECT PAGE</strong> WHERE YOU CAN MANAGE AN INDIVIDUAL PROJECT. 
+		</p>
+		<p>
+			On the left, you can see all of the <strong>PROJECT INFO,</strong> including the creator, location, collaborators, and an option to add more gardeners to the project.
+		</p>
+		<p>
+			In the main view, you have <strong>LISTS</strong> representing different to-dos, tasks, topics and schedules. You can drag and drop the lists - and they'll stay where you left them if you refresh the page! Try moving something around.
+		</p>
+		<p>
+			Each of the <strong>NOTES</strong> can also be moved around. You can even move them to another list! Try to move a card to a new list.
+		</p>
+		<p>
+			If you click on a <strong>NOTE</strong>, you can see more info - a description, user comments, due dates, and flags. 
+		</p>
+		<p>
+			Click on a flag to mark a <strong>NOTE</strong> as important. It will update both the <strong>NOTE</strong> info page and the main <strong>LIST</strong> view.
+		</p>
+		<p>
+			Add a comment if you'd like, or even upload a photo from your computer!
+		</p>
+		<p>
+			You can create a new <strong>LIST</strong> and add some <strong>NOTES</strong> to it by clicking the corresponding <strong>ADD!</strong> buttons
+		</p>
+		<p>
+			When you're finished, <strong>LOGOUT</strong> to return to the <strong>WELCOME</strong> page.
+		</p>
+	</div>
+
+
 <section class="page-view">
 
   <%= render partial: "garden_info", locals: {garden: @garden} %>
@@ -90,7 +125,22 @@ $(document).ready(function(){
       return this;
   }
 
+	/////--- DISPLAYS INSTRUCTIONS ---/////
+	
+  $("#instructions-button").on("click", function(event){
+    event.preventDefault();
+		
+		$("#demo-instructions").removeClass("invisible");
+ 
+    $("#demo-instructions").dialog({
+      width: 780,
+      position: ["center", "top"]
+    });
 
+    $("#blur").removeClass("invisible");
+
+  });
+	
 	/////--- DISPLAYS MODAL BOX ---/////
 
 
@@ -121,6 +171,7 @@ $(document).ready(function(){
 
 	$('#blur').click(function() {
 	  $(this).addClass("invisible");
+		$("#demo-instructions").addClass("invisible");
 	  $(".modal").addClass("invisible");
 	})
 
@@ -250,33 +301,7 @@ $(document).ready(function(){
 			}
 			
 		});
-	});
-
-	
-// 	$(".modal").on("click", "#photo-submit", function(event){
-// 		event.preventDefault();
-// 		var form = $(this).closest("form");
-// 		console.log(form)
-// 		var formData = form.serialize();
-// 		console.log(formData)
-// 		var id = $(this).closest(".content-main").attr("id").slice(1);
-// 		// console.log(id)
-// // 		console.log(formData)
-// 		$.ajax({
-// 			url: "/notes/" + id,
-// 			type: "PUT",
-// 			data: formData,
-// 			dataType: "json",
-// 			success: function(data){
-// 				console.log(data)
-// 				// form[0].reset();
-// 		// 		comments.prepend("cheese")
-// 			}
-// 			
-// 		});
-// 	});
-	
-	
+	});	
 	
 	/////--- ENABLES LIST & NOTE DRAGGING ---/////
 	
