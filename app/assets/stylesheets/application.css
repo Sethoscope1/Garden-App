@@ -120,17 +120,27 @@ body {
 	margin: auto;
 	margin-bottom: 20px;
 	border-radius: 6px;
-	background-color: #fff;
+	background-color: #aaa;
 }
 
-#instructions-button h3{
+#instructions-button {
+	cursor: pointer;
+	margin: auto;
+	margin-bottom: 10px;
+}
+
+#instructions-button h3 {
+	display: inline;
 	padding: 5px 10px;
+	text-align: center;
+	background-color: #bbb;
+	border-radius: 6px;
 	font-size: 22px;
 	color: #ff0054;
 }
 
 #user-show #instructions-button h3{
-	padding: 0;
+	padding: 5px 10px;
 }
 
 /*.instructions {
@@ -369,13 +379,23 @@ header {
   background-color: none;
 }
 
+#logo-frame {
+	width: 160px;
+	height: auto;
+}
+
 #logo {
-		float: left;
-    font-size: 36px;
-    color: #3DF2B9;
-    padding: 20px;
-    padding-left: 40px;
-    font-family: 'Titillium Web', sans-serif;
+	width: 160px;
+	height: auto;
+}
+
+#logo {
+	
+	width: 160px;
+	height: auto;
+	float: left;
+  padding: 10px;
+  padding-left: 60px;
 }
 
 .modal #logo-large {
@@ -536,7 +556,7 @@ section.page-view {
 
 .main {
   margin: auto;
-	margin-top: 93px;
+	margin-top: 120px;
 	margin-bottom: 80px;
   padding: 0 30px;
 	padding-top: 20px;
@@ -1064,16 +1084,6 @@ input[type=submit], .header-bar div, #garden-button, .pink-button {
 #logout {
 	padding: none;
 	margin: none;
-}
-
-#logo-frame {
-	width: 80px;
-	height: auto;
-}
-
-#logo {
-	width: 80px;
-	height: auto;
 }
 
 .header-bar i, .header-bar a {
