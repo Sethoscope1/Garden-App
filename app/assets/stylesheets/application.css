@@ -443,7 +443,7 @@ header h2 {
    position:fixed;
    left: 0px;
    bottom: 0px;
-/*   height: 20px;*/
+	 text-align: center;
    width: 100%;
    background: #ff0054;
 }
@@ -453,7 +453,6 @@ header h2 {
 	padding: 6px 20px 8px 0px;
  	color: white;
  	font-size: 10px;
-	float: right;
 }
 
 /* IE 6 */
