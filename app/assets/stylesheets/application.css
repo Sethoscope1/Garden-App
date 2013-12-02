@@ -498,6 +498,7 @@ section.page-view {
 .card {
   background-color: white;
   width: 247px;
+	cursor: pointer;
 }
 
 .card i {
