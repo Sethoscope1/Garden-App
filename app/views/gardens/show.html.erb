@@ -40,7 +40,7 @@
   <ul class="lists list-sortable left" id="list-container">
 
     <%= render partial: "lists/list", collection: @garden.lists.sort_by { |a| a.list_pos } %>
-
+		
   </ul>
 
   <%= render partial: "lists/list_list_form" %>

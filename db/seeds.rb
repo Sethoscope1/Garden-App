@@ -8,9 +8,11 @@
 
 Comment.create!([
   { :user_id => 1, :note_id => 1, :text => "I moved this to winter crops - I don't think they grow well in the summer.\r\n" },
-  { :user_id => 2, :note_id => 3, :text => "Thanks so much - they were delicious!\r\n" },
-  { :user_id => 2, :note_id => 6, :text => "Thanks - could you pick up a bag of topsoil? I'll owe you one!"},
-  { :user_id => 2, :note_id => 7, :text => "And will it grow in New York?\r\n" }
+  { :user_id => 2, :note_id => 3, :text => "Thanks so much - they were delicious!" },
+  { :user_id => 2, :note_id => 5, :text => "Thanks - could you pick up a bag of topsoil? I'll owe you one!"},
+  { :user_id => 2, :note_id => 7, :text => "And will it grow in New York?" },
+  { :user_id => 3, :note_id => 6, :text => "I've never seen that before!" },
+  { :user_id => 4, :note_id => 6, :text => "I think it's called Romanesco!" },
 ])
 
 
@@ -59,7 +61,10 @@ Notification.create!([
 
 User.create!([
   { :name => "Demo", :token => "rXdBvZTyTBt8iLe4ogcC7Q", :password => "password", :zip => 11215, :email => "demo@gmail.com" },
-  { :name => "Norma", :token => "aoFJO77byeesKqokdgmvIw", :password => "password", :zip => 11215, :email => "norma@gmail.com" }
+  { :name => "Norma", :token => "aoFJO77byeesKqokdgmvIw", :password => "password", :zip => 11215, :email => "norma@gmail.com" },
+  { :name => "Totoro", :token => "asXxbFJO88byeeskTLoKVoM", :password => "password", :zip => 11215, :email => "totoro@gmail.com" },
+  { :name => "Worm", :token => "bXrddsJHy9treFDsef13", :password => "password", :zip => 11215, :email => "totoro@gmail.com" }
+  
 ])
 
 
